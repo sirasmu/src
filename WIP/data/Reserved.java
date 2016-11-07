@@ -18,7 +18,7 @@ public class Reserved {
 	   private int estimateKm;
 	   private double estimatePrice;
 	   
-	   public Rent(/* book */Vehicle vehicle, int resNo, TheTime pickUpTime,
+	   public Reserved(Vehicle vehicle, int resNo, TheTime pickUpTime,
 		         TheTime returnTime, String pickUpPlace, String returnPlace,
 		         String firstName, String lastName, int estimateKm, double estimatePrice)
 		   {
