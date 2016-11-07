@@ -1,6 +1,8 @@
 package WIP.data;
 
-public class Reserved {
+import java.io.Serializable;
+
+public class Reserved implements Serializable{
 	private Vehicle vehicle;
 	private int resNo;
 	private TheTime pickUpTime;
