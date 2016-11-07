@@ -2,18 +2,26 @@ package WIP.data;
 
 public class ReservedList {
 
-	private ListADT<Reserved> reserved;
+	private ListADT<Reserved> list;
 
 	public ReservedList() {
-		reserved = new ArrayList<>();
+		list = new ArrayList<>();
 	}
 
 	public ListADT<Reserved> getAll() {
-		return reserved;
+		return list;
+	}
+	
+	public Reserved get(int index) {
+		return list.get(index);
+	}
+	
+	public void add(Reserved reserved){
+		list.add(reserved);
 	}
 
 	public int size() {
-		return 0;
+		return list.size();
 	}
 
 	public String toString() {
