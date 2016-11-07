@@ -35,12 +35,13 @@ public class TestReservedFileAdapter {
 		reservedList = rfa.getAllReserveds();
 		System.out.println(reservedList);
 
-		Reserved book1 = new Reserved(list.get(3), 1, new TheTime(16, 3, 2016), new TheTime(17, 3, 2016), "horsens",
-				"aarhus", "maria", "chifor", 100, 1000);
-		reservedList.add(book1);
-		System.out.println("HERE:\n" + reservedList);
-		rfa.saveReserveds(reservedList);
-		reservedList = rfa.getAllReserveds();
+		// Reserved book1 = new Reserved(list.get(3), 1, new TheTime(16, 3,
+		// 2016), new TheTime(17, 3, 2016), "horsens",
+		// "aarhus", "maria", "chifor", 100, 1000);
+		// reservedList.add(book1);
+		// System.out.println("HERE:\n" + reservedList);
+		// rfa.saveReserveds(reservedList);
+		// reservedList = rfa.getAllReserveds();
 
 	}
 }

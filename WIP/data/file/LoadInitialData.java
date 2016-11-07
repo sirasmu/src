@@ -3,9 +3,11 @@ package WIP.data.file;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import WIP.data.Reserved;
 import WIP.data.ReservedList;
 import WIP.data.Vehicle;
 import WIP.data.VehicleList;
+import WIP.data.utility.TheTime;
 
 /**
  * A simple program used for importing data. It reads a text file with vehicle
@@ -45,7 +47,11 @@ public class LoadInitialData {
 				int load = Integer.parseInt(tempArr[8]);
 				boolean service = Boolean.parseBoolean(tempArr[9]);
 
-				vehicles.add(new Vehicle(regNo, type, make, model, year, color, seats, drivenKm, load, service));
+				Vehicle vehicle = new Vehicle(regNo, type, make, model, year, color, seats, drivenKm, load, service);
+				vehicles.add(vehicle);
+				Reserved reserved = new Reserved(vehicle, 1, new TheTime(16, 3, 2016), new TheTime(17, 3, 2016),
+						"horsens", "aarhus", "maria", "chifor", 100, 1000);
+				reservedList.add(reserved);
 			}
 
 		} catch (FileNotFoundException e) {
