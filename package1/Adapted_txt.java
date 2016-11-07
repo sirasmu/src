@@ -1,27 +1,38 @@
 package package1;
 
-import java.io.IOException;
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.ArrayList;
+import java.io.IOException;
 
 public class Adapted_txt {
 	
 	private static String[][] list_address;
 
-	public Adapted_txt(String path) {
-		try {
-			readFromFile(path);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}	
+	public Adapted_txt(String path) throws IOException {
+		readFromFile(path);	
 	}
 	
-	public String[][] readFromFile(String path){
+	public void readFromFile(String path) throws IOException{
 		
+		BufferedReader br = new BufferedReader(new FileReader(path));
 		
-		return null;
+		try{
+			String line = br.readLine();
+			
+			while (line != null){
+				
+				String[] tempArray = line.split(","); 
+				br.readLine();
+			}
+		}finally{
+			br.close();
+		}
 		
+	}
+	
+	public String[][] request_address_list() 
+	{
+			return list_address;
 	}
 }
