@@ -1,15 +1,5 @@
 package WIP.data;
 
-<<<<<<< HEAD
-
-=======
-import SEP1.IllegalDateException;
-import SEP1.Rent;
-import SEP1.RentList;
-import SEP1.TheTime;
-import SEP1.Vehicle;
->>>>>>> origin/master
-
 public class Reserved {
 	private Vehicle vehicle;
 	private int resNo;
@@ -21,6 +11,8 @@ public class Reserved {
 	private String lastName;
 	private int estimateKm;
 	private double estimatePrice;
+	
+	private RentFileAdapter rfa;
 
 	public Reserved(Vehicle vehicle, int resNo, TheTime pickUpTime, TheTime returnTime, String pickUpPlace,
 			String returnPlace, String firstName, String lastName, int estimateKm, double estimatePrice) {
@@ -281,32 +273,27 @@ public class Reserved {
 
 		return random;
 	}
-	
+
 	/**
-	    * Checks if the reservation number is valid
-	    * @return ValidResNo
-	    *             if the reservation number is valid
-	    */
+	 * Checks if the reservation number is valid
+	 * 
+	 * @return ValidResNo if the reservation number is valid
+	 */
 
-	   public int checkValidandGenerateResNo()
-	   {
-	      RentList ValidList = rfa.getAllRents();
-	      int ValidResNo = generateResNo();
-	      int isValid = 1;
+	public int checkValidandGenerateResNo() {
+		ReservedList ValidList = rfa.getAllRents();
+		int ValidResNo = generateResNo();
+		int isValid = 1;
 
-	      for (int i = 0; i < ValidList.size(); i++)
-	      {
-	         if (ValidList.get(i).getResNo() == ValidResNo)
-	         {
-	            isValid = 0;
-	         }
-	      }
+		for (int i = 0; i < ValidList.size(); i++) {
+				isValid = 0;
+			}
+		}
 
-	      if (isValid == 0)
-	      {
-	         return checkValidandGenerateResNo();
-	      }
+		if (isValid == 0) {
+			return checkValidandGenerateResNo();
+		}
 
-	      return ValidResNo;
-	   }
+		return ValidResNo;
+	}
 }
