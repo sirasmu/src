@@ -25,11 +25,12 @@ public class ReservedList {
 	}
 
 	public String toString() {
-		String str = "****CURRENT RESERVATIONS****\n";
+		StringBuilder str = new StringBuilder("****CURRENT RESERVATIONS****\n");
 		for(int i = 0; i < list.size(); i++){
-			str += get(i) + "\n";
+			str.append(get(i) + "\n");
 		}
-		return str + "END";
+		str.append("END");
+		return str.toString();
 	}
 
 }
