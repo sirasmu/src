@@ -2,6 +2,9 @@ package WIP.data;
 
 import java.io.Serializable;
 
+import WIP.data.utility.IllegalDateException;
+import WIP.data.utility.TheTime;
+
 public class Reserved implements Serializable{
 	private Vehicle vehicle;
 	private int resNo;

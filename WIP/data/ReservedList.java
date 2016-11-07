@@ -2,6 +2,9 @@ package WIP.data;
 
 import java.io.Serializable;
 
+import WIP.data.utility.ArrayList;
+import WIP.data.utility.ListADT;
+
 public class ReservedList implements Serializable {
 
 	private ListADT<Reserved> list;

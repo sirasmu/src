@@ -1,4 +1,4 @@
-package WIP.data;
+package WIP.data.file;
 
 import java.io.EOFException;
 import java.io.FileInputStream;

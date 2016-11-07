@@ -1,4 +1,8 @@
-package WIP.data;
+package WIP.data.file;
+
+import WIP.data.VehicleFileAdapter;
+import WIP.data.VehicleList;
+
 /**
  * @author Group 1 (Ana Iulia Chifor, Andreea Carst, Filip Hudec, Signe
  *         Rasmussen)

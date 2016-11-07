@@ -1,4 +1,4 @@
-package WIP.data;
+package WIP.data.utility;
 
 import java.io.Serializable;
 

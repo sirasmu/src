@@ -1,4 +1,4 @@
-package WIP.data;
+package WIP.data.utility;
  /**
  * 
  * @author Group 1 (Ana Iulia Chifor, Andreea Carst, Filip Hudec, Signe Rasmussen)
