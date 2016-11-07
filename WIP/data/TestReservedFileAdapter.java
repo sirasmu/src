@@ -12,12 +12,12 @@ public class TestReservedFileAdapter
    public static void main(String[] args)
    {
       VehicleFileAdapter vfa = new VehicleFileAdapter("vehicles.bin");
-      ReservedFileAdapter rfa = new ReservedFileAdapter("rentals.bin");
+      ReservedFileAdapter rfa = new ReservedFileAdapter("reservedList.bin");
 
       // Get all vehicles from the file and print them out
       VehicleList list = vfa.getAllVehicles();
-      ReservedList rentList = rfa.getAllReserveds();
-      int resNo = rentList.size();
+      ReservedList reservedList = rfa.getAllReserveds();
+      
       System.out.println("All vehicles:\n" + list);
 
       System.out.println();
@@ -26,8 +26,8 @@ public class TestReservedFileAdapter
 
       System.out.println();
 
-      rentList = rfa.getAllReserveds();
-      System.out.println(rentList);
+      reservedList = rfa.getAllReserveds();
+      System.out.println(reservedList);
 
       /*
        * Reserved book1= new Reserved(list.get(2), resNo, new TheTime(1,3,2016),new
