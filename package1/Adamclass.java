@@ -5,6 +5,6 @@ public class Adamclass {
 	//empty class loooool
 	
 	public void test(){
-		System.out.println("yoooo");
+		
 	}
 }
