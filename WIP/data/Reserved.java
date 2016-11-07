@@ -286,6 +286,7 @@ public class Reserved {
 		int isValid = 1;
 
 		for (int i = 0; i < ValidList.size(); i++) {
+			if (ValidList.getAll().get(i).getResNo() == ValidResNo) {
 				isValid = 0;
 			}
 		}
