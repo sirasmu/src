@@ -1,9 +1,6 @@
 package WIP.data;
 
-import SEP1.IllegalDateException;
-import SEP1.Rent;
-import SEP1.TheTime;
-import SEP1.Vehicle;
+
 
 public class Reserved {
 	private Vehicle vehicle;
@@ -257,7 +254,7 @@ public class Reserved {
 	 * @return true if the given object is equal to this rent
 	 */
 	public boolean equals(Object obj) {
-		if (!(obj instanceof Rent)) {
+		if (!(obj instanceof Reserved)) {
 			return false;
 		}
 
