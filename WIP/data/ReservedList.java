@@ -2,20 +2,22 @@ package WIP.data;
 
 public class ReservedList {
 
-	public ReservedList(){
-		
+	private ListADT<Reserved> reserved;
+
+	public ReservedList() {
+		reserved = new ArrayList<>();
 	}
-	
-	public String getAll(){
+
+	public ListADT<Reserved> getAll() {
+		return reserved;
+	}
+
+	public int size() {
+		return 0;
+	}
+
+	public String toString() {
 		return "";
 	}
-	
-	public int size(){
-	 return 0;	
-	}
-	
-	public String toString(){
-		return "";
-	}
-	
+
 }
