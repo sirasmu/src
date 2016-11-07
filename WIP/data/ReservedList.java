@@ -13,7 +13,7 @@ public class ReservedList {
 	}
 
 	public int size() {
-		return 0;
+		return reserved.size();
 	}
 
 	public String toString() {
