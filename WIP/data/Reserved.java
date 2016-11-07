@@ -56,42 +56,6 @@ public class Reserved {
 
 		   
 		   /**
-		    * Sets the rental information of a booking
-		    * 
-		    * @param driversLicense
-		    *             the client's driving license
-		    * @param phoneNo
-		    *             the client's phone number
-		    */
-		   public void setRent(String driversLicense, String phoneNo)
-		   {
-		      this.driversLicense = driversLicense;
-		      this.phoneNo = phoneNo;
-		   }
-
-		   
-		   /**
-		    * Sets the return information of a rental
-		    * @param realDate
-		    *             the vehicle's return date
-		    * @param realDrivenKm
-		    *             the vehicle's driven kilometers
-		    * @param condition
-		    *             the vehicle's condition 
-		    * @param realPrice
-		    *             the price for the rental
-		    */
-		   public void setReturn(TheTime realDate, int realDrivenKm, String condition,
-		         double realPrice)
-		   {
-		      this.realDate = realDate;
-		      this.realDrivenKm = realDrivenKm;
-		      this.condition = condition;
-		      this.realPrice = realPrice;
-		   }
-
-		   
-		   /**
 		    * Gets the vehicle with all the information about it
 		    * @return vehicle 
 		    *             the vehicle with all the information about it
@@ -181,17 +145,6 @@ public class Reserved {
 
 		   
 		   /**
-		    * Gets the client's driving license number
-		    * @return driversLicense
-		    *             the client's driving license 
-		    */
-		   public String getDriversLicense()
-		   {
-		      return driversLicense;
-		   }
-
-		   
-		   /**
 		    * Gets the client's first name
 		    * @return firstName
 		    *             the client's first name
@@ -212,36 +165,6 @@ public class Reserved {
 		      return lastName;
 		   }
 
-		   /**
-		    * Gets the client's phone number
-		    * @return phoneNo
-		    *             the client's phone number
-		    */
-		   public String getPhoneNo()
-		   {
-		      return phoneNo;
-		   }
-
-		   
-		   /**
-		    * Gets the actual date when the vehicle has been returned
-		    * @return realDate
-		    *             the vehicle's return date
-		    */
-		   public TheTime getRealDate()
-		   {
-		      return realDate;
-		   }
-
-		   /**
-		    * Gets the actual driven kilometers of the vehicle
-		    * @return realDrivenKm
-		    *          the actual driven kilometers
-		    */
-		   public int getRealDrivenKm()
-		   {
-		      return realDrivenKm;
-		   }
 
 		   /**
 		    * Gets the real price of the vehicle after it has been returned
