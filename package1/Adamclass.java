@@ -1,4 +1,4 @@
-package test_git_package;
+package package1;
 
 public class Adamclass {
 	//this is adam class
