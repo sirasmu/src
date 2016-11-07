@@ -1,7 +1,5 @@
 package WIP.data;
 
-import SEP1.RentFileAdapter;
-
 public class Reserved {
 	private Vehicle vehicle;
 	private int resNo;
@@ -14,7 +12,7 @@ public class Reserved {
 	private int estimateKm;
 	private double estimatePrice;
 	
-	private RentFileAdapter rfa;
+	private ReservedFileAdapter rfa;
 
 	public Reserved(Vehicle vehicle, int resNo, TheTime pickUpTime, TheTime returnTime, String pickUpPlace,
 			String returnPlace, String firstName, String lastName, int estimateKm, double estimatePrice) {
@@ -283,7 +281,7 @@ public class Reserved {
 	 */
 
 	public int checkValidandGenerateResNo() {
-		ReservedList ValidList = rfa.getAllRents();
+		ReservedList ValidList = rfa.getAllReserveds();
 		int ValidResNo = generateResNo();
 		int isValid = 1;
 
