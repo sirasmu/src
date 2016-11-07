@@ -167,26 +167,6 @@ public class Reserved {
 
 
 		   /**
-		    * Gets the real price of the vehicle after it has been returned
-		    * @return realPrice
-		    *             the real price of the vehicle
-		    */
-		   public double getRealPrice()
-		   {
-		      return realPrice;
-		   }
-
-		   /**
-		    * Gets the condition of the vehicle after it has been returned
-		    * @return condition
-		    *             the condition of the vehicle(good/damaged)
-		    */
-		   public String getCondition()
-		   {
-		      return condition;
-		   }
-
-		   /**
 		    * Sets a vehicle
 		    * @param vehicle
 		    *           the vehicle that will be rented
