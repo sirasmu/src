@@ -1,6 +1,14 @@
 package WIP.data;
 
+<<<<<<< HEAD
 
+=======
+import SEP1.IllegalDateException;
+import SEP1.Rent;
+import SEP1.RentList;
+import SEP1.TheTime;
+import SEP1.Vehicle;
+>>>>>>> origin/master
 
 public class Reserved {
 	private Vehicle vehicle;
@@ -273,4 +281,32 @@ public class Reserved {
 
 		return random;
 	}
+	
+	/**
+	    * Checks if the reservation number is valid
+	    * @return ValidResNo
+	    *             if the reservation number is valid
+	    */
+
+	   public int checkValidandGenerateResNo()
+	   {
+	      RentList ValidList = rfa.getAllRents();
+	      int ValidResNo = generateResNo();
+	      int isValid = 1;
+
+	      for (int i = 0; i < ValidList.size(); i++)
+	      {
+	         if (ValidList.get(i).getResNo() == ValidResNo)
+	         {
+	            isValid = 0;
+	         }
+	      }
+
+	      if (isValid == 0)
+	      {
+	         return checkValidandGenerateResNo();
+	      }
+
+	      return ValidResNo;
+	   }
 }
