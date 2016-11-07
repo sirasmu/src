@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class Adapted_txt {
 
-	private ArrayList<String[]> address_list;
+	private static ArrayList<String[]> address_list;
 
 	public Adapted_txt(String path) throws IOException {
 		readFromFile(path);
