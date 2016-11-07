@@ -17,6 +17,7 @@ public class ReservedList {
 	}
 
 	public String toString() {
+		String str = "";
 		return "";
 	}
 
