@@ -22,7 +22,6 @@ public class Reserved {
 		         TheTime returnTime, String pickUpPlace, String returnPlace,
 		         String firstName, String lastName, int estimateKm, double estimatePrice)
 		   {
-		      // book
 		      this.vehicle = vehicle;
 		      this.resNo = resNo;
 		      if ((returnTime.getDay() < pickUpTime.getDay())
@@ -53,16 +52,6 @@ public class Reserved {
 		      this.lastName = lastName;
 		      this.estimateKm = estimateKm;
 		      this.estimatePrice = estimatePrice;
-
-		      // Renting
-		      this.driversLicense = "";
-		      this.phoneNo = "";
-
-		      // Returning
-		      this.realDate = null;
-		      this.realDrivenKm = 0;
-		      this.condition = "";
-		      this.realPrice = 0;
 		   }
 
 		   
