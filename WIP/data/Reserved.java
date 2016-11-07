@@ -1,5 +1,7 @@
 package WIP.data;
 
+import SEP1.RentFileAdapter;
+
 public class Reserved {
 	private Vehicle vehicle;
 	private int resNo;
