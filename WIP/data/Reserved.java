@@ -16,9 +16,22 @@ public class Reserved implements Serializable{
 	private String lastName;
 	private int estimateKm;
 	private double estimatePrice;
-	
 	private ReservedFileAdapter rfa;
 
+	/**
+	 * 10-arg contructor for creating a object of Reserved. This class has a vehicle and information about the reservation.
+	 * 
+	 * @param vehicle is the vehicle that has been reserved
+	 * @param resNo identifies which reservation it is
+	 * @param pickUpTime when the vehicle will be picked up from the rental company
+	 * @param returnTime when the vehicle will be returned to the rental company
+	 * @param pickUpPlace the location the vehicle will be picked up
+	 * @param returnPlace the location the vehicle will be returned to
+	 * @param firstName is the first name of the client whom reserve the vehicle
+	 * @param lastName is the last name of the client whom reserve the vehicle
+	 * @param estimateKm is the amount of kilometers the client estimated they will drive
+	 * @param estimatePrice is what the rental company estimates the total cost of renting the vehicle will be
+	 */
 	public Reserved(Vehicle vehicle, int resNo, TheTime pickUpTime, TheTime returnTime, String pickUpPlace,
 			String returnPlace, String firstName, String lastName, int estimateKm, double estimatePrice) {
 		this.vehicle = vehicle;

@@ -9,6 +9,9 @@ public class ReservedList implements Serializable {
 
 	private ListADT<Reserved> list;
 
+	/**
+	 * The list for Reserved objects is initialized
+	 */
 	public ReservedList() {
 		list = new ArrayList<>();
 	}
