@@ -277,66 +277,6 @@ public class Reserved {
 		   }
 
 		   /**
-		    * Sets the client's driving license number
-		    * @param driversLicense
-		    *           the driving license number of the client
-		    */
-		   public void setDriversLicense(String driversLicense)
-		   {
-		      this.driversLicense = driversLicense;
-		   }
-
-		   /**
-		    * Sets the client's phone number
-		    * @param phoneNo
-		    *           the phone number of the client
-		    */
-		   public void setPhoneNo(String phoneNo)
-		   {
-		      this.phoneNo = phoneNo;
-		   }
-
-		   /**
-		    * Sets the real date when the vehicle will be returned
-		    * @param realDate
-		    *             the vehicle's real date
-		    */
-		   public void setRealDate(TheTime realDate)
-		   {
-		      this.realDate = realDate;
-		   }
-
-		   /**
-		    * Sets the vehicle's actual driven kilometers
-		    * @param realDrivenKm
-		    *           the actual driven kilometers that will be set to
-		    */
-		   public void setRealDrivenKm(int realDrivenKm)
-		   {
-		      this.realDrivenKm = realDrivenKm;
-		   }
-
-		   /**
-		    * Sets the vehicle's condition on return
-		    * @param condition
-		    *           the condition of the vehicle that will be set to (good/damaged)
-		    */
-		   public void setCondition(String condition)
-		   {
-		      this.condition = condition;
-		   }
-
-		   /**
-		    * Sets the vehicle's actual price
-		    * @param realPrice
-		    *           the price of the rental that will be set to
-		    */
-		   public void setRealPrice(double realPrice)
-		   {
-		      this.realPrice = realPrice;
-		   }
-
-		   /**
 		    * Sets the vehicle's reservation number
 		    * @param resNo
 		    *           the rental's reservation number
@@ -355,14 +295,10 @@ public class Reserved {
 		    *         realDrivenKm, condition"
 		    *                a string with all the information about the vehicle and the client
 		    */                
-		   public String toString()
-		   {
-
+		   public String toString() {
 		      return vehicle + "," + resNo + "," + pickUpTime + "," + returnTime + ","
 		            + pickUpPlace + "," + returnPlace + "," + firstName + ","
-		            + lastName + "," + estimateKm + "," + estimatePrice + ","
-		            + driversLicense + "," + phoneNo + "," + realDate + ","
-		            + realDrivenKm + "," + condition + "," + realPrice;
+		            + lastName + "," + estimateKm + "," + estimatePrice;
 		   }
 
 		   
@@ -375,24 +311,12 @@ public class Reserved {
 		    */
 		   public boolean equals(Object obj)
 		   {
-		      if (!(obj instanceof Rent))
-		      {
+		      if (!(obj instanceof Rent)) {
 		         return false;
 		      }
 
-		      Rent other = (Rent) obj;
-
-		      if (driversLicense != null)
-		      {
-		         return vehicle.equals(other.vehicle)
-		               && driversLicense.equals(other.driversLicense)
-		               && phoneNo.equals(other.phoneNo);
-		      }
-		      else
-		      {
-		         return vehicle.equals(other.vehicle) && phoneNo.equals(other.phoneNo)
-		               && other.driversLicense == null;
-		      }
+		      Reserved other = (Reserved) obj;
+		      return vehicle.equals(other.vehicle);		
 		   }
 
 		   /**
