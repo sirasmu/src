@@ -5,7 +5,7 @@ import java.rmi.*;
 
 public class AdditionClient {
     public static void main(String[] args) {
-        String remoteHostName = "10.52.237.154";
+        String remoteHostName = "10.52.226.111";
         int remotePort = 1099;
         String connectLocation = "//" + remoteHostName + ":" + remotePort
                 + "/Hello";

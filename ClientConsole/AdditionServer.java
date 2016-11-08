@@ -19,7 +19,7 @@ public class AdditionServer {
             System.out.println("java RMI registry already exists.");
         }
 
-        String hostname = "10.52.237.154";
+        String hostname = "10.52.226.111";
 
         String bindLocation = "//" + hostname + ":" + port + "/Hello";
         try {
