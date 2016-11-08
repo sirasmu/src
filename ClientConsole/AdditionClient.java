@@ -3,6 +3,8 @@ package ClientConsole;
 import java.net.MalformedURLException;
 import java.rmi.*;
 
+import WIP.data.ReservedList;
+
 public class AdditionClient {
     public static void main(String[] args) {
         String remoteHostName = "10.52.226.111";
@@ -25,9 +27,9 @@ public class AdditionClient {
             e1.printStackTrace();
         }
 
-        int result = 0;
+        ReservedList result = null;
         try {
-            result = hello.Add(9, 10);
+            result = hello.Add();
         } catch (RemoteException e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();

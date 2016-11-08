@@ -1,8 +1,10 @@
 package ClientConsole;
 	import java.rmi.Remote;
-	import java.rmi.RemoteException;
+import java.rmi.RemoteException;
+
+import WIP.data.ReservedList;
 
 	public interface AdditionalInterface extends Remote {
-	    public int Add(int a, int b) throws RemoteException;
+	    public ReservedList Add() throws RemoteException;
 	}
 
