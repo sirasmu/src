@@ -299,7 +299,7 @@ public class Reserved implements Serializable{
 	 */
 
 	public int checkValidandGenerateResNo() {
-		ReservedList ValidList = rfa.getAllReserveds();
+		ReservedList ValidList = rfa.getAllReservations();
 		int ValidResNo = generateResNo();
 		int isValid = 1;
 

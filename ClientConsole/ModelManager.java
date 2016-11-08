@@ -17,7 +17,7 @@ public class ModelManager extends UnicastRemoteObject implements
 	private ReservedList reservedList;
     public ModelManager() throws RemoteException {
     	rfa = new ReservedFileAdapter("reservedList.bin");
-    	reservedList=rfa.getAllReserveds();
+    	reservedList=rfa.getAllReservations();
     }
 
 	@Override
