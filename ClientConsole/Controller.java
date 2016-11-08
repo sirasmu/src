@@ -17,7 +17,6 @@ public ReservedList getAllReservation()
 	try {
 		return model.getAll();
 	} catch (RemoteException e) {
-		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
 	throw new IllegalSelectorException();
