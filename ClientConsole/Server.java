@@ -1,31 +1,38 @@
 package ClientConsole;
 
+import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
-import java.rmi.server.UnicastRemoteObject;
 
-public class Server extends UnicastRemoteObject implements ServerInterface {
-	public static void main(String[] args) {
-		try {
-			Registry reg = LocateRegistry.createRegistry(1099);
-			ServerInterface rmiServer = new Server();
-			Naming.rebind("toUppercase", rmiServer);
-			System.out.println("Starting server...");
-		} catch (Exception ex) {
-			ex.printStackTrace();
-		}
-	}
+public class Server {
+    public static void main(String[] argv) throws RemoteException {
+        Show show = new Show();
 
-	public Server() throws RemoteException {
-		super();
-	}
+        int port = 1099;
 
-	@Override
-	public String toUpperCase(String msg, Object client) throws RemoteException {
-		System.out.println("toUpperCase: client = " + client);
-		return msg.toUpperCase();
-	}
+        try { // special exception handler for registry creation
+            LocateRegistry.createRegistry(port);
+            System.out.println("java RMI registry created.");
+        } catch (RemoteException e) {
+            // do nothing, error means registry already exists
+            System.out.println("java RMI registry already exists.");
+        }
 
+        String hostname = "10.52.236.164";
+
+        String bindLocation = "//" + hostname + ":" + port + "/Connect";
+        try {
+            Naming.bind(bindLocation, show);
+            System.out.println("Addition Server is ready at:" + bindLocation);
+        } catch (RemoteException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (MalformedURLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (Exception e) {
+            System.out.println("Addition Serverfailed: " + e);
+        }
+    }
 }
