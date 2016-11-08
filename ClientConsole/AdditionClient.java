@@ -7,7 +7,7 @@ import WIP.data.ReservedList;
 
 public class AdditionClient {
     public static void main(String[] args) {
-        String remoteHostName = "10.52.226.111";
+        String remoteHostName = "10.52.236.164";
         int remotePort = 1099;
         String connectLocation = "//" + remoteHostName + ":" + remotePort
                 + "/Hello";
