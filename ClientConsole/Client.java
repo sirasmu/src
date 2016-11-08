@@ -12,10 +12,12 @@ public class Client {
         String connectLocation = "//" + remoteHostName + ":" + remotePort
                 + "/Connect";
 
-        Interface show = null;
+        InterfaceModel show = null;
+        Controller showAll = null;
         try {
             System.out.println("Connecting to client at : " + connectLocation);
-            show = (Interface) Naming.lookup(connectLocation);
+            show = (InterfaceModel) Naming.lookup(connectLocation);
+            showAll=new Controller(show);
         } catch (MalformedURLException e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();
@@ -26,14 +28,9 @@ public class Client {
             // TODO Auto-generated catch block
             e1.printStackTrace();
         }
-
+        
         ReservedList result = null;
-        try {
-            result = show.Add();
-        } catch (RemoteException e1) {
-            // TODO Auto-generated catch block
-            e1.printStackTrace();
-        }
+        result = showAll.getAllReservation();
         System.out.println("Result is :" + result);
 
     }
