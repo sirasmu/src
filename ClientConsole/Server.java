@@ -7,7 +7,7 @@ import java.rmi.registry.LocateRegistry;
 
 public class Server {
     public static void main(String[] argv) throws RemoteException {
-        Show show = new Show();
+        ModelManager show = new ModelManager();
 
         int port = 1099;
 
