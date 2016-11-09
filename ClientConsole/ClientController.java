@@ -1,5 +1,6 @@
 package ClientConsole;
 
+import java.io.Serializable;
 import java.nio.channels.IllegalSelectorException;
 import java.rmi.RemoteException;
 import java.util.Iterator;
@@ -11,13 +12,14 @@ import WIP.data.Reserved;
 import WIP.data.ReservedList;
 
 
-public class ClientController implements RemoteObserver {
+public class ClientController implements RemoteObserver, Serializable {
 
 	private InterfaceModel model;
 	private Client client;
 
-	public ClientController(InterfaceModel model) {
+	public ClientController(InterfaceModel model) throws RemoteException {
 		this.model = model;
+		model.addObserver(this);
 	}
 
 	public ReservedList getAll() {
