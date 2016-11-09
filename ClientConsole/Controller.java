@@ -2,13 +2,22 @@ package ClientConsole;
 
 import java.nio.channels.IllegalSelectorException;
 import java.rmi.RemoteException;
+
 import WIP.data.ReservedList;
 import WIP.data.Reserved;
+
 import java.util.Iterator;
+import java.util.Observable;
+import java.util.Observer;
+
 import WIP.data.Reserved;
 import WIP.data.ReservedList;
 
+<<<<<<< HEAD
 public class ClientController {
+=======
+public class Controller implements Observer {
+>>>>>>> origin/master
 	private InterfaceModel model;
 
 	public Controller(InterfaceModel model) {
@@ -40,4 +49,33 @@ public class ClientController {
 		Reserved r = getReservation(resNo);
 		return getAll().remove(r);
 	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+	
+	
 }
