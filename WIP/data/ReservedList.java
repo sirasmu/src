@@ -40,6 +40,13 @@ public class ReservedList implements Serializable, Iterable<Reserved> {
 	}
 	
 	/**
+	 * @param reserved is the object to remove from the list
+	 */
+	public void remove(Reserved reserved) {
+		reservedList.remove(reserved);
+	}
+	
+	/**
 	 * @return size of list
 	 */
 	public int size() {
