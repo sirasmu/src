@@ -5,7 +5,7 @@ public class ClientView {
 	
 	
 	public static void main(String[] args) {
-		new Client("10.52.224.215", 1099);
+		new Client("10.52.237.2", 1099);
 	}
 	
 	public void ServerMenu(){

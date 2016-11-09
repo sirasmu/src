@@ -24,6 +24,7 @@ public class Client {
 		this.remoteHostName = remoteHostName;
 		this.remotePort = remotePort;
 		connectToServer();
+		displayMenu();
 	}
 
 	private void connectToServer() {
@@ -63,12 +64,12 @@ public class Client {
 				break;
 			default:
 				System.out.println("Please insert valid number");
-				displayMenu();
 				break;
 			}
 		} catch (IOException e) {
 			System.out.println("Unexpected problem with reading your input, please try again.");
 		}
+		displayMenu();
 	}
 	private void displayBookings() {
 		ReservedList result = null;
