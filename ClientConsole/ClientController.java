@@ -3,6 +3,7 @@ package ClientConsole;
 import java.io.Serializable;
 import java.nio.channels.IllegalSelectorException;
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.Iterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -11,7 +12,7 @@ import SEP1.TheTime;
 import WIP.data.Reserved;
 import WIP.data.ReservedList;
 
-public class ClientController implements RemoteObserver, Serializable {
+public class ClientController extends UnicastRemoteObject implements RemoteObserver {
 
 	private InterfaceModel model;
 	private Client client;
@@ -39,8 +40,7 @@ public class ClientController implements RemoteObserver, Serializable {
 				return r;
 			}
 		}
-		throw new IllegalArgumentException(
-				"No Reserved with that reservation number was found");
+		throw new IllegalArgumentException("No Reserved with that reservation number was found");
 	}
 
 	public void removeReservation(int resNo) throws RemoteException {
@@ -68,10 +68,8 @@ public class ClientController implements RemoteObserver, Serializable {
 	}
 
 	@Override
-	public void update(Object observable, Object updateMsg)
-			throws RemoteException {
+	public void update(Object observable, Object updateMsg) throws RemoteException {
 		client.update();
-
 	}
 
 }
