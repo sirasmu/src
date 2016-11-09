@@ -5,6 +5,8 @@ import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 
+import package1.Adapted_txt;
+
 public class Server {
     public static void main(String[] argv) throws RemoteException {
         
@@ -22,9 +24,15 @@ public class Server {
         String hostname = "10.52.237.2";
         String bindLocation = "//" + hostname + ":" + port + "/Connect";
         
+        
+        
+        Adapted_txt ad = (Adapted_txt) Adapted_txt.readFromFile("server_address.txt");
+        
+        for (int i = 0;  )
+        
         try {
             Naming.bind(bindLocation, show);    
-            System.out.println("Server is ready at:" + bindLocation);
+            System.out.println("Servers are ready at:" + bindLocation);
         } catch (RemoteException e) {
             e.printStackTrace();
         } catch (MalformedURLException e) {
@@ -33,4 +41,6 @@ public class Server {
             System.out.println("Server failed: " + e);
         }
     }
+    
+    
 }
