@@ -49,7 +49,7 @@ public class LoadInitialData {
 
 				Vehicle vehicle = new Vehicle(regNo, type, make, model, year, color, seats, drivenKm, load, service);
 				vehicles.add(vehicle);
-				Reserved reserved = new Reserved(vehicle, 1, new TheTime(16, 3, 2016), new TheTime(17, 3, 2016),
+				Reserved reserved = new Reserved(vehicle, i, new TheTime(16, 3, 2016), new TheTime(17, 3, 2016),
 						"horsens", "aarhus", "maria", "chifor", 100, 1000);
 				reservedList.add(reserved);
 			}
@@ -67,6 +67,7 @@ public class LoadInitialData {
 		} catch (FileNotFoundException e) {
 			System.out.println("Error opening file ");
 		} catch (IOException e) {
+			e.printStackTrace();
 			System.out.println("IO Error writing to file ");
 		}
 

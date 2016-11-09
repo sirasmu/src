@@ -9,6 +9,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import WIP.data.Reserved;
 import WIP.data.ReservedList;
+import WIP.data.utility.TheTime;
 
 public class Client {
 
@@ -41,14 +42,14 @@ public class Client {
 	}
 
 	private void displayMenu() {
-		System.out.println("1 to see all bookings");
+		System.out.println("1 to see bookings in a date interval");
 		System.out.println("2 to see a specific booking");
 		System.out.println("9 to exit");
 		try {
 			String in = reader.readLine();
 			switch (in) {
 			case "1":
-				displayBookings();
+				displayBookingsInInterval();
 				break;
 			case "2":
 				displaySpecificBooking();
@@ -66,10 +67,19 @@ public class Client {
 		}
 	}
 
-	private void displayBookings() {
-		ReservedList result = null;
-		result = showAll.getAll();
-		System.out.println("Result is :" + result);
+	private void displayBookingsInInterval() {
+		try {
+			System.out.println("Please insert a start date:");
+			String startDate = reader.readLine();
+			System.out.println("Please insert a end date:");
+			String endDate = reader.readLine();
+			ReservedList result = null;
+			result = showAll.getAllInInterval(startDate, endDate);
+			System.out.println("Result is :" + result);
+		} catch (IOException e) {
+			System.out.println("Unexpected problem with reading your input, please try again.");
+			displayBookingsInInterval();
+		}
 		displayMenu();
 	}
 

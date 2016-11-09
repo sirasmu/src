@@ -2,19 +2,15 @@ package ClientConsole;
 
 import java.nio.channels.IllegalSelectorException;
 import java.rmi.RemoteException;
-
-import WIP.data.ReservedList;
-import WIP.data.Reserved;
-
 import java.util.Iterator;
-import java.util.Observable;
-import java.util.Observer;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
+import SEP1.TheTime;
+import WIP.data.Reserved;
+import WIP.data.ReservedList;
 import utility.observer.RemoteObserver;
 import utility.observer.RemoteSubject;
-import WIP.data.Reserved;
-import WIP.data.ReservedList;
-
 
 public class ClientController implements RemoteObserver {
 
@@ -33,20 +29,19 @@ public class ClientController implements RemoteObserver {
 		}
 		throw new IllegalSelectorException();
 	}
-	
-	public Reserved getReservation(int resNo){
-		
+
+	public Reserved getReservation(int resNo) {
 		Iterator<Reserved> iterator = getAll().iterator();
-		while(iterator.hasNext()){
+		while (iterator.hasNext()) {
 			Reserved r = iterator.next();
-			if(r.getResNo() == resNo){
+			if (r.getResNo() == resNo) {
 				return r;
 			}
 		}
 		throw new IllegalArgumentException("No Reserved with that reservation number was found");
 	}
-	
-	public Reserved removeReservation(int resNo){
+
+	public Reserved removeReservation(int resNo) {
 		Reserved r = getReservation(resNo);
 		return getAll().remove(r);
 	}
@@ -54,8 +49,25 @@ public class ClientController implements RemoteObserver {
 	@Override
 	public void update(RemoteSubject arg0, Object arg1) throws RemoteException {
 		client.update();
-		
 	}
 
-	
+	/**
+	 * validates the input dates and asks the server for the information
+	 * 
+	 * @param startDate
+	 * @param endDate
+	 * @return
+	 */
+	public ReservedList getAllInInterval(String startDate, String endDate) {
+		Pattern pattern = Pattern.compile("\\d{2}/\\d{2}/\\d{4}");
+		Matcher mStart = pattern.matcher(startDate);
+		Matcher mEnd = pattern.matcher(endDate);
+		if (!mStart.matches() || !mEnd.matches()) {
+			throw new IllegalArgumentException("Dates not valid format");
+		}
+		// return model.getAllInInterval(TheTime.convert(startDate),
+		// TheTime.convert(endDate));
+		return null;
+	}
+
 }

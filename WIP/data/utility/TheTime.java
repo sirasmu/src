@@ -246,7 +246,7 @@ public class TheTime implements Serializable {
 	 * Converts a date of type String to a date of type TheTime
 	 * 
 	 * @param dateString
-	 *            what date to convert
+	 *            string in format dd/MM/yyyy to convert to date
 	 * @return convertedTime the date converted
 	 */
 	public static TheTime convert(String dateString) {
