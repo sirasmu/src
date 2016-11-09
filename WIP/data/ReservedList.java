@@ -1,19 +1,25 @@
 package WIP.data;
 
 import java.io.Serializable;
+import java.rmi.RemoteException;
 
+import utility.observer.RemoteObserver;
+import utility.observer.RemoteSubject;
+import utility.observer.RemoteSubjectDelegate;
 import WIP.data.utility.ArrayList;
 import WIP.data.utility.ListADT;
 
-public class ReservedList implements Serializable {
+public class ReservedList implements Serializable, RemoteSubject<ReservedList> {
 
+	
 	private ListADT<Reserved> reservedList;
-
+private RemoteSubjectDelegate<ReservedList> rsd;
 	/**
 	 * The list for Reserved objects is initialized
 	 */
 	public ReservedList() {
 		reservedList = new ArrayList<>();
+		 rsd = new RemoteSubjectDelegate<>(this);
 	}
 
 	/**
@@ -55,6 +61,20 @@ public class ReservedList implements Serializable {
 		}
 		str.append("END");
 		return str.toString();
+	}
+
+	@Override
+	public void addObserver(RemoteObserver<ReservedList> arg0)
+			throws RemoteException {
+
+		rsd.addObserver(arg0);
+	}
+
+	@Override
+	public void deleteObserver(RemoteObserver<ReservedList> arg0)
+			throws RemoteException {
+		rsd.deleteObserver(arg0);
+		
 	}
 
 }
