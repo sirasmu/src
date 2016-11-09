@@ -28,7 +28,6 @@ public class Server {
         
         Adapted_txt ad = (Adapted_txt) Adapted_txt.readFromFile("server_address.txt");
         
-        for (int i = 0;  )
         
         try {
             Naming.bind(bindLocation, show);    
