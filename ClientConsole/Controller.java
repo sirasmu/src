@@ -4,6 +4,9 @@ import java.nio.channels.IllegalSelectorException;
 import java.rmi.RemoteException;
 import WIP.data.ReservedList;
 import WIP.data.Reserved;
+import java.util.Iterator;
+import WIP.data.Reserved;
+import WIP.data.ReservedList;
 
 public class Controller {
 	private InterfaceModel model;
@@ -23,8 +26,9 @@ public class Controller {
 	
 	public Reserved getReservation(int resNo){
 		
-		while(getAll().iterator().hasNext()){
-			Reserved r = getAll().iterator().next();
+		Iterator<Reserved> iterator = getAll().iterator();
+		while(iterator.hasNext()){
+			Reserved r = iterator.next();
 			if(r.getResNo() == resNo){
 				return r;
 			}
