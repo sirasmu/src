@@ -1,6 +1,8 @@
 package WIP.data.utility;
 
 import java.io.Serializable;
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class ArrayList<T> implements ListADT<T>, Serializable {
 
@@ -140,5 +142,34 @@ public class ArrayList<T> implements ListADT<T>, Serializable {
 			temp[i] = list[i];
 		}
 		list = temp;
+	}
+
+	@Override
+	public Iterator<T> iterator() {
+		return new ArrayListIterator();
+	}
+
+	private class ArrayListIterator implements Iterator<T> {
+
+		private int index;
+
+		public ArrayListIterator() {
+			index = 0;
+		}
+
+		@Override
+		public boolean hasNext() {
+			return index + 1 >= size;
+		}
+
+		@Override
+		public T next() {
+			if (!hasNext()) {
+				throw new NoSuchElementException();
+			}
+			index++;
+			return list[index];
+		}
+
 	}
 }
