@@ -22,7 +22,7 @@ public class TestReservedFileAdapter {
 
 		// Get all vehicles from the file and print them out
 		VehicleList list = vfa.getAllVehicles();
-		ReservedList reservedList = rfa.getAllReservations();
+		ReservedList reservedList = rfa.getAll();
 
 		System.out.println("All vehicles:\n" + list);
 
@@ -32,7 +32,7 @@ public class TestReservedFileAdapter {
 
 		System.out.println();
 
-		reservedList = rfa.getAllReservations();
+		reservedList = rfa.getAll();
 		System.out.println(reservedList);
 
 		// Reserved book1 = new Reserved(list.get(3), 1, new TheTime(16, 3,

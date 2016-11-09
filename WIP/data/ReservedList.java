@@ -2,6 +2,8 @@ package WIP.data;
 
 import java.io.Serializable;
 import java.rmi.RemoteException;
+import java.util.Iterator;
+
 
 import utility.observer.RemoteObserver;
 import utility.observer.RemoteSubject;
@@ -9,11 +11,12 @@ import utility.observer.RemoteSubjectDelegate;
 import WIP.data.utility.ArrayList;
 import WIP.data.utility.ListADT;
 
-public class ReservedList implements Serializable, RemoteSubject<ReservedList> {
+
+public class ReservedList implements Serializable, RemoteSubject<ReservedList>, Iterable<Reserved> {
 
 	
 	private ListADT<Reserved> reservedList;
-private RemoteSubjectDelegate<ReservedList> rsd;
+	private RemoteSubjectDelegate<ReservedList> rsd;
 	/**
 	 * The list for Reserved objects is initialized
 	 */
@@ -45,6 +48,13 @@ private RemoteSubjectDelegate<ReservedList> rsd;
 	}
 	
 	/**
+	 * @param reserved is the object to remove from the list
+	 */
+	public Reserved remove(Reserved reserved) {
+		return reservedList.remove(reserved);
+	}
+	
+	/**
 	 * @return size of list
 	 */
 	public int size() {
@@ -64,6 +74,7 @@ private RemoteSubjectDelegate<ReservedList> rsd;
 	}
 
 	@Override
+
 	public void addObserver(RemoteObserver<ReservedList> arg0)
 			throws RemoteException {
 
@@ -74,7 +85,11 @@ private RemoteSubjectDelegate<ReservedList> rsd;
 	public void deleteObserver(RemoteObserver<ReservedList> arg0)
 			throws RemoteException {
 		rsd.deleteObserver(arg0);
-		
+	}
+
+	public Iterator<Reserved> iterator() {
+		return reservedList.iterator();
+
 	}
 
 }
