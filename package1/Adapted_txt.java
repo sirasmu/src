@@ -5,21 +5,20 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Adapted_txt {
+public class Adapted_txt extends ArrayList<String[]>{
 
-	private static ArrayList<String[]> address_list;
+	private static Adapted_txt address_list = new Adapted_txt();
 
-	public Adapted_txt(String path) throws IOException {
-		readFromFile(path);
-	}
+	public Adapted_txt(){}
 
 	public ArrayList<String[]> readFromFile(String path) throws IOException {
 
 		BufferedReader br = new BufferedReader(new FileReader(path));
-
+		//ArrayList<String[]> address_list;
+		
 		String line = br.readLine();
 		String[] tempArray;
-		address_list = new ArrayList<String[]>();
+		//address_list = new ArrayList<String[]>();
 
 		while (line != null) {
 
@@ -31,5 +30,11 @@ public class Adapted_txt {
 		br.close();
 		return address_list;
 	}
+	
+/*	public ArrayList<String[]> showIpAddress(){
+		return address_list;
+		
+		
+	}*/
 
 }

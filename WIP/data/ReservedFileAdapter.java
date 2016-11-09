@@ -37,7 +37,7 @@ public class ReservedFileAdapter {
 	 * 
 	 * @return reservations a ReservedList object with all stored reservations
 	 */
-	public ReservedList getAllReservations() {
+	public ReservedList getAll() {
 		ReservedList reservations = new ReservedList();
 
 		try {
@@ -131,7 +131,7 @@ public class ReservedFileAdapter {
 	 */
 	public void addReserved(Reserved reserved) {
 		try {
-			ReservedList list = getAllReservations();
+			ReservedList list = getAll();
 			list.add(reserved);
 			mfio.writeToFile(fileName, list);
 		} catch (FileNotFoundException e) {
@@ -170,7 +170,7 @@ public class ReservedFileAdapter {
 	 *         available
 	 */
 	public String placeIsAvailable(String pickUpPlace, String returnPlace) {
-		ReservedList reservations = getAllReservations();
+		ReservedList reservations = getAll();
 		for (int i = 0; i < reservations.size(); i++) {
 			Reserved reserved = reservations.get(i);
 
@@ -201,7 +201,7 @@ public class ReservedFileAdapter {
 		ReservedList temp = new ReservedList();
 		String RegNo = vehicle.getRegNo();
 
-		list = getAllReservations();
+		list = getAll();
 
 		for (int i = 0; i < list.size(); i++) {
 			if (RegNo.equals(list.get(i).getVehicle().getRegNo())) {

@@ -1,34 +1,97 @@
 package ClientConsole;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.MalformedURLException;
-import java.rmi.*;
-
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import WIP.data.Reserved;
 import WIP.data.ReservedList;
 
-public class Client {
-    public static void main(String[] args) {
-        
-    	String remoteHostName = "10.52.236.164";
-        int remotePort = 1099;
-        String connectLocation = "//" + remoteHostName + ":" + remotePort + "/Connect";
-        InterfaceModel show = null;
-        Controller showAll = null;
-        
-        try {
-            System.out.println("Connecting to client at : " + connectLocation);
-            show = (InterfaceModel) Naming.lookup(connectLocation);
-            showAll=new Controller(show);
-        } catch (MalformedURLException e1) {
-            e1.printStackTrace();
-        } catch (RemoteException e1) {
-            e1.printStackTrace();
-        } catch (NotBoundException e1) {
-            e1.printStackTrace();
-        }
-        
-        ReservedList result = null;
-        result = showAll.getAllReservation();
-        System.out.println("Result is :" + result);
 
-    }
+public class Client {
+
+	private String remoteHostName;
+	private int remotePort;
+	private InterfaceModel show;
+	private Controller showAll;
+	private BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+	public static void main(String[] args) {
+		new Client("10.52.236.164", 1099);
+	}
+
+	public Client(String remoteHostName, int remotePort) {
+		super();
+		this.remoteHostName = remoteHostName;
+		this.remotePort = remotePort;
+		connectToServer();
+	}
+
+	private void connectToServer() {
+		String connectLocation = "//" + remoteHostName + ":" + remotePort + "/Connect";
+		try {
+			System.out.println("Connecting to client at : " + connectLocation);
+			show = (InterfaceModel) Naming.lookup(connectLocation);
+			showAll = new Controller(show);
+		} catch (MalformedURLException e1) {
+			e1.printStackTrace();
+		} catch (RemoteException e1) {
+			e1.printStackTrace();
+		} catch (NotBoundException e1) {
+			e1.printStackTrace();
+		}
+	}
+
+	private void displayMenu() {
+		System.out.println("1 to see all bookings");
+		System.out.println("2 to see a specific booking");
+		System.out.println("9 to exit");
+		try {
+			String in = reader.readLine();
+			switch (in) {
+			case "1":
+				displayBookings();
+				break;
+			case "2":
+
+				break;
+			case "9":
+				System.exit(0);
+				break;
+			default:
+				System.out.println("Please insert valid number");
+				displayMenu();
+				break;
+			}
+		} catch (IOException e) {
+			System.out.println("Unexpected problem with reading your input, please try again.");
+		}
+	}
+
+	private void displayBookings() {
+		ReservedList result = null;
+		result = showAll.getAll();
+		System.out.println("Result is :" + result);
+		displayMenu();
+	}
+
+	private void displaySpecificBooking() {
+		System.out.println("Insert a booking number:");
+		try {
+			String in = reader.readLine();
+			Integer resNo = Integer.valueOf(in);
+			Reserved reservation = showAll.getReservation(resNo);
+			System.out.println("Reservation is :" + reservation);
+		} catch (IOException e) {
+			System.out.println("Unexpected problem with reading your input, please try again.");
+			displaySpecificBooking();
+		}catch(IllegalArgumentException e){
+			System.out.println(e.getMessage());
+		}
+		displayMenu();
+	}
+
 }

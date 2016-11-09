@@ -1,11 +1,12 @@
 package WIP.data;
 
 import java.io.Serializable;
+import java.util.Iterator;
 
 import WIP.data.utility.ArrayList;
 import WIP.data.utility.ListADT;
 
-public class ReservedList implements Serializable {
+public class ReservedList implements Serializable, Iterable<Reserved> {
 
 	private ListADT<Reserved> reservedList;
 
@@ -39,6 +40,13 @@ public class ReservedList implements Serializable {
 	}
 	
 	/**
+	 * @param reserved is the object to remove from the list
+	 */
+	public Reserved remove(Reserved reserved) {
+		return reservedList.remove(reserved);
+	}
+	
+	/**
 	 * @return size of list
 	 */
 	public int size() {
@@ -55,6 +63,11 @@ public class ReservedList implements Serializable {
 		}
 		str.append("END");
 		return str.toString();
+	}
+
+	@Override
+	public Iterator<Reserved> iterator() {
+		return reservedList.iterator();
 	}
 
 }

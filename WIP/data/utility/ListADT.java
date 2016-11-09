@@ -2,7 +2,7 @@ package WIP.data.utility;
 
 import java.io.Serializable;
 
-public interface ListADT<T> extends Serializable {
+public interface ListADT<T> extends Serializable, Iterable<T> {
 
 	/**
 	 * adds the element a the given index
