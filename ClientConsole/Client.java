@@ -7,8 +7,9 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
-
+import WIP.data.Reserved;
 import WIP.data.ReservedList;
+
 
 public class Client {
 
@@ -72,7 +73,7 @@ public class Client {
 
 	private void displayBookings() {
 		ReservedList result = null;
-		result = showAll.getAllReservation();
+		result = showAll.getAll();
 		System.out.println("Result is :" + result);
 		displayMenu();
 	}
