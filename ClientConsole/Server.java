@@ -26,7 +26,7 @@ public class Server {
         
         
         
-        Adapted_txt ad = (Adapted_txt) Adapted_txt.readFromFile("server_address.txt");
+        //Adapted_txt ad = (Adapted_txt) Adapted_txt.readFromFile("server_address.txt");
         
         
         try {
