@@ -11,6 +11,10 @@ import utility.observer.RemoteObserver;
 
 public class ReservedList extends Observable implements Serializable,  Iterable<Reserved> {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private ListADT<Reserved> reservedList;
 
 	/**
@@ -43,6 +47,7 @@ public class ReservedList extends Observable implements Serializable,  Iterable<
 	 */
 	public void add(Reserved reserved) {
 		reservedList.add(reserved);
+		notifyObservers();
 	}
 
 	/**
@@ -50,7 +55,9 @@ public class ReservedList extends Observable implements Serializable,  Iterable<
 	 *            is the object to remove from the list
 	 */
 	public Reserved remove(Reserved reserved) {
-		return reservedList.remove(reserved);
+		Reserved removed=reservedList.remove(reserved);
+		notifyObservers();
+		return removed;
 	}
 
 	/**

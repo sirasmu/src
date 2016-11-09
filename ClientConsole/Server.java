@@ -19,7 +19,7 @@ public class Server {
             System.out.println("java RMI registry already exists.");
         }
 
-        String hostname = "10.52.236.164";
+        String hostname = "10.52.224.215";
         String bindLocation = "//" + hostname + ":" + port + "/Connect";
         
         try {

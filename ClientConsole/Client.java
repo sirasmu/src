@@ -45,6 +45,7 @@ public class Client {
 		System.out.println("1 to see bookings in a date interval");
 		System.out.println("2 to see a specific booking");
 		System.out.println("9 to exit");
+		System.out.println("8 to see all bookings");
 		try {
 			String in = reader.readLine();
 			switch (in) {
@@ -57,6 +58,9 @@ public class Client {
 			case "9":
 				System.exit(0);
 				break;
+			case "8":
+				displayBookings();
+				break;
 			default:
 				System.out.println("Please insert valid number");
 				displayMenu();
@@ -66,7 +70,11 @@ public class Client {
 			System.out.println("Unexpected problem with reading your input, please try again.");
 		}
 	}
-
+	private void displayBookings() {
+		ReservedList result = null;
+		result = showAll.getAll();
+		System.out.println("Result is :" + result);
+	}
 	private void displayBookingsInInterval() {
 		try {
 			System.out.println("Please insert a start date:");
@@ -103,7 +111,7 @@ public class Client {
 	}
 
 	public void update() {
-
+		displayBookings();
 	}
 
 }

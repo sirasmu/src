@@ -9,8 +9,7 @@ import java.util.regex.Pattern;
 import SEP1.TheTime;
 import WIP.data.Reserved;
 import WIP.data.ReservedList;
-import utility.observer.RemoteObserver;
-import utility.observer.RemoteSubject;
+
 
 public class ClientController implements RemoteObserver {
 
@@ -46,10 +45,7 @@ public class ClientController implements RemoteObserver {
 		return getAll().remove(r);
 	}
 
-	@Override
-	public void update(RemoteSubject arg0, Object arg1) throws RemoteException {
-		client.update();
-	}
+	
 
 	/**
 	 * validates the input dates and asks the server for the information
@@ -68,6 +64,15 @@ public class ClientController implements RemoteObserver {
 		// return model.getAllInInterval(TheTime.convert(startDate),
 		// TheTime.convert(endDate));
 		return null;
+	}
+
+	
+
+	@Override
+	public void update(Object observable, Object updateMsg)
+			throws RemoteException {
+		client.update();
+		
 	}
 
 }
