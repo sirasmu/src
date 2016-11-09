@@ -7,10 +7,10 @@ public class test_method {
 	public static void main(String args[]){
 		
 		try {
-			Adapted_txt ad = Adapted_txt.readFromFile("server_address.txt");//("server_address.txt");
-
+			Adapted_txt ad = (Adapted_txt) Adapted_txt.readFromFile("server_address.txt");//("server_address.txt");
+			System.out.println(ad.get(0)[1]);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}

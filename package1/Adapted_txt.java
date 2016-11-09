@@ -11,7 +11,7 @@ public class Adapted_txt extends ArrayList<String[]>{
 
 	public Adapted_txt(){}
 
-	public ArrayList<String[]> readFromFile(String path) throws IOException {
+	public static ArrayList<String[]> readFromFile(String path) throws IOException {
 
 		BufferedReader br = new BufferedReader(new FileReader(path));
 		//ArrayList<String[]> address_list;
