@@ -40,9 +40,9 @@ public class ClientController implements RemoteObserver {
 		throw new IllegalArgumentException("No Reserved with that reservation number was found");
 	}
 
-	public Reserved removeReservation(int resNo) {
+	public void removeReservation(int resNo) throws RemoteException {
 		Reserved r = getReservation(resNo);
-		return getAll().remove(r);
+		model.removeBooking(r);
 	}
 
 	

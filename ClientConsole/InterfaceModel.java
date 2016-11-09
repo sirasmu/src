@@ -6,5 +6,7 @@ import WIP.data.Reserved;
 
 	public interface InterfaceModel extends Remote {
 	     ReservedList getAll() throws RemoteException;
+
+		void removeBooking(Reserved reservation) throws RemoteException;
 	}
 

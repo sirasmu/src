@@ -17,7 +17,8 @@ public class Client {
 	private int remotePort;
 	private InterfaceModel show;
 	private ClientController showAll;
-	private BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+	private BufferedReader reader = new BufferedReader(new InputStreamReader(
+			System.in));
 
 	public Client(String remoteHostName, int remotePort) {
 		super();
@@ -28,7 +29,8 @@ public class Client {
 	}
 
 	private void connectToServer() {
-		String connectLocation = "//" + remoteHostName + ":" + remotePort + "/Connect";
+		String connectLocation = "//" + remoteHostName + ":" + remotePort
+				+ "/Connect";
 		try {
 			System.out.println("Connecting to client at : " + connectLocation);
 			show = (InterfaceModel) Naming.lookup(connectLocation);
@@ -67,15 +69,18 @@ public class Client {
 				break;
 			}
 		} catch (IOException e) {
-			System.out.println("Unexpected problem with reading your input, please try again.");
+			System.out
+					.println("Unexpected problem with reading your input, please try again.");
 		}
 		displayMenu();
 	}
+
 	private void displayBookings() {
 		ReservedList result = null;
 		result = showAll.getAll();
 		System.out.println("Result is :" + result);
 	}
+
 	private void displayBookingsInInterval() {
 		try {
 			System.out.println("Please insert a start date:");
@@ -86,7 +91,8 @@ public class Client {
 			result = showAll.getAllInInterval(startDate, endDate);
 			System.out.println("Result is :" + result);
 		} catch (IOException e) {
-			System.out.println("Unexpected problem with reading your input, please try again.");
+			System.out
+					.println("Unexpected problem with reading your input, please try again.");
 			displayBookingsInInterval();
 		}
 		displayMenu();
@@ -99,14 +105,36 @@ public class Client {
 			Integer resNo = Integer.valueOf(in);
 			Reserved reservation = showAll.getReservation(resNo);
 			System.out.println("Reservation is :" + reservation);
+			editBooking(reservation);
+
 		} catch (IOException e) {
-			System.out.println("Unexpected problem with reading your input, please try again.");
+			System.out
+					.println("Unexpected problem with reading your input, please try again.");
 			displaySpecificBooking();
 		} catch (NumberFormatException e) {
 			System.out.println("Please insert a number.");
 			displaySpecificBooking();
 		} catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());
+		}
+		displayMenu();
+	}
+
+	private void editBooking(Reserved reservation) {
+		System.out.println("1 to remove");
+		try {
+			String in = reader.readLine();
+			switch (in) {
+			case "1":
+				showAll.removeReservation(reservation.getResNo());
+				break;
+			default:
+				System.out.println("Please insert valid number");
+				break;
+			}
+		} catch (IOException e) {
+			System.out
+					.println("Unexpected problem with reading your input, please try again.");
 		}
 		displayMenu();
 	}
