@@ -10,6 +10,10 @@ public class ClientView {
 	
 	public void ServerMenu(){
 		
-		System.out.println();
+		System.out.println(" Select server: ");
+		
+/*		for (int i = 0; i < nr_ofServer; i++){
+			
+		}*/
 	}
 }

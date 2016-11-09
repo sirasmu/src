@@ -24,6 +24,7 @@ public class Server {
         
         try {
             Naming.bind(bindLocation, show);
+            LocateRegistry.getRegistry(hostname);
             System.out.println("Server is ready at:" + bindLocation);
         } catch (RemoteException e) {
             e.printStackTrace();
