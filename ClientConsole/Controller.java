@@ -36,7 +36,8 @@ public class Controller {
 		throw new IllegalArgumentException("No Reserved with that reservation number was found");
 	}
 	
-	public Reserved deleteReservation(int resNo){
+	public Reserved removeReservation(int resNo){
 		Reserved r = getReservation(resNo);
+		return getAll().remove(r);
 	}
 }
