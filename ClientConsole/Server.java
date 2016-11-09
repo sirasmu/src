@@ -23,8 +23,7 @@ public class Server {
         String bindLocation = "//" + hostname + ":" + port + "/Connect";
         
         try {
-            Naming.bind(bindLocation, show);
-            LocateRegistry.getRegistry(hostname);
+            Naming.bind(bindLocation, show);    
             System.out.println("Server is ready at:" + bindLocation);
         } catch (RemoteException e) {
             e.printStackTrace();
