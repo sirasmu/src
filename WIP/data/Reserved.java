@@ -5,7 +5,7 @@ import java.io.Serializable;
 import WIP.data.utility.IllegalDateException;
 import WIP.data.utility.TheTime;
 
-public class Reserved implements Serializable{
+public class Reserved implements Serializable {
 	private Vehicle vehicle;
 	private int resNo;
 	private TheTime pickUpTime;
@@ -19,18 +19,31 @@ public class Reserved implements Serializable{
 	private ReservedFileAdapter rfa;
 
 	/**
-	 * 10-arg contructor for creating a object of Reserved. This class has a vehicle and information about the reservation.
+	 * 10-arg contructor for creating a object of Reserved. This class has a
+	 * vehicle and information about the reservation.
 	 * 
-	 * @param vehicle is the vehicle that has been reserved
-	 * @param resNo identifies which reservation it is
-	 * @param pickUpTime when the vehicle will be picked up from the rental company
-	 * @param returnTime when the vehicle will be returned to the rental company
-	 * @param pickUpPlace the location the vehicle will be picked up
-	 * @param returnPlace the location the vehicle will be returned to
-	 * @param firstName is the first name of the client whom reserve the vehicle
-	 * @param lastName is the last name of the client whom reserve the vehicle
-	 * @param estimateKm is the amount of kilometers the client estimated they will drive
-	 * @param estimatePrice is what the rental company estimates the total cost of renting the vehicle will be
+	 * @param vehicle
+	 *            is the vehicle that has been reserved
+	 * @param resNo
+	 *            identifies which reservation it is
+	 * @param pickUpTime
+	 *            when the vehicle will be picked up from the rental company
+	 * @param returnTime
+	 *            when the vehicle will be returned to the rental company
+	 * @param pickUpPlace
+	 *            the location the vehicle will be picked up
+	 * @param returnPlace
+	 *            the location the vehicle will be returned to
+	 * @param firstName
+	 *            is the first name of the client whom reserve the vehicle
+	 * @param lastName
+	 *            is the last name of the client whom reserve the vehicle
+	 * @param estimateKm
+	 *            is the amount of kilometers the client estimated they will
+	 *            drive
+	 * @param estimatePrice
+	 *            is what the rental company estimates the total cost of renting
+	 *            the vehicle will be
 	 */
 	public Reserved(Vehicle vehicle, int resNo, TheTime pickUpTime, TheTime returnTime, String pickUpPlace,
 			String returnPlace, String firstName, String lastName, int estimateKm, double estimatePrice) {
@@ -260,8 +273,8 @@ public class Reserved implements Serializable{
 	 *         the vehicle and the client
 	 */
 	public String toString() {
-		return vehicle + "," + resNo + "," + pickUpTime + "," + returnTime + "," + pickUpPlace + "," + returnPlace + ","
-				+ firstName + "," + lastName + "," + estimateKm + "," + estimatePrice;
+		return resNo + "," + pickUpTime + "," + returnTime + "," + pickUpPlace + "," + returnPlace + "," + firstName
+				+ "," + lastName + "," + estimateKm + "," + estimatePrice + "," + vehicle;
 	}
 
 	/**

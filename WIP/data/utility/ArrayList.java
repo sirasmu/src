@@ -159,7 +159,7 @@ public class ArrayList<T> implements ListADT<T>, Serializable {
 
 		@Override
 		public boolean hasNext() {
-			return index + 1 >= size;
+			return index + 1 < size;
 		}
 
 		@Override
