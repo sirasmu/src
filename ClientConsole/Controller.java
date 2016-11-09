@@ -8,7 +8,7 @@ import java.util.Iterator;
 import WIP.data.Reserved;
 import WIP.data.ReservedList;
 
-public class Controller {
+public class ClientController {
 	private InterfaceModel model;
 
 	public Controller(InterfaceModel model) {
