@@ -56,6 +56,7 @@ public class ReservedList extends Observable implements Serializable,  Iterable<
 	 */
 	public Reserved remove(Reserved reserved) {
 		Reserved removed=reservedList.remove(reserved);
+		setChanged();
 		notifyObservers();
 		return removed;
 	}
