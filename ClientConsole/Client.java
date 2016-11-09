@@ -34,7 +34,7 @@ public class Client {
 		try {
 			System.out.println("Connecting to client at : " + connectLocation);
 			show = (InterfaceModel) Naming.lookup(connectLocation);
-			showAll = new ClientController(show);
+			showAll = new ClientController(show, this);
 		} catch (MalformedURLException e1) {
 			e1.printStackTrace();
 		} catch (RemoteException e1) {

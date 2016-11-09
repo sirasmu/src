@@ -11,14 +11,14 @@ import SEP1.TheTime;
 import WIP.data.Reserved;
 import WIP.data.ReservedList;
 
-
 public class ClientController implements RemoteObserver, Serializable {
 
 	private InterfaceModel model;
-	private Client client;
+	private transient Client client;
 
-	public ClientController(InterfaceModel model) throws RemoteException {
+	public ClientController(InterfaceModel model, Client client) throws RemoteException {
 		this.model = model;
+		this.client = client;
 		model.addObserver(this);
 	}
 
@@ -39,15 +39,14 @@ public class ClientController implements RemoteObserver, Serializable {
 				return r;
 			}
 		}
-		throw new IllegalArgumentException("No Reserved with that reservation number was found");
+		throw new IllegalArgumentException(
+				"No Reserved with that reservation number was found");
 	}
 
 	public void removeReservation(int resNo) throws RemoteException {
 		Reserved r = getReservation(resNo);
 		model.removeBooking(r);
 	}
-
-	
 
 	/**
 	 * validates the input dates and asks the server for the information
@@ -68,13 +67,11 @@ public class ClientController implements RemoteObserver, Serializable {
 		return null;
 	}
 
-	
-
 	@Override
 	public void update(Object observable, Object updateMsg)
 			throws RemoteException {
 		client.update();
-		
+
 	}
 
 }
