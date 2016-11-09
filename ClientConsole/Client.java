@@ -19,9 +19,7 @@ public class Client {
 	private Controller showAll;
 	private BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-	public static void main(String[] args) {
-		new Client("10.52.236.164", 1099);
-	}
+
 
 	public Client(String remoteHostName, int remotePort) {
 		super();
