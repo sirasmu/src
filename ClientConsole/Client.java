@@ -10,7 +10,6 @@ import java.rmi.RemoteException;
 import WIP.data.Reserved;
 import WIP.data.ReservedList;
 
-
 public class Client {
 
 	private String remoteHostName;
@@ -18,8 +17,6 @@ public class Client {
 	private InterfaceModel show;
 	private ClientController showAll;
 	private BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-
-
 
 	public Client(String remoteHostName, int remotePort) {
 		super();
@@ -54,7 +51,7 @@ public class Client {
 				displayBookings();
 				break;
 			case "2":
-
+				displaySpecificBooking();
 				break;
 			case "9":
 				System.exit(0);
@@ -86,15 +83,17 @@ public class Client {
 		} catch (IOException e) {
 			System.out.println("Unexpected problem with reading your input, please try again.");
 			displaySpecificBooking();
-		}catch(IllegalArgumentException e){
+		} catch (NumberFormatException e) {
+			System.out.println("Please insert a number.");
+			displaySpecificBooking();
+		} catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());
 		}
 		displayMenu();
 	}
-	
-	public void update()
-	{
-		
+
+	public void update() {
+
 	}
 
 }
