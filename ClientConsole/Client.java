@@ -17,7 +17,7 @@ public class Client {
 	private int remotePort;
 	private InterfaceModel show;
 	private ClientController showAll;
-	private BufferedReader reader = new BufferedReader(new InputStreamReader(
+	private transient BufferedReader reader = new BufferedReader(new InputStreamReader(
 			System.in));
 
 	public Client(String remoteHostName, int remotePort) {

@@ -14,7 +14,7 @@ import WIP.data.ReservedList;
 public class ClientController implements RemoteObserver, Serializable {
 
 	private InterfaceModel model;
-	private transient Client client;
+	private Client client;
 
 	public ClientController(InterfaceModel model, Client client) throws RemoteException {
 		this.model = model;
