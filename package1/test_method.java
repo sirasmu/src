@@ -8,7 +8,7 @@ public class test_method {
 		
 		try {
 			Adapted_txt ad = (Adapted_txt) Adapted_txt.readFromFile("server_address.txt");//("server_address.txt");
-			System.out.println(ad.get(0)[1]);
+			System.out.println(ad.size());
 		} catch (IOException e) {
 			
 			e.printStackTrace();
