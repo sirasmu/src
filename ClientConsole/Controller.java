@@ -2,8 +2,8 @@ package ClientConsole;
 
 import java.nio.channels.IllegalSelectorException;
 import java.rmi.RemoteException;
-
-import WIP.data.*;
+import WIP.data.ReservedList;
+import WIP.data.Reserved;
 
 public class Controller {
 	private InterfaceModel model;
@@ -30,5 +30,9 @@ public class Controller {
 			}
 		}
 		throw new IllegalArgumentException("No Reserved with that reservation number was found");
+	}
+	
+	public Reserved deleteReservation(int resNo){
+		Reserved r = getReservation(resNo);
 	}
 }
