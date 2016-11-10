@@ -18,8 +18,9 @@ public class ClientController extends UnicastRemoteObject implements RemoteObser
 	public ClientController(InterfaceModel model, ClientView view) throws RemoteException {
 		this.model = model;
 		this.view = view;
+		view.addController(this);
 		model.addObserver(this);
-		view.displayBookings();
+		view.displayMenu();
 	}
 
 	public ReservedList getAll() {
