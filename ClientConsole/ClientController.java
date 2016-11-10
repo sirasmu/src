@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 
 import WIP.data.Reserved;
 import WIP.data.ReservedList;
+import WIP.data.utility.TheTime;
 
 public class ClientController extends UnicastRemoteObject implements RemoteObserver {
 
@@ -54,22 +55,42 @@ public class ClientController extends UnicastRemoteObject implements RemoteObser
 	 * @param startDate
 	 * @param endDate
 	 * @return
+	 * @throws RemoteException
 	 */
-	public ReservedList getAllInInterval(String startDate, String endDate) {
-		Pattern pattern = Pattern.compile("\\d{2}/\\d{2}/\\d{4}");
-		Matcher mStart = pattern.matcher(startDate);
-		Matcher mEnd = pattern.matcher(endDate);
-		if (!mStart.matches() || !mEnd.matches()) {
-			throw new IllegalArgumentException("Dates not valid format");
+	public ReservedList getAllInInterval(String startDate, String endDate) throws RemoteException {
+		if (!validateDate(startDate) && !validateDate(endDate)) {
+			throw new IllegalArgumentException("Date in invalid format!");
 		}
-		// return model.getAllInInterval(TheTime.convert(startDate),
-		// TheTime.convert(endDate));
-		return null;
+		TheTime sDate = TheTime.convert(startDate);
+		TheTime eDate = TheTime.convert(endDate);
+		if (eDate.isBefore(sDate)) {
+			throw new IllegalArgumentException("StartDate must be before endDate!");
+		}
+		ReservedList all = model.getAll();
+		Iterator<Reserved> it = all.iterator();
+		while (it.hasNext()) {
+			Reserved next = it.next();
+			TheTime pickUpTime = next.getPickUpTime();
+			TheTime returnTime = next.getReturnTime();
+			if (!pickUpTime.isBefore(eDate) || returnTime.isBefore(sDate)) {
+				it.remove();
+			}
+		}
+		return all;
 	}
 
 	@Override
 	public void update(Object observable, Object updateMsg) throws RemoteException {
 		view.update();
+	}
+
+	private boolean validateDate(String date) {
+		Pattern pattern = Pattern.compile("\\d{1,2}/\\d{1,2}/\\d{4}");
+		Matcher matcher = pattern.matcher(date);
+		if (!matcher.matches()) {
+			return false;
+		}		
+		return true;
 	}
 
 }

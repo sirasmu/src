@@ -152,6 +152,7 @@ public class ArrayList<T> implements ListADT<T>, Serializable {
 	private class ArrayListIterator implements Iterator<T> {
 
 		private int index;
+		private boolean canRemove = false;
 
 		public ArrayListIterator() {
 			index = 0;
@@ -167,9 +168,22 @@ public class ArrayList<T> implements ListADT<T>, Serializable {
 			if (!hasNext()) {
 				throw new NoSuchElementException();
 			}
+			canRemove = true;
 			index++;
 			return list[index];
 		}
 
+		@Override
+		public void remove() {
+			if (!canRemove) {
+				throw new IllegalStateException();
+			}
+			index--;
+			for (int i = index; i < size; i++) {
+				list[i] = list[i + 1];
+			}
+			size--;
+			canRemove = false;
+		}
 	}
 }

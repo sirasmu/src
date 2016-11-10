@@ -26,7 +26,7 @@ public class ModelManager extends UnicastRemoteObject implements InterfaceModel 
 
 	@Override
 	public ReservedList getAll() throws RemoteException {
-		return reservedList;
+		return rfa.getAll();
 	}
 
 	@Override
