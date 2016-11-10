@@ -1,6 +1,5 @@
 package ClientConsole;
 
-import java.io.Serializable;
 import java.nio.channels.IllegalSelectorException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -8,19 +7,19 @@ import java.util.Iterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import SEP1.TheTime;
 import WIP.data.Reserved;
 import WIP.data.ReservedList;
 
 public class ClientController extends UnicastRemoteObject implements RemoteObserver {
 
 	private InterfaceModel model;
-	private Client client;
+	private ClientView view;
 
-	public ClientController(InterfaceModel model, Client client) throws RemoteException {
+	public ClientController(InterfaceModel model, ClientView view) throws RemoteException {
 		this.model = model;
-		this.client = client;
+		this.view = view;
 		model.addObserver(this);
+		view.displayBookings();
 	}
 
 	public ReservedList getAll() {
@@ -69,7 +68,7 @@ public class ClientController extends UnicastRemoteObject implements RemoteObser
 
 	@Override
 	public void update(Object observable, Object updateMsg) throws RemoteException {
-		client.update();
+		view.update();
 	}
 
 }
