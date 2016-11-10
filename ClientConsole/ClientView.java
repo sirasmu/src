@@ -64,6 +64,9 @@ public class ClientView {
 		} catch (IOException e) {
 			System.out.println("Unexpected problem with reading your input, please try again.");
 			displayBookingsInInterval();
+		}catch (IllegalArgumentException e) {
+			System.out.println(e.getMessage());
+			displayBookingsInInterval();
 		}
 		displayMenu();
 	}
