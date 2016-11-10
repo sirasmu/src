@@ -30,7 +30,7 @@ public class ModelManager extends UnicastRemoteObject implements InterfaceModel 
 	}
 
 	@Override
-	public void removeBooking(Reserved reservation) throws RemoteException {
+	public void remove(Reserved reservation) throws RemoteException {
 		reservedList.remove(reservation);
 		rfa.saveReservations(reservedList);
 	}

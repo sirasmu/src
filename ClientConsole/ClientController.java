@@ -44,7 +44,7 @@ public class ClientController extends UnicastRemoteObject implements RemoteObser
 
 	public void removeReservation(int resNo) throws RemoteException {
 		Reserved r = getReservation(resNo);
-		model.removeBooking(r);
+		model.remove(r);
 	}
 
 	/**
