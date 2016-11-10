@@ -47,8 +47,9 @@ public class Vehicle implements Serializable {
 	 * @param service
 	 *            shows whether the vehicle is in service or not
 	 */
-	public Vehicle(String regNo, String type, String make, String model, int year, String color, int seats,
-			int drivenKm, int load, boolean service) {
+	public Vehicle(String regNo, String type, String make, String model,
+			int year, String color, int seats, int drivenKm, int load,
+			boolean service) {
 		this.regNo = regNo;
 		this.type = type;
 		this.make = make;
@@ -262,8 +263,9 @@ public class Vehicle implements Serializable {
 	 *         "regNo make model year color seats drivenKm load"
 	 */
 	public String toString() {
-		return regNo + "," + type + "," + make + "," + model + "," + year + "," + color + "," + seats + "," + drivenKm
-				+ "," + load + "," + service;
+		return regNo + "," + type + "," + make + "," + model + "," + year + ","
+				+ color + "," + seats + "," + drivenKm + "," + load + ","
+				+ service;
 	}
 
 	/**

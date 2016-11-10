@@ -1,10 +1,16 @@
 package WIP.data;
 
 import java.io.Serializable;
-
 import WIP.data.utility.IllegalDateException;
 import WIP.data.utility.TheTime;
 
+/**
+ * A class representing a reservation in a time interval.
+ * 
+ * @author Ana Iulia Chifor, Peter Miodrag Varanic, Filip Hudec, Signe Rasmussen
+ * @version 1.0
+ * @date 10-11-2016
+ */
 public class Reserved implements Serializable {
 	private Vehicle vehicle;
 	private int resNo;
@@ -45,20 +51,27 @@ public class Reserved implements Serializable {
 	 *            is what the rental company estimates the total cost of renting
 	 *            the vehicle will be
 	 */
-	public Reserved(Vehicle vehicle, int resNo, TheTime pickUpTime, TheTime returnTime, String pickUpPlace,
-			String returnPlace, String firstName, String lastName, int estimateKm, double estimatePrice) {
+	public Reserved(Vehicle vehicle, int resNo, TheTime pickUpTime,
+			TheTime returnTime, String pickUpPlace, String returnPlace,
+			String firstName, String lastName, int estimateKm,
+			double estimatePrice) {
 		this.vehicle = vehicle;
 		this.resNo = resNo;
-		if ((returnTime.getDay() < pickUpTime.getDay()) && (returnTime.getMonth() <= pickUpTime.getMonth())) {
-			throw new IllegalDateException("return time must be after pick up time");
+		if ((returnTime.getDay() < pickUpTime.getDay())
+				&& (returnTime.getMonth() <= pickUpTime.getMonth())) {
+			throw new IllegalDateException(
+					"return time must be after pick up time");
 		}
 
-		if ((returnTime.getMonth() < pickUpTime.getMonth()) && (returnTime.getYear() <= pickUpTime.getYear())) {
-			throw new IllegalDateException("return time must be after pick up time");
+		if ((returnTime.getMonth() < pickUpTime.getMonth())
+				&& (returnTime.getYear() <= pickUpTime.getYear())) {
+			throw new IllegalDateException(
+					"return time must be after pick up time");
 		}
 
 		if (returnTime.getYear() < pickUpTime.getYear()) {
-			throw new IllegalDateException("return time must be after pick up time");
+			throw new IllegalDateException(
+					"return time must be after pick up time");
 		}
 
 		this.pickUpTime = pickUpTime;
@@ -273,8 +286,9 @@ public class Reserved implements Serializable {
 	 *         the vehicle and the client
 	 */
 	public String toString() {
-		return resNo + "," + pickUpTime + "," + returnTime + "," + pickUpPlace + "," + returnPlace + "," + firstName
-				+ "," + lastName + "," + estimateKm + "," + estimatePrice + "," + vehicle;
+		return resNo + "," + pickUpTime + "," + returnTime + "," + pickUpPlace
+				+ "," + returnPlace + "," + firstName + "," + lastName + ","
+				+ estimateKm + "," + estimatePrice + "," + vehicle;
 	}
 
 	/**
@@ -310,7 +324,6 @@ public class Reserved implements Serializable {
 	 * 
 	 * @return ValidResNo if the reservation number is valid
 	 */
-
 	public int checkValidandGenerateResNo() {
 		ReservedList ValidList = rfa.getAll();
 		int ValidResNo = generateResNo();
