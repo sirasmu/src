@@ -111,7 +111,9 @@ public class ClientView {
 	}
 
 	public void update() {
+		System.out.println("-----------------------Updated list.---------------------");
 		displayBookings();
+		System.out.println("-----------------------Updated list.---------------------");
 	}
 
 }
