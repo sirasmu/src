@@ -17,6 +17,9 @@ public class ClientView {
 		this.controller = controller;
 	}
 
+	/**
+	 * Displays the menu for action selection
+	 */
 	public void displayMenu() {
 		System.out.println("1 to see bookings in a date interval");
 		System.out.println("2 to see a specific booking");
@@ -125,10 +128,15 @@ public class ClientView {
 		displayMenu();
 	}
 
-	public void update() {
-		System.out.println("-----------------------Updated list.---------------------");
-		displayBookings();
-		System.out.println("-----------------------Updated list.---------------------");
+	/**
+	 * Informs the user that the data has been changed
+	 * 
+	 * @param updateMsg
+	 *            message from the server with the changes
+	 */
+	public void update(Object updateMsg) {
+		System.out.println("-----------------------Updated from server.---------------------");
+		System.out.println(updateMsg);
 	}
 
 }

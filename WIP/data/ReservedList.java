@@ -9,7 +9,7 @@ import WIP.data.utility.ArrayList;
 import WIP.data.utility.ListADT;
 import utility.observer.RemoteObserver;
 
-public class ReservedList extends Observable implements Serializable,  Iterable<Reserved> {
+public class ReservedList extends Observable implements Serializable, Iterable<Reserved> {
 
 	private static final long serialVersionUID = 1L;
 	private ListADT<Reserved> reservedList;
@@ -20,10 +20,10 @@ public class ReservedList extends Observable implements Serializable,  Iterable<
 	public ReservedList() {
 		reservedList = new ArrayList<>();
 	}
-	
+
 	public ReservedList(ListADT<Reserved> reservedList) {
 		this();
-		for(Reserved r: reservedList){
+		for (Reserved r : reservedList) {
 			this.reservedList.add(r);
 		}
 	}
@@ -61,7 +61,7 @@ public class ReservedList extends Observable implements Serializable,  Iterable<
 	public Reserved remove(Reserved reserved) {
 		Reserved removed = reservedList.remove(reserved);
 		setChanged();
-		notifyObservers();
+		notifyObservers("The following booking has been deleted: " + reserved);
 		return removed;
 	}
 

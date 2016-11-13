@@ -14,6 +14,7 @@ public class ClientController extends UnicastRemoteObject implements RemoteObser
 
 	private InterfaceModel model;
 	private ClientView view;
+	private Pattern datePattern = Pattern.compile("\\d{1,2}/\\d{1,2}/\\d{4}");
 
 	public ClientController(InterfaceModel model, ClientView view) throws RemoteException {
 		this.model = model;
@@ -23,6 +24,10 @@ public class ClientController extends UnicastRemoteObject implements RemoteObser
 		view.displayMenu();
 	}
 
+	/**
+	 * 
+	 * @return a list of all reservations
+	 */
 	public ReservedList getAll() {
 		try {
 			return model.getAll();
@@ -32,24 +37,46 @@ public class ClientController extends UnicastRemoteObject implements RemoteObser
 		throw new IllegalSelectorException();
 	}
 
+	/**
+	 * 
+	 * @param resNo
+	 *            number of the reservation
+	 * @return a specific reservation
+	 * @throws RemoteException
+	 *             if there is a problem with the connection to the server
+	 */
 	public Reserved getReservation(int resNo) throws RemoteException {
 		return model.getReservation(resNo);
 	}
 
+	/**
+	 * deletes a specific reservation
+	 * 
+	 * @param resNo
+	 *            number of the reservation to delete
+	 * @throws RemoteException
+	 *             if there is a problem with the connection to the server
+	 */
 	public void deleteReservation(int resNo) throws RemoteException {
 		model.deleteReservation(resNo);
 	}
 
 	/**
-	 * validates the input dates and asks the server for the information
+	 * validates the input dates and asks the server for the reservations in the
+	 * given interval
 	 * 
 	 * @param startDate
+	 *            of the interval
 	 * @param endDate
-	 * @return
+	 *            of the interval
+	 * @return the reservations in a given interval
 	 * @throws RemoteException
+	 *             if there is a problem with the connection to the server
 	 */
 	public ReservedList getAllInInterval(String startDate, String endDate) throws RemoteException {
-		if (!validateDate(startDate) && !validateDate(endDate)) {
+		Matcher startMatch = datePattern.matcher(startDate);
+		Matcher endMatch = datePattern.matcher(endDate);
+		if (!startMatch.matches() && !endMatch.matches()) {
 			throw new IllegalArgumentException("Date in invalid format!");
 		}
 		TheTime sDate = TheTime.convert(startDate);
@@ -62,16 +89,7 @@ public class ClientController extends UnicastRemoteObject implements RemoteObser
 
 	@Override
 	public void update(Object observable, Object updateMsg) throws RemoteException {
-		view.update();
-	}
-
-	private boolean validateDate(String date) {
-		Pattern pattern = Pattern.compile("\\d{1,2}/\\d{1,2}/\\d{4}");
-		Matcher matcher = pattern.matcher(date);
-		if (!matcher.matches()) {
-			return false;
-		}
-		return true;
+		view.update(updateMsg);
 	}
 
 }
