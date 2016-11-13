@@ -5,11 +5,16 @@ import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 
+import package1.Adapter_txt;
+import package1.Adapter_txtMethods;
+
 public class Server {
 	public static void main(String[] argv) throws RemoteException {
 
 		ModelManager show = new ModelManager();
 		int port = 1099;
+		Adapter_txt ip_list = null;
+		Adapter_txtMethods adpModule = new Adapter_txtMethods();
 
 		try { // special exception handler for registry creation
 			LocateRegistry.createRegistry(port);
@@ -22,8 +27,9 @@ public class Server {
 		String hostname = "localhost";
 		String bindLocation = "//" + hostname + ":" + port + "/Connect";
 
-		// Adapted_txt ad = (Adapted_txt)
-		// Adapted_txt.readFromFile("server_address.txt");
+		ip_list = adpModule.loadList(ip_list, "server_address.txt");
+		System.out.println(ip_list.showIpAddress());
+		ip_list.showIpAddress();
 
 		try {
 			Naming.bind(bindLocation, show);

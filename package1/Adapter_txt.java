@@ -5,11 +5,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Adapted_txt extends ArrayList<String[]>{
+public class Adapter_txt extends ArrayList<String[]>{
 
-	private static Adapted_txt address_list = new Adapted_txt();
+	private static Adapter_txt address_list = new Adapter_txt();
 
-	public Adapted_txt(){}
+	public Adapter_txt(){}
 
 	public static ArrayList<String[]> readFromFile(String path) throws IOException {
 
@@ -31,10 +31,10 @@ public class Adapted_txt extends ArrayList<String[]>{
 		return address_list;
 	}
 	
-/*	public ArrayList<String[]> showIpAddress(){
+	public ArrayList<String[]> showIpAddress(){
 		return address_list;
 		
 		
-	}*/
+	}
 
 }
