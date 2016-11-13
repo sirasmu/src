@@ -41,12 +41,11 @@ public class ClientController extends UnicastRemoteObject implements RemoteObser
 				return r;
 			}
 		}
-		throw new IllegalArgumentException("No Reserved with that reservation number was found");
+		throw new IllegalArgumentException("No Reservation with that reservation number was found");
 	}
 
-	public void removeReservation(int resNo) throws RemoteException {
-		Reserved r = getReservation(resNo);
-		model.remove(r);
+	public void deleteReservation(int resNo) throws RemoteException {
+		model.deleteReservation(resNo);
 	}
 
 	/**

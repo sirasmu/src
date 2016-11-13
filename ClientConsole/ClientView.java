@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 
 import WIP.data.Reserved;
 import WIP.data.ReservedList;
+import WIP.data.utility.IllegalDateException;
 
 public class ClientView {
 
@@ -19,8 +20,8 @@ public class ClientView {
 	public void displayMenu() {
 		System.out.println("1 to see bookings in a date interval");
 		System.out.println("2 to see a specific booking");
+		System.out.println("3 to see all bookings");
 		System.out.println("9 to exit");
-		System.out.println("8 to see all bookings");
 		try {
 			String in = reader.readLine();
 			switch (in) {
@@ -30,11 +31,11 @@ public class ClientView {
 			case "2":
 				displaySpecificBooking();
 				break;
+			case "3":
+				displayBookings();
+				break;
 			case "9":
 				System.exit(0);
-				break;
-			case "8":
-				displayBookings();
 				break;
 			default:
 				System.out.println("Please insert valid number");
@@ -46,40 +47,50 @@ public class ClientView {
 		displayMenu();
 	}
 
-	public void displayBookings() {
-		ReservedList result = null;
-		result = controller.getAll();
+	private void displayBookings() {
+		ReservedList result = controller.getAll();
 		System.out.println("Result is :" + result);
 	}
 
-	public void displayBookingsInInterval() {
+	private void displayBookingsInInterval() {
 		try {
 			System.out.println("Please insert a start date:");
 			String startDate = reader.readLine();
 			System.out.println("Please insert a end date:");
 			String endDate = reader.readLine();
-			ReservedList result = null;
-			result = controller.getAllInInterval(startDate, endDate);
+			ReservedList result = controller.getAllInInterval(startDate, endDate);
 			System.out.println("Result is :" + result);
 		} catch (IOException e) {
 			System.out.println("Unexpected problem with reading your input, please try again.");
 			displayBookingsInInterval();
-		}catch (IllegalArgumentException e) {
+		} catch (IllegalArgumentException e) {
+			System.out.println(e.getMessage());
+			displayBookingsInInterval();
+		} catch (IllegalDateException e) {
 			System.out.println(e.getMessage());
 			displayBookingsInInterval();
 		}
 		displayMenu();
 	}
 
-	public void displaySpecificBooking() {
+	private void displaySpecificBooking() {
 		System.out.println("Insert a booking number:");
 		try {
 			String in = reader.readLine();
 			Integer resNo = Integer.valueOf(in);
 			Reserved reservation = controller.getReservation(resNo);
-			System.out.println("Reservation is :" + reservation);
+			System.out.println("Reservation is :");
+			System.out.println("Reservation number: " + reservation.getResNo());
+			System.out.println("Pick up time: " + reservation.getPickUpTime());
+			System.out.println("Return time: " + reservation.getReturnTime());
+			System.out.println("Pick up place: " + reservation.getPickUpPlace());
+			System.out.println("Return place: " + reservation.getReturnPlace());
+			System.out.println("First name: " + reservation.getFirstName());
+			System.out.println("Last name: " + reservation.getLastName());
+			System.out.println("Estimated km: " + reservation.getEstimateKm());
+			System.out.println("Estimated price: " + reservation.getEstimatePrice());
+			System.out.println("Vehicle: " + reservation.getVehicle());
 			editBooking(reservation);
-
 		} catch (IOException e) {
 			System.out.println("Unexpected problem with reading your input, please try again.");
 			displaySpecificBooking();
@@ -92,13 +103,17 @@ public class ClientView {
 		displayMenu();
 	}
 
-	public void editBooking(Reserved reservation) {
-		System.out.println("1 to remove");
+	private void editBooking(Reserved reservation) {
+		System.out.println("1 to display menu");
+		System.out.println("2 to delete the booking");
 		try {
 			String in = reader.readLine();
 			switch (in) {
 			case "1":
-				controller.removeReservation(reservation.getResNo());
+				displayMenu();
+				break;
+			case "2":
+				controller.deleteReservation(reservation.getResNo());
 				break;
 			default:
 				System.out.println("Please insert valid number");

@@ -7,10 +7,10 @@ import WIP.data.Reserved;
 
 public interface InterfaceModel extends Remote {
 
-	ReservedList getAll() throws RemoteException;
+	public ReservedList getAll() throws RemoteException;
 
-	void remove(Reserved reservation) throws RemoteException;
+	public void deleteReservation(int resNo) throws RemoteException;
 
-	void addObserver(RemoteObserver o) throws RemoteException;
+	public void addObserver(RemoteObserver o) throws RemoteException;
 
 }
