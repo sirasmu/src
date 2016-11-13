@@ -28,12 +28,20 @@ public class Server {
 		String bindLocation = "//" + hostname + ":" + port + "/Connect";
 
 		ip_list = adpModule.loadList(ip_list, "server_address.txt");
-		System.out.println(ip_list.showIpAddress());
-		ip_list.showIpAddress();
+		System.out.println(ip_list.showIpAddress().get(0)[1]);
+		//ip_list.showIpAddress().get(0)[1];
 
+		bindLocationAndModel(bindLocation, show);
+		
+		String bindLocation2 = "//" + ip_list.showIpAddress().get(0)[1] + ":" + port + "/Connect";
+		//bindLocationAndModel(bindLocation2, show);
+
+	}
+	
+	public static void bindLocationAndModel(String location, ModelManager model){
 		try {
-			Naming.bind(bindLocation, show);
-			System.out.println("Servers are ready at:" + bindLocation);
+			Naming.bind(location, model);
+			System.out.println("Servers are ready at:" + location);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		} catch (MalformedURLException e) {
