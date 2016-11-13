@@ -3,7 +3,6 @@ package ClientConsole;
 import java.nio.channels.IllegalSelectorException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.Iterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -33,15 +32,8 @@ public class ClientController extends UnicastRemoteObject implements RemoteObser
 		throw new IllegalSelectorException();
 	}
 
-	public Reserved getReservation(int resNo) {
-		Iterator<Reserved> iterator = getAll().iterator();
-		while (iterator.hasNext()) {
-			Reserved r = iterator.next();
-			if (r.getResNo() == resNo) {
-				return r;
-			}
-		}
-		throw new IllegalArgumentException("No Reservation with that reservation number was found");
+	public Reserved getReservation(int resNo) throws RemoteException {
+		return model.getReservation(resNo);
 	}
 
 	public void deleteReservation(int resNo) throws RemoteException {
@@ -65,17 +57,7 @@ public class ClientController extends UnicastRemoteObject implements RemoteObser
 		if (eDate.isBefore(sDate)) {
 			throw new IllegalArgumentException("StartDate must be before endDate!");
 		}
-		ReservedList all = model.getAll();
-		Iterator<Reserved> it = all.iterator();
-		while (it.hasNext()) {
-			Reserved next = it.next();
-			TheTime pickUpTime = next.getPickUpTime();
-			TheTime returnTime = next.getReturnTime();
-			if (!pickUpTime.isBefore(eDate) || returnTime.isBefore(sDate)) {
-				it.remove();
-			}
-		}
-		return all;
+		return model.getAllInInterval(sDate, eDate);
 	}
 
 	@Override
@@ -88,7 +70,7 @@ public class ClientController extends UnicastRemoteObject implements RemoteObser
 		Matcher matcher = pattern.matcher(date);
 		if (!matcher.matches()) {
 			return false;
-		}		
+		}
 		return true;
 	}
 

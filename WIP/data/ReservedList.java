@@ -20,6 +20,13 @@ public class ReservedList extends Observable implements Serializable,  Iterable<
 	public ReservedList() {
 		reservedList = new ArrayList<>();
 	}
+	
+	public ReservedList(ListADT<Reserved> reservedList) {
+		this();
+		for(Reserved r: reservedList){
+			this.reservedList.add(r);
+		}
+	}
 
 	/**
 	 * @return a list of all reservations saved in a binary file stored in the

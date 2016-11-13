@@ -10,6 +10,7 @@ import java.util.Observer;
 import WIP.data.Reserved;
 import WIP.data.ReservedFileAdapter;
 import WIP.data.ReservedList;
+import WIP.data.utility.TheTime;
 
 /***
  * 
@@ -26,7 +27,7 @@ public class ModelManager extends UnicastRemoteObject implements InterfaceModel 
 	}
 
 	@Override
-	public ReservedList getAll() throws RemoteException {		
+	public ReservedList getAll() throws RemoteException {
 		return reservedList;
 	}
 
@@ -42,7 +43,8 @@ public class ModelManager extends UnicastRemoteObject implements InterfaceModel 
 		reservedList.addObserver(new WrappedObserver(o));
 	}
 
-	private Reserved getReservation(int resNo) {
+	@Override
+	public Reserved getReservation(int resNo) {
 		Iterator<Reserved> iterator = reservedList.iterator();
 		while (iterator.hasNext()) {
 			Reserved r = iterator.next();
@@ -50,7 +52,22 @@ public class ModelManager extends UnicastRemoteObject implements InterfaceModel 
 				return r;
 			}
 		}
-		throw new IllegalArgumentException("No Reserved with that reservation number was found");
+		throw new IllegalArgumentException("No Reservation with that reservation number was found");
+	}
+
+	@Override
+	public ReservedList getAllInInterval(TheTime startDate, TheTime endDate) {
+		ReservedList result = new ReservedList(reservedList.getAll());
+		Iterator<Reserved> it = result.iterator();
+		while (it.hasNext()) {
+			Reserved next = it.next();
+			TheTime pickUpTime = next.getPickUpTime();
+			TheTime returnTime = next.getReturnTime();
+			if (!pickUpTime.isBefore(endDate) || returnTime.isBefore(startDate)) {
+				it.remove();
+			}
+		}
+		return result;
 	}
 
 	private class WrappedObserver implements Observer, Serializable {
