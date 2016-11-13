@@ -27,14 +27,13 @@ public class Server {
 		String hostname = "localhost";
 		String bindLocation = "//" + hostname + ":" + port + "/Connect";
 
-		ip_list = adpModule.loadList(ip_list, "server_address.txt");
-		System.out.println(ip_list.showIpAddress().get(0)[1]);
-		//ip_list.showIpAddress().get(0)[1];
+		//ip_list = adpModule.loadList(ip_list, "server_address.txt"); //server_address.txt needed
+		//System.out.println(ip_list.showIpAddress().get(0)[1]);  //server_address.txt needed
 
 		bindLocationAndModel(bindLocation, show);
 		
-		String bindLocation2 = "//" + ip_list.showIpAddress().get(0)[1] + ":" + port + "/Connect";
-		//bindLocationAndModel(bindLocation2, show);
+		//String bindLocation2 = "//" + ip_list.showIpAddress().get(0)[1] + ":" + port + "/Connect";  //server_address.txt needed
+		//bindLocationAndModel(bindLocation2, show); //error!!!!!!!!!!!!!
 
 	}
 	
