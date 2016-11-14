@@ -94,11 +94,14 @@ public class ModelManager extends UnicastRemoteObject implements InterfaceModel 
 
 	@Override
 	public void saveReservation(Reserved r) throws RemoteException {
-		//TODO add more modified parameters if needed
+		//TODO add more modified parameters if needed.
 		Reserved temp = getReservation(r.getResNo());
 		temp.setFirstName(r.getFirstName());
 		temp.setLastName(r.getLastName());
 		temp.setPickUpTime(r.getPickUpTime());
+		if(r.getReturnTime().isBefore(r.getPickUpTime())){
+			throw new IllegalArgumentException("The return time cannot be before the pick-up time.");
+		}
 		temp.setReturnTime(r.getReturnTime());
 		rfa.saveReservations(reservedList);		
 	}
