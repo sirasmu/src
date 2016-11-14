@@ -91,4 +91,10 @@ public class ModelManager extends UnicastRemoteObject implements InterfaceModel 
 		}
 
 	}
+
+	@Override
+	public void saveReservation(Reserved reservation) throws RemoteException {
+		// TODO Auto-generated method stub
+		
+	}
 }

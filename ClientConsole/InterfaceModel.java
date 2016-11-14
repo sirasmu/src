@@ -18,4 +18,6 @@ public interface InterfaceModel extends Remote {
 
 	ReservedList getAllInInterval(TheTime startDate, TheTime endDate) throws RemoteException;
 	
+	void saveReservation(Reserved reservation) throws RemoteException;
+	
 }
