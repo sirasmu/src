@@ -37,12 +37,6 @@ public class ModelManager extends UnicastRemoteObject implements InterfaceModel 
 		reservedList.remove(reservation);
 		rfa.saveReservations(reservedList);
 	}
-	
-	public void modifyReservation(int resNo) throws RemoteException {
-		//TODO set reservation
-		//getReservation(resNo).set(parameters);
-		rfa.saveReservations(reservedList);
-	}
 
 	@Override
 	public void addObserver(RemoteObserver o) throws RemoteException {

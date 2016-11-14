@@ -12,8 +12,6 @@ public interface InterfaceModel extends Remote {
 
 	void deleteReservation(int resNo) throws RemoteException;
 	
-	void modifyReservation(int resNo) throws RemoteException; //TODO add parameter
-
 	void addObserver(RemoteObserver o) throws RemoteException;
 
 	Reserved getReservation(int resNo) throws RemoteException;
