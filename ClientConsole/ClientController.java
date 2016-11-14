@@ -94,5 +94,14 @@ public class ClientController extends UnicastRemoteObject implements RemoteObser
 	public void update(Object observable, Object updateMsg) throws RemoteException {
 		view.update(updateMsg);
 	}
+	
+	public void saveReservation(Reserved r){
+		try {
+			model.saveReservation(r);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			System.out.println("Saving the reservation failed");
+		}
+	}
 
 }
