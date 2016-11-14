@@ -8,14 +8,16 @@ import WIP.data.Reserved;
 
 public interface InterfaceModel extends Remote {
 
-	public ReservedList getAll() throws RemoteException;
+	ReservedList getAll() throws RemoteException;
 
-	public void deleteReservation(int resNo) throws RemoteException;
+	void deleteReservation(int resNo) throws RemoteException;
+	
+	void modifyReservation(int resNo) throws RemoteException; //TODO add parameter
 
-	public void addObserver(RemoteObserver o) throws RemoteException;
+	void addObserver(RemoteObserver o) throws RemoteException;
 
-	public Reserved getReservation(int resNo) throws RemoteException;
+	Reserved getReservation(int resNo) throws RemoteException;
 
-	public ReservedList getAllInInterval(TheTime startDate, TheTime endDate) throws RemoteException;
-
+	ReservedList getAllInInterval(TheTime startDate, TheTime endDate) throws RemoteException;
+	
 }
