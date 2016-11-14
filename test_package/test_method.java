@@ -1,6 +1,8 @@
-package package1;
+package test_package;
 
 import java.io.IOException;
+
+import WIP.data.file.Adapter_txt;
 
 public class test_method {
 	

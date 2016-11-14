@@ -14,7 +14,7 @@ public class ClientView {
 
 	private ClientController controller;
 	private BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-	private String choosenServerAddress; //address client choose for establishing server connection
+	//private String choosenServerAddress; //address client choose for establishing server connection //maybe not used here
 
 	public void addController(ClientController controller) {
 		this.controller = controller;

@@ -5,8 +5,8 @@ import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 
-import package1.Adapter_txt;
-import package1.Adapter_txtMethods;
+import WIP.data.file.Adapter_txt;
+import WIP.data.utility.Adapter_txtMethods;
 
 public class Server {
 	public static void main(String[] argv) throws RemoteException {
