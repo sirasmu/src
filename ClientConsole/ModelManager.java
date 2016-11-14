@@ -93,8 +93,13 @@ public class ModelManager extends UnicastRemoteObject implements InterfaceModel 
 	}
 
 	@Override
-	public void saveReservation(Reserved reservation) throws RemoteException {
-		// TODO Auto-generated method stub
-		
+	public void saveReservation(Reserved r) throws RemoteException {
+		//TODO add more modified parameters if needed
+		Reserved temp = getReservation(r.getResNo());
+		temp.setFirstName(r.getFirstName());
+		temp.setLastName(r.getLastName());
+		temp.setPickUpTime(r.getPickUpTime());
+		temp.setReturnTime(r.getReturnTime());
+		rfa.saveReservations(reservedList);		
 	}
 }
