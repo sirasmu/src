@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import WIP.data.Reserved;
 import WIP.data.ReservedList;
 import WIP.data.utility.IllegalDateException;
+import WIP.data.utility.TheTime;
 
 public class ClientView {
 
@@ -163,16 +164,26 @@ public class ClientView {
 				// controller.saveReservation(reservation);
 				break;
 			case "2":
-				// set pickUpTime
+				System.out.println("Insert the new pickUpDate");
+				in = reader.readLine();
+				controller.validateDate(in);
+				reservation.setPickUpTime(TheTime.convert(in));
 				break;
 			case "3":
-				// set returnTime
+				System.out.println("Insert the new returnDate");
+				in = reader.readLine();
+				controller.validateDate(in);
+				reservation.setPickUpTime(TheTime.convert(in));
 				break;
 			case "4":
-				// set firstName
+				System.out.println("Insert the new firstName");
+				in = reader.readLine();
+				reservation.setFirstName(in);
 				break;
 			case "5":
-				// set lastName
+				System.out.println("Insert the new lastName");
+				in = reader.readLine();
+				reservation.setLastName(in);
 				break;
 			case "6":
 				displayMenu();

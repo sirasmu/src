@@ -78,9 +78,7 @@ public class ClientController extends UnicastRemoteObject implements RemoteObser
 	 *             if there is a problem with the connection to the server
 	 */
 	public ReservedList getAllInInterval(String startDate, String endDate) throws RemoteException {
-		Matcher startMatch = datePattern.matcher(startDate);
-		Matcher endMatch = datePattern.matcher(endDate);
-		if (!startMatch.matches() && !endMatch.matches()) {
+		if (!validateDate(startDate) && !validateDate(endDate)) {
 			throw new IllegalArgumentException("Date in invalid format!");
 		}
 		TheTime sDate = TheTime.convert(startDate);
@@ -89,6 +87,11 @@ public class ClientController extends UnicastRemoteObject implements RemoteObser
 			throw new IllegalArgumentException("StartDate must be before endDate!");
 		}
 		return model.getAllInInterval(sDate, eDate);
+	}
+	
+	public boolean validateDate(String date){
+		Matcher match = datePattern.matcher(date);
+		return match.matches();
 	}
 
 	@Override
