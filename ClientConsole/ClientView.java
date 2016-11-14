@@ -109,6 +109,7 @@ public class ClientView {
 	private void editBooking(Reserved reservation) {
 		System.out.println("1 to display menu");
 		System.out.println("2 to delete the booking");
+		System.out.println("3 to modify the booking");
 		try {
 			String in = reader.readLine();
 			switch (in) {
@@ -118,8 +119,51 @@ public class ClientView {
 			case "2":
 				controller.deleteReservation(reservation.getResNo());
 				break;
+			case "3":
+				displayModificationMenu(reservation);
+				break;
 			default:
 				System.out.println("Please insert valid number");
+				editBooking(reservation);
+				break;
+			}
+		} catch (IOException e) {
+			System.out.println("Unexpected problem with reading your input, please try again.");
+		}
+		displayMenu();
+	}
+
+	private void displayModificationMenu(Reserved reservation) {
+		System.out.println("1 to save modifications");
+		System.out.println("2 to change the pickUpTime");
+		System.out.println("3 to change the returnTime");
+		System.out.println("4 to change the firstName");
+		System.out.println("5 to change the lastName");
+		System.out.println("6 to abort modifications");
+		try {
+			String in = reader.readLine();
+			switch (in) {
+			case "1":
+				// controller.saveReservation(reservation);
+				break;
+			case "2":
+				// set pickUpTime
+				break;
+			case "3":
+				// set returnTime
+				break;
+			case "4":
+				// set firstName
+				break;
+			case "5":
+				// set lastName
+				break;
+			case "6":
+				displayMenu();
+				break;
+			default:
+				System.out.println("Please insert valid number");
+				displayModificationMenu(reservation);
 				break;
 			}
 		} catch (IOException e) {
