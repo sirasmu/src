@@ -11,8 +11,8 @@ public class TestRentFileAdapter
 {
    public static void main(String[] args)
    {
-      VehicleFileAdapter vfa = new VehicleFileAdapter("vehicles.bin");
-      RentFileAdapter rfa = new RentFileAdapter("rentals.bin");
+      VehicleFileAdapter vfa = new VehicleFileAdapter("resources/vehicles.bin");
+      RentFileAdapter rfa = new RentFileAdapter("resources/rentals.bin");
 
       // Get all vehicles from the file and print them out
       VehicleList list = vfa.getAllVehicles();

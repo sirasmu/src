@@ -23,7 +23,7 @@ public class ModelManager extends UnicastRemoteObject implements InterfaceModel 
 	private RentList rentList;
 
 	public ModelManager() throws RemoteException {
-		rfa = new RentFileAdapter("rentals.bin");
+		rfa = new RentFileAdapter("resources/rentals.bin");
 		rentList = rfa.getAllRents();
 	}
 
@@ -34,18 +34,10 @@ public class ModelManager extends UnicastRemoteObject implements InterfaceModel 
 
 	@Override
 	public void deleteReservation(int resNo) throws RemoteException {
-		Rent reservation = getResNo(resNo);
+		Rent reservation = getRent(resNo);
 		rentList.remove(reservation);
 		rfa.saveRents(rentList);
 	}
-
-	
-	public void modifyReservation(int resNo) throws RemoteException {
-		//TODO set reservation
-		//getReservation(resNo).set(parameters);
-		rfa.saveRents(rentList);
-	}
-
 
 	@Override
 	public void addObserver(RemoteObserver o) throws RemoteException {
@@ -53,7 +45,7 @@ public class ModelManager extends UnicastRemoteObject implements InterfaceModel 
 	}
 
 	@Override
-	public Rent getResNo(int resNo) {
+	public Rent getRent(int resNo) {
 		Iterator<Rent> iterator = rentList.iterator();
 		while (iterator.hasNext()) {
 			Rent r = iterator.next();
@@ -104,7 +96,7 @@ public class ModelManager extends UnicastRemoteObject implements InterfaceModel 
 	@Override
 	public void saveReservation(Rent r) throws RemoteException {
 		//TODO add more modified parameters if needed.
-		Rent temp = getResNo(r.getResNo());
+		Rent temp = getRent(r.getResNo());
 		temp.setFirstName(r.getFirstName());
 		temp.setLastName(r.getLastName());
 		temp.setPickUpTime(r.getPickUpTime());

@@ -5,24 +5,22 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-
-
 import SEP1.IllegalDateException;
 import SEP1.Rent;
 import SEP1.RentList;
 import SEP1.TheTime;
 
-
 public class ClientView {
 
 	private ClientController controller;
 	private BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-	//private String choosenServerAddress; //address client choose for establishing server connection //maybe not used here
+	// private String choosenServerAddress; //address client choose for
+	// establishing server connection //maybe not used here
 
 	public void addController(ClientController controller) {
 		this.controller = controller;
 	}
-	
+
 	/**
 	 * Displays the menu for action selection
 	 */
@@ -30,10 +28,10 @@ public class ClientView {
 
 		System.out.println(" Select server: ");
 		int serverNumber = 1;
-		
-		for (int i = 0; i < serverList.size(); i++){
-			System.out.println(serverNumber+". "+serverList.get(serverNumber-1)[0]);
-			serverNumber ++;
+
+		for (int i = 0; i < serverList.size(); i++) {
+			System.out.println(serverNumber + ". " + serverList.get(serverNumber - 1)[0]);
+			serverNumber++;
 		}
 	}
 
@@ -164,7 +162,8 @@ public class ClientView {
 			String in = reader.readLine();
 			switch (in) {
 			case "1":
-				// controller.saveReservation(reservation);
+				controller.saveReservation(reservation);
+				displayMenu();
 				break;
 			case "2":
 				System.out.println("Insert the new pickUpDate");
@@ -198,8 +197,10 @@ public class ClientView {
 			}
 		} catch (IOException e) {
 			System.out.println("Unexpected problem with reading your input, please try again.");
+		} catch (IllegalArgumentException e) {
+			System.out.println(e.getMessage());
 		}
-		displayMenu();
+		displayModificationMenu(reservation);
 	}
 
 	/**

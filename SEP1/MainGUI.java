@@ -54,9 +54,9 @@ public class MainGUI extends JFrame
    {
       super("V-Rent");
 
-      vehicleAdapter = new VehicleFileAdapter("vehicles.bin");
-      rentAdapter = new RentFileAdapter("rentals.bin");
-      returnAdapter = new RentFileAdapter("rentals.bin");
+      vehicleAdapter = new VehicleFileAdapter("resources/vehicles.bin");
+      rentAdapter = new RentFileAdapter("resources/rentals.bin");
+      returnAdapter = new RentFileAdapter("resources/rentals.bin");
 
       buttonListener = new MyButtonListener();
 

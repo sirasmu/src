@@ -48,7 +48,7 @@ public class ClientController extends UnicastRemoteObject implements RemoteObser
 	 *             if there is a problem with the connection to the server
 	 */
 	public Rent getReservation(int resNo) throws RemoteException {
-		return model.getResNo(resNo);
+		return model.getRent(resNo);
 	}
 
 	/**

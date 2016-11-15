@@ -16,7 +16,7 @@ public interface InterfaceModel extends Remote {
 	
 	void addObserver(RemoteObserver o) throws RemoteException;
 
-	Rent getResNo(int resNo) throws RemoteException;
+	Rent getRent(int resNo) throws RemoteException;
 
 	RentList getAllInInterval(TheTime startDate, TheTime endDate) throws RemoteException;
 	

@@ -29,7 +29,7 @@ public class LoadInitialData
       String[] vehicleArray = null;
       try
       {
-         vehicleArray = mtfio.readArrayFromFile("all_vehicles_file.txt");
+         vehicleArray = mtfio.readArrayFromFile("resources/all_vehicles_file.txt");
 
          for (int i = 0; i < vehicleArray.length; i++)
          {
@@ -63,9 +63,9 @@ public class LoadInitialData
 
       try
       {
-         mfio.writeToFile("vehicles.bin", vehicles);
-         mfio1.writeToFile("rentals.bin", rentals);
-         mfio2.writeToFile("returns.bin", returns);
+         mfio.writeToFile("resources/vehicles.bin", vehicles);
+         mfio1.writeToFile("resources/rentals.bin", rentals);
+         mfio2.writeToFile("resources/returns.bin", returns);
       }
       catch (FileNotFoundException e)
       {

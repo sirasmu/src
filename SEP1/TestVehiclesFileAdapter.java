@@ -9,7 +9,7 @@ public class TestVehiclesFileAdapter
 {
    public static void main(String[] args)
    {
-      VehicleFileAdapter vfa = new VehicleFileAdapter("vehicles.bin");
+      VehicleFileAdapter vfa = new VehicleFileAdapter("resources/vehicles.bin");
 
       // Get all vehicles from the file and print them out
       VehicleList list = vfa.getAllVehicles();
