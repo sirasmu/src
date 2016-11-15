@@ -1,4 +1,4 @@
-package WIP.data.file;
+package WIP.data.utility;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

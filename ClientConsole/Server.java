@@ -5,6 +5,9 @@ import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 
+import WIP.data.utility.Adapter_txt;
+import WIP.data.utility.Adapter_txtMethods;
+
 
 
 public class Server {
