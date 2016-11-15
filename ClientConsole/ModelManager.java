@@ -38,12 +38,14 @@ public class ModelManager extends UnicastRemoteObject implements InterfaceModel 
 		rentList.remove(reservation);
 		rfa.saveRents(rentList);
 	}
+
 	
 	public void modifyReservation(int resNo) throws RemoteException {
 		//TODO set reservation
 		//getReservation(resNo).set(parameters);
 		rfa.saveRents(rentList);
 	}
+
 
 	@Override
 	public void addObserver(RemoteObserver o) throws RemoteException {
@@ -97,6 +99,20 @@ public class ModelManager extends UnicastRemoteObject implements InterfaceModel 
 			}
 		}
 
+	}
+
+	@Override
+	public void saveReservation(Rent r) throws RemoteException {
+		//TODO add more modified parameters if needed.
+		Rent temp = getResNo(r.getResNo());
+		temp.setFirstName(r.getFirstName());
+		temp.setLastName(r.getLastName());
+		temp.setPickUpTime(r.getPickUpTime());
+		if(r.getReturnTime().isBefore(r.getPickUpTime())){
+			throw new IllegalArgumentException("The return time cannot be before the pick-up time.");
+		}
+		temp.setReturnTime(r.getReturnTime());
+		rfa.saveRents(rentList);		
 	}
 
 }

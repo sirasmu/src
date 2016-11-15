@@ -12,17 +12,8 @@ public class Client {
 
 	public static void main(String[] args) {
 		new Client("localhost", 1099);
-	}
-
-	public void ServerMenu() {
-
-		System.out.println(" Select server: ");
-
-		/*
-		 * for (int i = 0; i < nr_ofServer; i++){
-		 * 
-		 * }
-		 */
+		//ServerMenu();
+		new Client("localhost", 1099);
 	}
 
 	private Client(String remoteHostName, int remotePort) {

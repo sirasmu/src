@@ -3,18 +3,38 @@ package ClientConsole;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+
+
 
 import SEP1.IllegalDateException;
 import SEP1.Rent;
 import SEP1.RentList;
+import SEP1.TheTime;
+
 
 public class ClientView {
 
 	private ClientController controller;
 	private BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+	//private String choosenServerAddress; //address client choose for establishing server connection //maybe not used here
 
 	public void addController(ClientController controller) {
 		this.controller = controller;
+	}
+	
+	/**
+	 * Displays the menu for action selection
+	 */
+	public void ServerMenu(ArrayList<String[]> serverList) {
+
+		System.out.println(" Select server: ");
+		int serverNumber = 1;
+		
+		for (int i = 0; i < serverList.size(); i++){
+			System.out.println(serverNumber+". "+serverList.get(serverNumber-1)[0]);
+			serverNumber ++;
+		}
 	}
 
 	/**
@@ -147,16 +167,26 @@ public class ClientView {
 				// controller.saveReservation(reservation);
 				break;
 			case "2":
-				// set pickUpTime
+				System.out.println("Insert the new pickUpDate");
+				in = reader.readLine();
+				controller.validateDate(in);
+				reservation.setPickUpTime(TheTime.convert(in));
 				break;
 			case "3":
-				// set returnTime
+				System.out.println("Insert the new returnDate");
+				in = reader.readLine();
+				controller.validateDate(in);
+				reservation.setPickUpTime(TheTime.convert(in));
 				break;
 			case "4":
-				// set firstName
+				System.out.println("Insert the new firstName");
+				in = reader.readLine();
+				reservation.setFirstName(in);
 				break;
 			case "5":
-				// set lastName
+				System.out.println("Insert the new lastName");
+				in = reader.readLine();
+				reservation.setLastName(in);
 				break;
 			case "6":
 				displayMenu();

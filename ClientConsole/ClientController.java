@@ -6,10 +6,6 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
-
-
-
 import SEP1.MainGUI;
 import SEP1.Rent;
 import SEP1.RentList;
@@ -66,10 +62,6 @@ public class ClientController extends UnicastRemoteObject implements RemoteObser
 	public void deleteReservation(int resNo) throws RemoteException {
 		model.deleteReservation(resNo);
 	}
-	
-	public void modifyReservation(int resNo) throws RemoteException {
-		model.modifyReservation(resNo); //TODO add parameters
-	}
 
 	/**
 	 * validates the input dates and asks the server for the reservations in the
@@ -83,10 +75,10 @@ public class ClientController extends UnicastRemoteObject implements RemoteObser
 	 * @throws RemoteException
 	 *             if there is a problem with the connection to the server
 	 */
+
 	public RentList getAllInInterval(String startDate, String endDate) throws RemoteException {
-		Matcher startMatch = datePattern.matcher(startDate);
-		Matcher endMatch = datePattern.matcher(endDate);
-		if (!startMatch.matches() && !endMatch.matches()) {
+		if (!validateDate(startDate) && !validateDate(endDate)) {
+
 			throw new IllegalArgumentException("Date in invalid format!");
 		}
 		TheTime sDate = TheTime.convert(startDate);
@@ -96,10 +88,24 @@ public class ClientController extends UnicastRemoteObject implements RemoteObser
 		}
 		return model.getAllInInterval(sDate, eDate);
 	}
+	
+	public boolean validateDate(String date){
+		Matcher match = datePattern.matcher(date);
+		return match.matches();
+	}
 
 	@Override
 	public void update(Object observable, Object updateMsg) throws RemoteException {
 		view.update(updateMsg);
+	}
+	
+	public void saveReservation(Rent r){
+		try {
+			model.saveReservation(r);
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			System.out.println("Saving the reservation failed");
+		}
 	}
 
 }

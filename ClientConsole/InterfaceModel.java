@@ -14,12 +14,12 @@ public interface InterfaceModel extends Remote {
 
 	void deleteReservation(int resNo) throws RemoteException;
 	
-	void modifyReservation(int resNo) throws RemoteException; //TODO add parameter
-
 	void addObserver(RemoteObserver o) throws RemoteException;
 
 	Rent getResNo(int resNo) throws RemoteException;
 
 	RentList getAllInInterval(TheTime startDate, TheTime endDate) throws RemoteException;
+	
+	void saveReservation(Rent reservation) throws RemoteException;
 	
 }
