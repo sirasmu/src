@@ -10,6 +10,7 @@ import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.FileNotFoundException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 import javax.swing.*;
@@ -369,7 +370,7 @@ public class BookConfirm extends JFrame {
 	/**
 	 * Method for confirming and saving the information of the booking.
 	 */
-	public void confirmAction() {
+	public void confirmAction()  {
 		String firstName;
 		String lastName;
 

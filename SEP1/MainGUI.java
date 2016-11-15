@@ -2,11 +2,14 @@ package SEP1;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.JTabbedPane;
+
+import ClientConsole.RemoteObserver;
 
 /**
  * A user interface that allows displaying and modifying information about vehicles
@@ -16,7 +19,7 @@ import javax.swing.JTabbedPane;
  * @version 8.0
  * @date 31-05-2016
  */
-public class MainGUI extends JFrame
+public class MainGUI extends JFrame 
 {
    private VehicleFileAdapter vehicleAdapter;
    private RentFileAdapter rentAdapter;
@@ -172,5 +175,8 @@ public class MainGUI extends JFrame
    {
       MainGUI vehicleGUI = new MainGUI();
    }
+
+
+
 
 }

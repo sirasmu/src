@@ -2,6 +2,8 @@ package SEP1;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import WIP.data.utility.ListADT;
+
 /**
  * An adapter to the rentals file, making it easy to retrieve and store
  * information.

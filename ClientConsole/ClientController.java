@@ -6,16 +6,22 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import WIP.data.Reserved;
-import WIP.data.ReservedList;
-import WIP.data.utility.TheTime;
+
+
+
+
+import SEP1.MainGUI;
+import SEP1.Rent;
+import SEP1.RentList;
+import SEP1.TheTime;
 
 public class ClientController extends UnicastRemoteObject implements RemoteObserver {
 
 	private InterfaceModel model;
 	private ClientView view;
 	private Pattern datePattern = Pattern.compile("\\d{1,2}/\\d{1,2}/\\d{4}");
-
+	private MainGUI guiObserver;
+	
 	public ClientController(InterfaceModel model, ClientView view) throws RemoteException {
 		this.model = model;
 		this.view = view;
@@ -28,7 +34,7 @@ public class ClientController extends UnicastRemoteObject implements RemoteObser
 	 * 
 	 * @return a list of all reservations
 	 */
-	public ReservedList getAll() {
+	public RentList getAll() {
 		try {
 			return model.getAll();
 		} catch (RemoteException e) {
@@ -45,8 +51,8 @@ public class ClientController extends UnicastRemoteObject implements RemoteObser
 	 * @throws RemoteException
 	 *             if there is a problem with the connection to the server
 	 */
-	public Reserved getReservation(int resNo) throws RemoteException {
-		return model.getReservation(resNo);
+	public Rent getReservation(int resNo) throws RemoteException {
+		return model.getResNo(resNo);
 	}
 
 	/**
@@ -77,7 +83,7 @@ public class ClientController extends UnicastRemoteObject implements RemoteObser
 	 * @throws RemoteException
 	 *             if there is a problem with the connection to the server
 	 */
-	public ReservedList getAllInInterval(String startDate, String endDate) throws RemoteException {
+	public RentList getAllInInterval(String startDate, String endDate) throws RemoteException {
 		Matcher startMatch = datePattern.matcher(startDate);
 		Matcher endMatch = datePattern.matcher(endDate);
 		if (!startMatch.matches() && !endMatch.matches()) {

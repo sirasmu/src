@@ -4,9 +4,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import WIP.data.Reserved;
-import WIP.data.ReservedList;
-import WIP.data.utility.IllegalDateException;
+import SEP1.IllegalDateException;
+import SEP1.Rent;
+import SEP1.RentList;
 
 public class ClientView {
 
@@ -51,7 +51,7 @@ public class ClientView {
 	}
 
 	private void displayBookings() {
-		ReservedList result = controller.getAll();
+		RentList result = controller.getAll();
 		System.out.println("Result is :" + result);
 	}
 
@@ -61,7 +61,7 @@ public class ClientView {
 			String startDate = reader.readLine();
 			System.out.println("Please insert a end date:");
 			String endDate = reader.readLine();
-			ReservedList result = controller.getAllInInterval(startDate, endDate);
+			RentList result = controller.getAllInInterval(startDate, endDate);
 			System.out.println("Result is :" + result);
 		} catch (IOException e) {
 			System.out.println("Unexpected problem with reading your input, please try again.");
@@ -81,7 +81,7 @@ public class ClientView {
 		try {
 			String in = reader.readLine();
 			Integer resNo = Integer.valueOf(in);
-			Reserved reservation = controller.getReservation(resNo);
+			Rent reservation = controller.getReservation(resNo);
 			System.out.println("Reservation is :");
 			System.out.println("Reservation number: " + reservation.getResNo());
 			System.out.println("Pick up time: " + reservation.getPickUpTime());
@@ -106,7 +106,7 @@ public class ClientView {
 		displayMenu();
 	}
 
-	private void editBooking(Reserved reservation) {
+	private void editBooking(Rent reservation) {
 		System.out.println("1 to display menu");
 		System.out.println("2 to delete the booking");
 		System.out.println("3 to modify the booking");
@@ -133,7 +133,7 @@ public class ClientView {
 		displayMenu();
 	}
 
-	private void displayModificationMenu(Reserved reservation) {
+	private void displayModificationMenu(Rent reservation) {
 		System.out.println("1 to save modifications");
 		System.out.println("2 to change the pickUpTime");
 		System.out.println("3 to change the returnTime");

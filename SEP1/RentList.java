@@ -1,6 +1,10 @@
 package SEP1;
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.rmi.server.UnicastRemoteObject;
+import java.util.Iterator;
+import java.util.Observable;
+
+import WIP.data.utility.*;
 
 /**
  * A class containing a list of Rent objects.
@@ -10,16 +14,26 @@ import java.util.ArrayList;
  * @version 8.0
  * @date 31-05-2016
  */
-public class RentList implements Serializable
+public class RentList extends Observable implements Serializable, Iterable<Rent>
 {
-   private ArrayList<Rent> rentals;
+
+   private ListADT<Rent> rentList;
 
    /**
     * No-argument constructor initializing the RentList.
     */
    public RentList()
    {
-      rentals = new ArrayList<Rent>();
+      rentList= new ArrayList<>();
+   }
+   
+   public RentList(ListADT<Rent> rentList)
+   {
+	   this();
+	   for(Rent r : rentList)
+	   {
+		   this.rentList.add(r);
+	   }
    }
 
    /**
@@ -30,7 +44,11 @@ public class RentList implements Serializable
     */
    public void addRent(Rent rent)
    {
-      rentals.add(rent);
+      rentList.add(rent);
+      setChanged();
+	  notifyObservers("The following booking has been added: " + rent);
+	   
+	   
    }
 
    /**
@@ -41,7 +59,9 @@ public class RentList implements Serializable
     */
    public void remove(Rent rent)
    {
-      rentals.remove(rent);
+	   rentList.remove(rent);
+	   setChanged();
+	   notifyObservers("The following booking has been deleted: " + rent);
    }
 
    /**
@@ -54,7 +74,7 @@ public class RentList implements Serializable
     */
    public void set(Rent rent, int index)
    {
-      rentals.set(index, rent);
+      rentList.set(index, rent);
    }
 
    /**
@@ -62,14 +82,14 @@ public class RentList implements Serializable
     * 
     * @param index
     *           the position in the list of the Rent object
-    * @return rentals
+    * @return rentList
     *           the Rent object at position index if one exists, else null
     */
    public Rent get(int index)
    {
-      if (index < rentals.size())
+      if (index < rentList.size())
       {
-         return rentals.get(index);
+         return rentList.get(index);
       }
       else
       {
@@ -87,9 +107,9 @@ public class RentList implements Serializable
     */
    public Rent getResNo(int resNo)
    {
-      for (int i = 0; i < rentals.size(); i++)
+      for (int i = 0; i < rentList.size(); i++)
       {
-         Rent temp = rentals.get(i);
+         Rent temp = rentList.get(i);
 
          if (temp.getResNo() == resNo)
          {
@@ -110,9 +130,9 @@ public class RentList implements Serializable
     */
    public int getIndex(int resNo)
    {
-      for (int i = 0; i < rentals.size(); i++)
+      for (int i = 0; i < rentList.size(); i++)
       {
-         Rent temp = rentals.get(i);
+         Rent temp = rentList.get(i);
 
          if (temp.getResNo() == resNo)
          {
@@ -129,7 +149,7 @@ public class RentList implements Serializable
     */
    public int size()
    {
-      return rentals.size();
+      return rentList.size();
    }
 
    /**
@@ -139,13 +159,24 @@ public class RentList implements Serializable
     *             a String containing information about all Rent objects in the list
     *             - each Rent object followed by a new line character
     */
+   
+   public ListADT<Rent> getAll()
+   {
+	   return rentList;
+   }
+   
+   public Iterator<Rent> iterator() {
+		return rentList.iterator();
+
+	}
+   
    public String toString()
    {
       String returnStr = "";
 
-      for (int i = 0; i < rentals.size(); i++)
+      for (int i = 0; i < rentList.size(); i++)
       {
-         Rent temp = rentals.get(i);
+         Rent temp = rentList.get(i);
 
          returnStr += temp + "\n";
       }

@@ -7,10 +7,11 @@ import java.util.Iterator;
 import java.util.Observable;
 import java.util.Observer;
 
-import WIP.data.Reserved;
-import WIP.data.ReservedFileAdapter;
-import WIP.data.ReservedList;
-import WIP.data.utility.TheTime;
+import SEP1.Rent;
+import SEP1.RentFileAdapter;
+import SEP1.RentList;
+import SEP1.TheTime;
+
 
 /***
  * 
@@ -18,42 +19,42 @@ import WIP.data.utility.TheTime;
  */
 public class ModelManager extends UnicastRemoteObject implements InterfaceModel {
 	// static final long serialVersionUID = 1L;
-	private ReservedFileAdapter rfa;
-	private ReservedList reservedList;
+	private RentFileAdapter rfa;
+	private RentList rentList;
 
 	public ModelManager() throws RemoteException {
-		rfa = new ReservedFileAdapter("reservedList.bin");
-		reservedList = rfa.getAll();
+		rfa = new RentFileAdapter("rentals.bin");
+		rentList = rfa.getAllRents();
 	}
 
 	@Override
-	public ReservedList getAll() throws RemoteException {
-		return reservedList;
+	public RentList getAll() throws RemoteException {
+		return rentList;
 	}
 
 	@Override
 	public void deleteReservation(int resNo) throws RemoteException {
-		Reserved reservation = getReservation(resNo);
-		reservedList.remove(reservation);
-		rfa.saveReservations(reservedList);
+		Rent reservation = getResNo(resNo);
+		rentList.remove(reservation);
+		rfa.saveRents(rentList);
 	}
 	
 	public void modifyReservation(int resNo) throws RemoteException {
 		//TODO set reservation
 		//getReservation(resNo).set(parameters);
-		rfa.saveReservations(reservedList);
+		rfa.saveRents(rentList);
 	}
 
 	@Override
 	public void addObserver(RemoteObserver o) throws RemoteException {
-		reservedList.addObserver(new WrappedObserver(o));
+		rentList.addObserver(new WrappedObserver(o));
 	}
 
 	@Override
-	public Reserved getReservation(int resNo) {
-		Iterator<Reserved> iterator = reservedList.iterator();
+	public Rent getResNo(int resNo) {
+		Iterator<Rent> iterator = rentList.iterator();
 		while (iterator.hasNext()) {
-			Reserved r = iterator.next();
+			Rent r = iterator.next();
 			if (r.getResNo() == resNo) {
 				return r;
 			}
@@ -62,11 +63,11 @@ public class ModelManager extends UnicastRemoteObject implements InterfaceModel 
 	}
 
 	@Override
-	public ReservedList getAllInInterval(TheTime startDate, TheTime endDate) {
-		ReservedList result = new ReservedList(reservedList.getAll());
-		Iterator<Reserved> it = result.iterator();
+	public RentList getAllInInterval(TheTime startDate, TheTime endDate) {
+		RentList result = new RentList(rentList.getAll());
+		Iterator<Rent> it = result.iterator();
 		while (it.hasNext()) {
-			Reserved next = it.next();
+			Rent next = it.next();
 			TheTime pickUpTime = next.getPickUpTime();
 			TheTime returnTime = next.getReturnTime();
 			if (!pickUpTime.isBefore(endDate) || returnTime.isBefore(startDate)) {
@@ -88,7 +89,7 @@ public class ModelManager extends UnicastRemoteObject implements InterfaceModel 
 
 		@Override
 		public void update(Observable o, Object arg) {
-			try {
+			try {		
 				ro.update(o.toString(), arg);
 			} catch (RemoteException e) {
 				System.out.println("Remote exception removing observer:" + this);
@@ -97,4 +98,5 @@ public class ModelManager extends UnicastRemoteObject implements InterfaceModel 
 		}
 
 	}
+
 }
