@@ -7,10 +7,11 @@ public class Adapter_txtMethods {
 	private String address;
 	private Adapter_txt ip_list;
 	
-	public Adapter_txtMethods(Adapter_txt ip_list)
+	public Adapter_txtMethods(Adapter_txt ip_list, String address)
 	{
 		
 		this.ip_list = ip_list;
+		this.address=address;
 		loadList();
 	}
 	
@@ -29,7 +30,6 @@ public class Adapter_txtMethods {
 	public String[] getAllNames()
 	{
 		String[] temp = new String[ip_list.size()];
-		System.out.println(ip_list.size());
 		for(int i=0;i<ip_list.size();i++)
 		{
 			temp[i] = ip_list.get(i)[0];
@@ -45,7 +45,6 @@ public class Adapter_txtMethods {
 			if(name.equals(ip_list.get(i)[0]))
 			{
 				temp = ip_list.get(i)[1];
-				System.out.println(temp);
 			}
 			
 		}
