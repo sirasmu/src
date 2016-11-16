@@ -11,6 +11,8 @@ import SEP1.Rent;
 import SEP1.RentFileAdapter;
 import SEP1.RentList;
 import SEP1.TheTime;
+import WIP.data.utility.Adapter_txt;
+import WIP.data.utility.Adapter_txtMethods;
 
 
 /***
@@ -21,6 +23,7 @@ public class ModelManager extends UnicastRemoteObject implements InterfaceModel 
 	// static final long serialVersionUID = 1L;
 	private RentFileAdapter rfa;
 	private RentList rentList;
+	private Adapter_txt adaptertxt;
 
 	public ModelManager() throws RemoteException {
 		rfa = new RentFileAdapter("resources/rentals.bin");
@@ -106,5 +109,7 @@ public class ModelManager extends UnicastRemoteObject implements InterfaceModel 
 		temp.setReturnTime(r.getReturnTime());
 		rfa.saveRents(rentList);		
 	}
+	
+
 
 }

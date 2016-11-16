@@ -6,18 +6,13 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
 
-import WIP.data.utility.Adapter_txt;
-import WIP.data.utility.Adapter_txtMethods;
+public class Registry {
 
-
-
-public class Server {
+	
 	public static void main(String[] args) throws RemoteException, AlreadyBoundException, NotBoundException{
 
-		ModelManager show = new ModelManager();
-
+		ServerNameAndIPManager nameAndIpMan = new ServerNameAndIPManager();
 		int port = 1099;
 
 		try { // special exception handler for registry creation
@@ -28,20 +23,17 @@ public class Server {
 			System.out.println("java RMI registry already exists.");
 		}
 
+		String hostname = "localhost";
+		String bindLocation = "//" + hostname + ":" + port + "/Connect";
 
+		bindLocationAndModel(bindLocation, nameAndIpMan);
 		
-		String hostname2 = "localhost";
-		String bindLocation2 = "//" + hostname2 + ":" + port + "/Connect2";
-		
-		bindLocationAndModel2(bindLocation2, show); 
 
 	}
 	
-
-	
-	public static void bindLocationAndModel2(String location, ModelManager model){
+	public static void bindLocationAndModel(String location, ServerNameAndIPManager nameAndIpMan){
 		try {
-			Naming.bind(location, model);
+			Naming.bind(location, nameAndIpMan);
 			System.out.println("Servers are ready at:" + location);
 		} catch (RemoteException e) {
 			e.printStackTrace();
@@ -51,6 +43,8 @@ public class Server {
 			System.out.println("Server failed: " + e);
 		}
 	}
+	
+	
 	
 	
 
