@@ -7,30 +7,40 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.util.Arrays;
 
 public class Client {
 
 	private String remoteHostName;
-	private int remotePort;
+	private int remotePortServer,remotePortRegistry;
 	private BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
 	
-	private Client(String remoteHostName, int remotePort) {
+	private Client(String remoteHostName, int remotePortServer,int remotePortRegistry) {
 		this.remoteHostName = remoteHostName;
-		this.remotePort = remotePort;
+		this.remotePortServer = remotePortServer;
+		this.remotePortRegistry= remotePortRegistry;
 		connectToServer();
 	}
 
 	private void connectToServer() {
-		String connectLocation = "//" + remoteHostName + ":" + remotePort + "/Connect";
+		
+		String connectLocation = "//" + remoteHostName + ":" + remotePortRegistry + "/Connect";
 		String in= null;
 		try {
 			System.out.println("Connecting to client at : " + connectLocation);
 			InterfaceNameAndIP namemodel = (InterfaceNameAndIP) Naming.lookup(connectLocation);
 			String[] list=namemodel.getAllNames();
-			System.out.println(namemodel.getAllNames()[0]);
-			System.out.println("The list: "+list);
+		
+			System.out.println("The list: ");
 			
+			StringBuffer result = new StringBuffer();
+			for (int i = 0; i < list.length; i++) {
+			   result.append( list[i]+"\n" );
+			  
+			}
+			String mynewstring = result.toString();
+			System.out.println(mynewstring);
 			try {
 				in = reader.readLine();
 				
@@ -40,7 +50,7 @@ public class Client {
 			String remoteHostName2 = namemodel.getIP(in);
 			
 			
-			String connectLocation2 = "//" + remoteHostName2 + ":" + remotePort + "/Connect2";
+			String connectLocation2 = "//" + remoteHostName2 + ":" + remotePortServer + "/Connect2";
 			System.out.println("Connecting to client at : " + connectLocation2);
 			InterfaceModel model = (InterfaceModel) Naming.lookup(connectLocation2);
 			new ClientController(model, new ClientView());
@@ -54,8 +64,8 @@ public class Client {
 	}
 	
 	public static void main(String[] args) {
-		new Client("localhost", 1099);
+		new Client("localhost", 1099,1098);
 		//ServerMenu();
-		new Client("localhost", 1099);
+		new Client("localhost", 1099,1098);
 	}
 }
