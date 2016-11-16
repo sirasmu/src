@@ -30,7 +30,7 @@ public class Server {
 
 
 		
-		String hostname2 = "localhost";
+		String hostname2 = "192.168.1.14";
 		String bindLocation2 = "//" + hostname2 + ":" + port + "/Connect2";
 		
 		bindLocationAndModel2(bindLocation2, show); 
