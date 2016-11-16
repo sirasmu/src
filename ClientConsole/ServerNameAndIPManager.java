@@ -3,6 +3,7 @@ package ClientConsole;
 import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.Arrays;
 
 import WIP.data.utility.Adapter_txt;
 import WIP.data.utility.Adapter_txtMethods;
@@ -17,19 +18,11 @@ public class ServerNameAndIPManager extends UnicastRemoteObject implements Inter
 	public ServerNameAndIPManager() throws RemoteException 
 	{
 		adaptertxt = new Adapter_txt();
-		try {
-			adaptertxt = (Adapter_txt) adaptertxt.readFromFile("resources/server_address.txt");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		adaptertxtMethods = new Adapter_txtMethods(adaptertxt);
+		adaptertxtMethods = new Adapter_txtMethods(adaptertxt,"resources/server_address.txt");
 	}
 
 	@Override
 	public String[] getAllNames() throws RemoteException{
-
-		System.out.println(adaptertxtMethods.getAllNames()[0]);
 		return adaptertxtMethods.getAllNames();
 	}
 
