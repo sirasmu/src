@@ -13,7 +13,8 @@ public class Registry {
 	public static void main(String[] args) throws RemoteException, AlreadyBoundException, NotBoundException{
 
 		ServerNameAndIPManager nameAndIpMan = new ServerNameAndIPManager();
-		int port = 1099;
+	
+		int port = 1098;
 
 		try { // special exception handler for registry creation
 			LocateRegistry.createRegistry(port);
