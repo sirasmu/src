@@ -22,16 +22,16 @@ public class Server {
 
 		try { // special exception handler for registry creation
 			LocateRegistry.createRegistry(port);
-			System.out.println("java RMI registry created.");
+			System.out.println("Java RMI registry created.");
 		} catch (RemoteException e) {
 			// do nothing, error means registry already exists
-			System.out.println("java RMI registry already exists.");
+			System.out.println("Java RMI registry already exists.");
 		}
 
 
 		
 		String hostname2 = "localhost";
-		String bindLocation2 = "//" + hostname2 + ":" + port + "/Connect2";
+		String bindLocation2 = "//" + hostname2 + ":" + port + "/MainServer";
 		
 		bindLocationAndModel2(bindLocation2, show); 
 
@@ -42,7 +42,7 @@ public class Server {
 	public static void bindLocationAndModel2(String location, ModelManager model){
 		try {
 			Naming.bind(location, model);
-			System.out.println("Servers are ready at:" + location);
+			System.out.println("The servers are ready at: " + location);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		} catch (MalformedURLException e) {

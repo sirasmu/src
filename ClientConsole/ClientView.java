@@ -40,10 +40,10 @@ public class ClientView {
 	 * Displays the menu for action selection
 	 */
 	public void displayMenu() {
-		System.out.println("1 to see vehicles in a date interval");
+		System.out.println("\n1 to see vehicles in a date interval");
 		System.out.println("2 to see a specific booking");
 		System.out.println("3 to see all bookings");
-		System.out.println("9 to exit");
+		System.out.println("9 to exit\n");
 		try {
 			String in = reader.readLine();
 			switch (in) {
@@ -71,17 +71,17 @@ public class ClientView {
 
 	private void displayBookings() {
 		RentList result = controller.getAll();
-		System.out.println("Result is: " + result);
+		System.out.println("\nAll bookings: " + result);
 	}
 
 	private void displayBookingsInInterval() {
 		try {
-			System.out.println("Please insert a start date: ");
+			System.out.println("\nPlease insert a start date: ");
 			String startDate = reader.readLine();
-			System.out.println("Please insert an end date: ");
+			System.out.println("\nPlease insert an end date: ");
 			String endDate = reader.readLine();
 			VehicleList result = controller.getAllInInterval(startDate, endDate);
-			System.out.println("Result is: ");
+			System.out.println("\nThe booking(s) found in the requested interval: ");
 			System.out.println(result);
 		} catch (IOException e) {
 			System.out.println("Unexpected problem with reading your input, please try again.");
@@ -97,12 +97,12 @@ public class ClientView {
 	}
 
 	private void displaySpecificBooking() {
-		System.out.println("Insert a booking number: ");
+		System.out.println("\nInsert a booking number: ");
 		try {
 			String in = reader.readLine();
 			Integer resNo = Integer.valueOf(in);
 			Rent reservation = controller.getReservation(resNo);
-			System.out.println("Reservation is: ");
+			System.out.println("\nReservation is: ");
 			System.out.println("Reservation number: " + reservation.getResNo());
 			System.out.println("Pick-up time: " + reservation.getPickUpTime());
 			System.out.println("Return time: " + reservation.getReturnTime());
@@ -127,9 +127,9 @@ public class ClientView {
 	}
 
 	private void editBooking(Rent reservation) {
-		System.out.println("1 to return to the main menu");
+		System.out.println("\n1 to return to the main menu");
 		System.out.println("2 to delete the booking");
-		System.out.println("3 to modify the booking");
+		System.out.println("3 to modify the booking\n");
 		try {
 			String in = reader.readLine();
 			switch (in) {
@@ -154,12 +154,12 @@ public class ClientView {
 	}
 
 	private void displayModificationMenu(Rent reservation) {
-		System.out.println("1 to save modifications");
+		System.out.println("\n1 to save modifications");
 		System.out.println("2 to change the pick-up time");
 		System.out.println("3 to change the return time");
 		System.out.println("4 to change the first name");
 		System.out.println("5 to change the last name");
-		System.out.println("6 to cancel modifications");
+		System.out.println("6 to cancel modifications\n");
 		try {
 			String in = reader.readLine();
 			switch (in) {
@@ -168,24 +168,24 @@ public class ClientView {
 				displayMenu();
 				break;
 			case "2":
-				System.out.println("Insert the new pick up date");
+				System.out.println("\nInsert the new pick up date");
 				in = reader.readLine();
 				controller.validateDate(in);
 				reservation.setPickUpTime(TheTime.convert(in));
 				break;
 			case "3":
-				System.out.println("Insert the new return date");
+				System.out.println("\nInsert the new return date");
 				in = reader.readLine();
 				controller.validateDate(in);
 				reservation.setReturnTime(TheTime.convert(in));
 				break;
 			case "4":
-				System.out.println("Insert the new first name");
+				System.out.println("\nInsert the new first name");
 				in = reader.readLine();
 				reservation.setFirstName(in);
 				break;
 			case "5":
-				System.out.println("Insert the new last name");
+				System.out.println("\nInsert the new last name");
 				in = reader.readLine();
 				reservation.setLastName(in);
 				break;
@@ -193,7 +193,7 @@ public class ClientView {
 				displayMenu();
 				break;
 			default:
-				System.out.println("Please insert a valid number");
+				System.out.println("\nPlease insert a valid number");
 				displayModificationMenu(reservation);
 				break;
 			}
@@ -212,7 +212,7 @@ public class ClientView {
 	 *            message from the server with the changes
 	 */
 	public void update(Object updateMsg) {
-		System.out.println("-----------------------Update message from server---------------------");
+		System.out.println("\n-----------------------Update message from server---------------------");
 		System.out.println(updateMsg);
 	}
 
