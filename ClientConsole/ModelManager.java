@@ -17,6 +17,7 @@ import SEP1.Vehicle;
 import SEP1.VehicleList;
 import WIP.data.utility.LinkedSet;
 import WIP.data.utility.SetADT;
+import WIP.data.utility.Adapter_txt;
 
 /***
  * 
@@ -26,6 +27,7 @@ public class ModelManager extends UnicastRemoteObject implements InterfaceModel 
 	// static final long serialVersionUID = 1L;
 	private RentFileAdapter rfa;
 	private RentList rentList;
+	private Adapter_txt adaptertxt;
 
 	public ModelManager() throws RemoteException {
 		rfa = new RentFileAdapter("resources/rentals.bin");
@@ -116,5 +118,7 @@ public class ModelManager extends UnicastRemoteObject implements InterfaceModel 
 		temp.setReturnTime(r.getReturnTime());
 		rfa.saveRents(rentList);
 	}
+	
+
 
 }

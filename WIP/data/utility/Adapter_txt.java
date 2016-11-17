@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class Adapter_txt extends ArrayList<String[]>{
 
-	private static Adapter_txt address_list = new Adapter_txt();
+	private static Adapter_txt address_list=new Adapter_txt();
 
 	public Adapter_txt(){}
 
@@ -31,7 +31,13 @@ public class Adapter_txt extends ArrayList<String[]>{
 		return address_list;
 	}
 	
-	public ArrayList<String[]> showIpAddress(){
+	public ArrayList<String[]> getNameAndIpAddress()
+	
+	{
+		/*if(address_list==null)
+		{
+			address_list = new Adapter_txt();
+		}*/
 		return address_list;
 		
 		
