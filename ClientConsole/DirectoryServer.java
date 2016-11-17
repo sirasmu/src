@@ -7,7 +7,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 
-public class Registry {
+public class DirectoryServer {
 
 	
 	public static void main(String[] args) throws RemoteException, AlreadyBoundException, NotBoundException{
@@ -18,14 +18,14 @@ public class Registry {
 
 		try { // special exception handler for registry creation
 			LocateRegistry.createRegistry(port);
-			System.out.println("java RMI registry created.");
+			System.out.println("Java RMI registry created.");
 		} catch (RemoteException e) {
 			// do nothing, error means registry already exists
-			System.out.println("java RMI registry already exists.");
+			System.out.println("Java RMI registry already exists.");
 		}
 
 		String hostname = "localhost";
-		String bindLocation = "//" + hostname + ":" + port + "/Connect";
+		String bindLocation = "//" + hostname + ":" + port + "/DirectoryServer";
 
 		bindLocationAndModel(bindLocation, nameAndIpMan);
 		
@@ -35,7 +35,7 @@ public class Registry {
 	public static void bindLocationAndModel(String location, ServerNameAndIPManager nameAndIpMan){
 		try {
 			Naming.bind(location, nameAndIpMan);
-			System.out.println("Servers are ready at:" + location);
+			System.out.println("The servers are ready at: " + location);
 		} catch (RemoteException e) {
 			e.printStackTrace();
 		} catch (MalformedURLException e) {

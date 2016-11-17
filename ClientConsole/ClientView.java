@@ -60,7 +60,7 @@ public class ClientView {
 				System.exit(0);
 				break;
 			default:
-				System.out.println("Please insert valid number");
+				System.out.println("Please insert a valid number");
 				break;
 			}
 		} catch (IOException e) {
@@ -71,17 +71,17 @@ public class ClientView {
 
 	private void displayBookings() {
 		RentList result = controller.getAll();
-		System.out.println("Result is :" + result);
+		System.out.println("Result is: " + result);
 	}
 
 	private void displayBookingsInInterval() {
 		try {
-			System.out.println("Please insert a start date:");
+			System.out.println("Please insert a start date: ");
 			String startDate = reader.readLine();
-			System.out.println("Please insert a end date:");
+			System.out.println("Please insert an end date: ");
 			String endDate = reader.readLine();
 			VehicleList result = controller.getAllInInterval(startDate, endDate);
-			System.out.println("Result is :");
+			System.out.println("Result is: ");
 			System.out.println(result);
 		} catch (IOException e) {
 			System.out.println("Unexpected problem with reading your input, please try again.");
@@ -97,17 +97,17 @@ public class ClientView {
 	}
 
 	private void displaySpecificBooking() {
-		System.out.println("Insert a booking number:");
+		System.out.println("Insert a booking number: ");
 		try {
 			String in = reader.readLine();
 			Integer resNo = Integer.valueOf(in);
 			Rent reservation = controller.getReservation(resNo);
-			System.out.println("Reservation is :");
+			System.out.println("Reservation is: ");
 			System.out.println("Reservation number: " + reservation.getResNo());
-			System.out.println("Pick up time: " + reservation.getPickUpTime());
+			System.out.println("Pick-up time: " + reservation.getPickUpTime());
 			System.out.println("Return time: " + reservation.getReturnTime());
-			System.out.println("Pick up place: " + reservation.getPickUpPlace());
-			System.out.println("Return place: " + reservation.getReturnPlace());
+			System.out.println("Pick-up location: " + reservation.getPickUpPlace());
+			System.out.println("Return location: " + reservation.getReturnPlace());
 			System.out.println("First name: " + reservation.getFirstName());
 			System.out.println("Last name: " + reservation.getLastName());
 			System.out.println("Estimated km: " + reservation.getEstimateKm());
@@ -127,7 +127,7 @@ public class ClientView {
 	}
 
 	private void editBooking(Rent reservation) {
-		System.out.println("1 to display menu");
+		System.out.println("1 to return to the main menu");
 		System.out.println("2 to delete the booking");
 		System.out.println("3 to modify the booking");
 		try {
@@ -143,7 +143,7 @@ public class ClientView {
 				displayModificationMenu(reservation);
 				break;
 			default:
-				System.out.println("Please insert valid number");
+				System.out.println("Please insert a valid number");
 				editBooking(reservation);
 				break;
 			}
@@ -155,11 +155,11 @@ public class ClientView {
 
 	private void displayModificationMenu(Rent reservation) {
 		System.out.println("1 to save modifications");
-		System.out.println("2 to change the pickUpTime");
-		System.out.println("3 to change the returnTime");
-		System.out.println("4 to change the firstName");
-		System.out.println("5 to change the lastName");
-		System.out.println("6 to abort modifications");
+		System.out.println("2 to change the pick-up time");
+		System.out.println("3 to change the return time");
+		System.out.println("4 to change the first name");
+		System.out.println("5 to change the last name");
+		System.out.println("6 to cancel modifications");
 		try {
 			String in = reader.readLine();
 			switch (in) {
@@ -168,24 +168,24 @@ public class ClientView {
 				displayMenu();
 				break;
 			case "2":
-				System.out.println("Insert the new pickUpDate");
+				System.out.println("Insert the new pick up date");
 				in = reader.readLine();
 				controller.validateDate(in);
 				reservation.setPickUpTime(TheTime.convert(in));
 				break;
 			case "3":
-				System.out.println("Insert the new returnDate");
+				System.out.println("Insert the new return date");
 				in = reader.readLine();
 				controller.validateDate(in);
 				reservation.setReturnTime(TheTime.convert(in));
 				break;
 			case "4":
-				System.out.println("Insert the new firstName");
+				System.out.println("Insert the new first name");
 				in = reader.readLine();
 				reservation.setFirstName(in);
 				break;
 			case "5":
-				System.out.println("Insert the new lastName");
+				System.out.println("Insert the new last name");
 				in = reader.readLine();
 				reservation.setLastName(in);
 				break;
@@ -193,7 +193,7 @@ public class ClientView {
 				displayMenu();
 				break;
 			default:
-				System.out.println("Please insert valid number");
+				System.out.println("Please insert a valid number");
 				displayModificationMenu(reservation);
 				break;
 			}
@@ -212,7 +212,7 @@ public class ClientView {
 	 *            message from the server with the changes
 	 */
 	public void update(Object updateMsg) {
-		System.out.println("-----------------------Updated from server.---------------------");
+		System.out.println("-----------------------Update message from server---------------------");
 		System.out.println(updateMsg);
 	}
 
