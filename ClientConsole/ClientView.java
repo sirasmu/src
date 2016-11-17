@@ -177,7 +177,7 @@ public class ClientView {
 				System.out.println("Insert the new returnDate");
 				in = reader.readLine();
 				controller.validateDate(in);
-				reservation.setPickUpTime(TheTime.convert(in));
+				reservation.setReturnTime(TheTime.convert(in));
 				break;
 			case "4":
 				System.out.println("Insert the new firstName");
