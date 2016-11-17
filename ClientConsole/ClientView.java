@@ -40,7 +40,7 @@ public class ClientView {
 	 * Displays the menu for action selection
 	 */
 	public void displayMenu() {
-		System.out.println("1 to see bookings in a date interval");
+		System.out.println("1 to see vehicles in a date interval");
 		System.out.println("2 to see a specific booking");
 		System.out.println("3 to see all bookings");
 		System.out.println("9 to exit");

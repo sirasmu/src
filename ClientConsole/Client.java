@@ -28,9 +28,6 @@ public class Client {
 		try {
 			System.out.println("Connecting to client at : " + connectLocation);
 
-			InterfaceModel model = (InterfaceModel) Naming.lookup(connectLocation);
-			new ClientController(model, new ClientView());
-
 			InterfaceNameAndIP namemodel = (InterfaceNameAndIP) Naming.lookup(connectLocation);
 			String[] list = namemodel.getAllNames();
 
@@ -51,7 +48,7 @@ public class Client {
 
 			String connectLocation2 = "//" + remoteHostName2 + ":" + remotePortServer + "/Connect2";
 			System.out.println("Connecting to client at : " + connectLocation2);
-			model = (InterfaceModel) Naming.lookup(connectLocation2);
+			InterfaceModel model = (InterfaceModel) Naming.lookup(connectLocation2);
 			new ClientController(model, new ClientView());
 		} catch (MalformedURLException e1) {
 			e1.printStackTrace();
