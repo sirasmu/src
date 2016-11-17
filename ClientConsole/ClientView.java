@@ -82,8 +82,7 @@ public class ClientView {
 			System.out.println("\nPlease insert an end date: ");
 			String endDate = reader.readLine();
 			VehicleList result = controller.getAllInInterval(startDate, endDate);
-			System.out.println("\nThe booking(s) found in the requested interval: ");
-			System.out.println(result);
+			System.out.println("\nThe booking(s) found in the requested interval: \n"+result);
 		} catch (IOException e) {
 			System.out.println("Unexpected problem with reading your input, please try again.");
 			displayBookingsInInterval();
