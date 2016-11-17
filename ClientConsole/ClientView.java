@@ -57,6 +57,7 @@ public class ClientView {
 				displayBookings();
 				break;
 			case "9":
+				System.out.println("Client application terminated");
 				System.exit(0);
 				break;
 			default:
