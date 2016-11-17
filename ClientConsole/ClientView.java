@@ -72,7 +72,7 @@ public class ClientView {
 
 	private void displayBookings() {
 		RentList result = controller.getAll();
-		System.out.println("\nAll bookings: " + result);
+		System.out.println("\nAll bookings: \n" + result);
 	}
 
 	private void displayBookingsInInterval() {
