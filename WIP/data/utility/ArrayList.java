@@ -155,7 +155,7 @@ public class ArrayList<T> implements ListADT<T>, Serializable {
 		private boolean canRemove = false;
 
 		public ArrayListIterator() {
-			index = 0;
+			index = -1;
 		}
 
 		@Override

@@ -9,10 +9,11 @@ public class Client {
 
 	private String remoteHostName;
 	private int remotePort;
+	private ClientController controller;
 
 	public static void main(String[] args) {
 		new Client("localhost", 1099);
-		//ServerMenu();
+		// ServerMenu();
 		new Client("localhost", 1099);
 	}
 
@@ -27,7 +28,7 @@ public class Client {
 		try {
 			System.out.println("Connecting to client at : " + connectLocation);
 			InterfaceModel model = (InterfaceModel) Naming.lookup(connectLocation);
-			new ClientController(model, new ClientView());
+			controller = new ClientController(model, new ClientView());
 		} catch (MalformedURLException e1) {
 			e1.printStackTrace();
 		} catch (RemoteException e1) {

@@ -3,15 +3,20 @@ package ClientConsole;
 import java.io.Serializable;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.Set;
 
 import SEP1.Rent;
 import SEP1.RentFileAdapter;
 import SEP1.RentList;
 import SEP1.TheTime;
-
+import SEP1.Vehicle;
+import SEP1.VehicleList;
+import WIP.data.utility.LinkedSet;
+import WIP.data.utility.SetADT;
 
 /***
  * 
@@ -57,18 +62,23 @@ public class ModelManager extends UnicastRemoteObject implements InterfaceModel 
 	}
 
 	@Override
-	public RentList getAllInInterval(TheTime startDate, TheTime endDate) {
+	public VehicleList getAllInInterval(TheTime startDate, TheTime endDate) {
 		RentList result = new RentList(rentList.getAll());
+		SetADT<Vehicle> vehicles = new LinkedSet<Vehicle>();
 		Iterator<Rent> it = result.iterator();
 		while (it.hasNext()) {
 			Rent next = it.next();
 			TheTime pickUpTime = next.getPickUpTime();
 			TheTime returnTime = next.getReturnTime();
-			if (!pickUpTime.isBefore(endDate) || returnTime.isBefore(startDate)) {
-				it.remove();
+			if (!(!pickUpTime.isBefore(endDate) || returnTime.isBefore(startDate))) {
+				vehicles.add(next.getVehicle());
 			}
 		}
-		return result;
+		VehicleList list = new VehicleList();
+		vehicles.forEach(v -> {
+			list.add(v);
+		});
+		return list;
 	}
 
 	private class WrappedObserver implements Observer, Serializable {
@@ -83,7 +93,7 @@ public class ModelManager extends UnicastRemoteObject implements InterfaceModel 
 
 		@Override
 		public void update(Observable o, Object arg) {
-			try {		
+			try {
 				ro.update(o.toString(), arg);
 			} catch (RemoteException e) {
 				System.out.println("Remote exception removing observer:" + this);
@@ -95,16 +105,16 @@ public class ModelManager extends UnicastRemoteObject implements InterfaceModel 
 
 	@Override
 	public void saveReservation(Rent r) throws RemoteException {
-		//TODO add more modified parameters if needed.
+		// TODO add more modified parameters if needed.
 		Rent temp = getRent(r.getResNo());
 		temp.setFirstName(r.getFirstName());
 		temp.setLastName(r.getLastName());
 		temp.setPickUpTime(r.getPickUpTime());
-		if(r.getReturnTime().isBefore(r.getPickUpTime())){
+		if (r.getReturnTime().isBefore(r.getPickUpTime())) {
 			throw new IllegalArgumentException("The return time cannot be before the pick-up time.");
 		}
 		temp.setReturnTime(r.getReturnTime());
-		rfa.saveRents(rentList);		
+		rfa.saveRents(rentList);
 	}
 
 }

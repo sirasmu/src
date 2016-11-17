@@ -9,6 +9,7 @@ import SEP1.IllegalDateException;
 import SEP1.Rent;
 import SEP1.RentList;
 import SEP1.TheTime;
+import SEP1.VehicleList;
 
 public class ClientView {
 
@@ -79,8 +80,9 @@ public class ClientView {
 			String startDate = reader.readLine();
 			System.out.println("Please insert a end date:");
 			String endDate = reader.readLine();
-			RentList result = controller.getAllInInterval(startDate, endDate);
-			System.out.println("Result is :" + result);
+			VehicleList result = controller.getAllInInterval(startDate, endDate);
+			System.out.println("Result is :");
+			System.out.println(result);
 		} catch (IOException e) {
 			System.out.println("Unexpected problem with reading your input, please try again.");
 			displayBookingsInInterval();

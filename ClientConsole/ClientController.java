@@ -10,6 +10,7 @@ import SEP1.MainGUI;
 import SEP1.Rent;
 import SEP1.RentList;
 import SEP1.TheTime;
+import SEP1.VehicleList;
 
 public class ClientController extends UnicastRemoteObject implements RemoteObserver {
 
@@ -76,7 +77,7 @@ public class ClientController extends UnicastRemoteObject implements RemoteObser
 	 *             if there is a problem with the connection to the server
 	 */
 
-	public RentList getAllInInterval(String startDate, String endDate) throws RemoteException {
+	public VehicleList getAllInInterval(String startDate, String endDate) throws RemoteException {
 		if (!validateDate(startDate) && !validateDate(endDate)) {
 
 			throw new IllegalArgumentException("Date in invalid format!");
