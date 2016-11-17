@@ -14,7 +14,6 @@ public class ArrayList<T> implements ListADT<T>, Serializable {
 		list = (T[]) (new Object[DEFAULT_CAPACITY]);
 	}
 
-	@Override
 	public void add(int index, T element) {
 		if (element == null) {
 			throw new IllegalArgumentException("Null value not allowed");
@@ -34,7 +33,6 @@ public class ArrayList<T> implements ListADT<T>, Serializable {
 
 	}
 
-	@Override
 	public void add(T element) {
 		add(size, element);
 	}
@@ -45,7 +43,6 @@ public class ArrayList<T> implements ListADT<T>, Serializable {
 		}
 	}
 
-	@Override
 	public void set(int index, T element) {
 		if (index > size) {
 			throw new IndexOutOfBoundsException();
@@ -56,7 +53,6 @@ public class ArrayList<T> implements ListADT<T>, Serializable {
 		list[index] = element;
 	}
 
-	@Override
 	public T get(int index) {
 		if (index > size) {
 			throw new IndexOutOfBoundsException();
@@ -65,7 +61,6 @@ public class ArrayList<T> implements ListADT<T>, Serializable {
 		return list[index];
 	}
 
-	@Override
 	public T remove(int index) {
 		if (index > size) {
 			throw new IndexOutOfBoundsException();
@@ -78,7 +73,6 @@ public class ArrayList<T> implements ListADT<T>, Serializable {
 		return e;
 	}
 
-	@Override
 	public T remove(T element) {
 		if (element != null) {
 			for (int i = 0; i < size; i++) {
@@ -90,7 +84,6 @@ public class ArrayList<T> implements ListADT<T>, Serializable {
 		throw new IllegalStateException("Element is not in the list!");
 	}
 
-	@Override
 	public int indexOf(T element) {
 		if (element == null) {
 			for (int i = 0; i < size; i++) {
@@ -108,7 +101,6 @@ public class ArrayList<T> implements ListADT<T>, Serializable {
 		return -1;
 	}
 
-	@Override
 	public boolean contains(T element) {
 		if (element == null) {
 			for (int i = 0; i < size; i++) {
@@ -126,12 +118,10 @@ public class ArrayList<T> implements ListADT<T>, Serializable {
 		return false;
 	}
 
-	@Override
 	public boolean isEmpty() {
 		return size == 0;
 	}
 
-	@Override
 	public int size() {
 		return size;
 	}
@@ -144,7 +134,6 @@ public class ArrayList<T> implements ListADT<T>, Serializable {
 		list = temp;
 	}
 
-	@Override
 	public Iterator<T> iterator() {
 		return new ArrayListIterator();
 	}
@@ -158,12 +147,10 @@ public class ArrayList<T> implements ListADT<T>, Serializable {
 			index = -1;
 		}
 
-		@Override
 		public boolean hasNext() {
 			return index + 1 < size;
 		}
 
-		@Override
 		public T next() {
 			if (!hasNext()) {
 				throw new NoSuchElementException();
@@ -173,7 +160,6 @@ public class ArrayList<T> implements ListADT<T>, Serializable {
 			return list[index];
 		}
 
-		@Override
 		public void remove() {
 			if (!canRemove) {
 				throw new IllegalStateException();

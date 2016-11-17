@@ -9,7 +9,6 @@ public class LinkedSet<T> implements SetADT<T>, Serializable {
 	private int size = 0;
 	private LinearNode<T> front;
 
-	@Override
 	public void add(T element) {
 		if (!contains(element)) {
 			front = new LinearNode<T>(element, front);
@@ -17,7 +16,6 @@ public class LinkedSet<T> implements SetADT<T>, Serializable {
 		}
 	}
 
-	@Override
 	public void remove(T element) {
 		LinearNode<T> node = front;
 		if (element == null) {
@@ -37,7 +35,6 @@ public class LinkedSet<T> implements SetADT<T>, Serializable {
 		size--;
 	}
 
-	@Override
 	public boolean contains(T element) {
 		LinearNode<T> node = front;
 		if (element == null) {
@@ -55,17 +52,14 @@ public class LinkedSet<T> implements SetADT<T>, Serializable {
 		return true;
 	}
 
-	@Override
 	public boolean isEmpty() {
 		return size == 0;
 	}
 
-	@Override
 	public int size() {
 		return size;
 	}
 
-	@Override
 	public boolean isSubset(SetADT<T> set) {
 		LinearNode<T> node = front;
 		while (node != null) {
@@ -77,7 +71,6 @@ public class LinkedSet<T> implements SetADT<T>, Serializable {
 		return true;
 	}
 
-	@Override
 	public SetADT<T> intersection(SetADT<T> set) {
 		SetADT<T> result = new LinkedSet<>();
 		LinearNode<T> node = front;
@@ -90,7 +83,6 @@ public class LinkedSet<T> implements SetADT<T>, Serializable {
 		return result;
 	}
 
-	@Override
 	public SetADT<T> union(SetADT<T> set) {
 		LinkedSet<T> result = new LinkedSet<>();
 		Iterator<T> it = iterator();
@@ -104,7 +96,6 @@ public class LinkedSet<T> implements SetADT<T>, Serializable {
 		return result;
 	}
 
-	@Override
 	public Iterator<T> iterator() {
 		return new LinkedSetIterator();
 	}

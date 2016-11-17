@@ -9,11 +9,11 @@ import java.rmi.registry.LocateRegistry;
 
 public class DirectoryServer {
 
-	
-	public static void main(String[] args) throws RemoteException, AlreadyBoundException, NotBoundException{
+	public static void main(String[] args) throws RemoteException,
+			AlreadyBoundException, NotBoundException {
 
 		ServerNameAndIPManager nameAndIpMan = new ServerNameAndIPManager();
-	
+
 		int port = 1098;
 
 		try { // special exception handler for registry creation
@@ -28,11 +28,11 @@ public class DirectoryServer {
 		String bindLocation = "//" + hostname + ":" + port + "/DirectoryServer";
 
 		bindLocationAndModel(bindLocation, nameAndIpMan);
-		
 
 	}
-	
-	public static void bindLocationAndModel(String location, ServerNameAndIPManager nameAndIpMan){
+
+	public static void bindLocationAndModel(String location,
+			ServerNameAndIPManager nameAndIpMan) {
 		try {
 			Naming.bind(location, nameAndIpMan);
 			System.out.println("The servers are ready at: " + location);
@@ -44,9 +44,5 @@ public class DirectoryServer {
 			System.out.println("Server failed: " + e);
 		}
 	}
-	
-	
-	
-	
 
 }

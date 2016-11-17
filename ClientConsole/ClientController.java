@@ -12,14 +12,16 @@ import SEP1.RentList;
 import SEP1.TheTime;
 import SEP1.VehicleList;
 
-public class ClientController extends UnicastRemoteObject implements RemoteObserver {
+public class ClientController extends UnicastRemoteObject implements
+		RemoteObserver {
 
 	private InterfaceModel model;
 	private ClientView view;
 	private Pattern datePattern = Pattern.compile("\\d{1,2}/\\d{1,2}/\\d{4}");
 	private MainGUI guiObserver;
-	
-	public ClientController(InterfaceModel model, ClientView view) throws RemoteException {
+
+	public ClientController(InterfaceModel model, ClientView view)
+			throws RemoteException {
 		this.model = model;
 		this.view = view;
 		view.addController(this);
@@ -77,7 +79,8 @@ public class ClientController extends UnicastRemoteObject implements RemoteObser
 	 *             if there is a problem with the connection to the server
 	 */
 
-	public VehicleList getAllInInterval(String startDate, String endDate) throws RemoteException {
+	public VehicleList getAllInInterval(String startDate, String endDate)
+			throws RemoteException {
 		if (!validateDate(startDate) && !validateDate(endDate)) {
 
 			throw new IllegalArgumentException("Date in invalid format!");
@@ -85,22 +88,24 @@ public class ClientController extends UnicastRemoteObject implements RemoteObser
 		TheTime sDate = TheTime.convert(startDate);
 		TheTime eDate = TheTime.convert(endDate);
 		if (eDate.isBefore(sDate)) {
-			throw new IllegalArgumentException("StartDate must be before endDate!");
+			throw new IllegalArgumentException(
+					"StartDate must be before endDate!");
 		}
 		return model.getAllInInterval(sDate, eDate);
 	}
-	
-	public boolean validateDate(String date){
+
+	public boolean validateDate(String date) {
 		Matcher match = datePattern.matcher(date);
 		return match.matches();
 	}
 
 	@Override
-	public void update(Object observable, Object updateMsg) throws RemoteException {
+	public void update(Object observable, Object updateMsg)
+			throws RemoteException {
 		view.update(updateMsg);
 	}
-	
-	public void saveReservation(Rent r){
+
+	public void saveReservation(Rent r) {
 		try {
 			model.saveReservation(r);
 		} catch (RemoteException e) {

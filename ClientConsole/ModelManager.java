@@ -24,7 +24,6 @@ import WIP.data.utility.Adapter_txt;
  * @author Adam This class is the Model Manager (I think).
  */
 public class ModelManager extends UnicastRemoteObject implements InterfaceModel {
-	// static final long serialVersionUID = 1L;
 	private RentFileAdapter rfa;
 	private RentList rentList;
 	private Adapter_txt adaptertxt;
@@ -60,7 +59,8 @@ public class ModelManager extends UnicastRemoteObject implements InterfaceModel 
 				return r;
 			}
 		}
-		throw new IllegalArgumentException("No Reservation with that reservation number was found");
+		throw new IllegalArgumentException(
+				"No Reservation with that reservation number was found");
 	}
 
 	@Override
@@ -72,7 +72,8 @@ public class ModelManager extends UnicastRemoteObject implements InterfaceModel 
 			Rent next = it.next();
 			TheTime pickUpTime = next.getPickUpTime();
 			TheTime returnTime = next.getReturnTime();
-			if (!(!pickUpTime.isBefore(endDate) || returnTime.isBefore(startDate))) {
+			if (!(!pickUpTime.isBefore(endDate) || returnTime
+					.isBefore(startDate))) {
 				vehicles.add(next.getVehicle());
 			}
 		}
@@ -98,27 +99,25 @@ public class ModelManager extends UnicastRemoteObject implements InterfaceModel 
 			try {
 				ro.update(o.toString(), arg);
 			} catch (RemoteException e) {
-				System.out.println("Remote exception removing observer:" + this);
+				System.out
+						.println("Remote exception removing observer:" + this);
 				o.deleteObserver(this);
 			}
 		}
-
 	}
 
 	@Override
 	public void saveReservation(Rent r) throws RemoteException {
-		// TODO add more modified parameters if needed.
 		Rent temp = getRent(r.getResNo());
 		temp.setFirstName(r.getFirstName());
 		temp.setLastName(r.getLastName());
 		temp.setPickUpTime(r.getPickUpTime());
 		if (r.getReturnTime().isBefore(r.getPickUpTime())) {
-			throw new IllegalArgumentException("The return time cannot be before the pick-up time.");
+			throw new IllegalArgumentException(
+					"The return time cannot be before the pick-up time.");
 		}
 		temp.setReturnTime(r.getReturnTime());
 		rfa.saveRents(rentList);
 	}
-	
-
 
 }

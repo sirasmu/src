@@ -5,42 +5,31 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Adapter_txt extends ArrayList<String[]>{
+public class Adapter_txt extends ArrayList<String[]> {
 
-	private static Adapter_txt address_list=new Adapter_txt();
+	private static Adapter_txt address_list = new Adapter_txt();
 
-	public Adapter_txt(){}
+	public Adapter_txt() {
+	}
 
-	public static ArrayList<String[]> readFromFile(String path) throws IOException {
+	public static ArrayList<String[]> readFromFile(String path)
+			throws IOException {
 
 		BufferedReader br = new BufferedReader(new FileReader(path));
-		//ArrayList<String[]> address_list;
-		
+
 		String line = br.readLine();
 		String[] tempArray;
-		//address_list = new ArrayList<String[]>();
 
 		while (line != null) {
-
 			tempArray = line.split(",");
 			address_list.add(tempArray);
 			line = br.readLine();
-
 		}
 		br.close();
 		return address_list;
 	}
-	
-	public ArrayList<String[]> getNameAndIpAddress()
-	
-	{
-		/*if(address_list==null)
-		{
-			address_list = new Adapter_txt();
-		}*/
-		return address_list;
-		
-		
-	}
 
+	public ArrayList<String[]> getNameAndIpAddress() {
+		return address_list;
+	}
 }

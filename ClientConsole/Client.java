@@ -13,9 +13,11 @@ public class Client {
 	private String remoteHostName;
 
 	private int remotePortServer, remotePortRegistry;
-	private BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+	private BufferedReader reader = new BufferedReader(new InputStreamReader(
+			System.in));
 
-	private Client(String remoteHostName, int remotePortServer, int remotePortRegistry) {
+	private Client(String remoteHostName, int remotePortServer,
+			int remotePortRegistry) {
 		this.remoteHostName = remoteHostName;
 		this.remotePortServer = remotePortServer;
 		this.remotePortRegistry = remotePortRegistry;
@@ -23,16 +25,19 @@ public class Client {
 	}
 
 	private void connectToServer() {
-		String connectLocation = "//" + remoteHostName + ":" + remotePortRegistry + "/DirectoryServer";
+		String connectLocation = "//" + remoteHostName + ":"
+				+ remotePortRegistry + "/DirectoryServer";
 		String in = null;
 		try {
-			System.out.println("Connecting to the directory server at: " + connectLocation);
+			System.out.println("Connecting to the directory server at: "
+					+ connectLocation);
 
-			InterfaceNameAndIP namemodel = (InterfaceNameAndIP) Naming.lookup(connectLocation);
+			InterfaceNameAndIP namemodel = (InterfaceNameAndIP) Naming
+					.lookup(connectLocation);
 			String[] list = namemodel.getAllNames();
 
 			System.out.println("\nSelect a main server from the list: ");
-			
+
 			StringBuffer result = new StringBuffer();
 			for (int i = 0; i < list.length; i++) {
 				result.append(list[i] + "\n");
@@ -47,9 +52,12 @@ public class Client {
 			}
 			String remoteHostName2 = namemodel.getIP(in);
 
-			String connectLocation2 = "//" + remoteHostName2 + ":" + remotePortServer + "/MainServer";
-			System.out.println("Connecting to the main server at: " + connectLocation2);
-			InterfaceModel model = (InterfaceModel) Naming.lookup(connectLocation2);
+			String connectLocation2 = "//" + remoteHostName2 + ":"
+					+ remotePortServer + "/MainServer";
+			System.out.println("Connecting to the main server at: "
+					+ connectLocation2);
+			InterfaceModel model = (InterfaceModel) Naming
+					.lookup(connectLocation2);
 			new ClientController(model, new ClientView());
 		} catch (MalformedURLException e1) {
 			e1.printStackTrace();
@@ -62,7 +70,5 @@ public class Client {
 
 	public static void main(String[] args) {
 		new Client("10.52.237.108", 1099, 1098);
-		// ServerMenu();
-		new Client("localhost", 1099, 1098);
 	}
 }

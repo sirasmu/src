@@ -8,7 +8,6 @@ public class LinearNode<T> implements Serializable {
 	private LinearNode<T> next;
 
 	public LinearNode() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public LinearNode(T element) {
