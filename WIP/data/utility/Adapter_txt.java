@@ -7,13 +7,19 @@ import java.util.ArrayList;
 
 public class Adapter_txt extends ArrayList<String[]> {
 
-	private static Adapter_txt address_list = new Adapter_txt();
+	private static Adapter_txt address_list = null;
 
-	public Adapter_txt() {
+	private Adapter_txt() {
 	}
 
-	public static ArrayList<String[]> readFromFile(String path)
-			throws IOException {
+	public static Adapter_txt getInstance() {
+		if (address_list == null) {
+			address_list = new Adapter_txt();
+		}
+		return address_list;
+	}
+
+	public static ArrayList<String[]> readFromFile(String path) throws IOException {
 
 		BufferedReader br = new BufferedReader(new FileReader(path));
 

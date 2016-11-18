@@ -69,6 +69,6 @@ public class Client {
 	}
 
 	public static void main(String[] args) {
-		new Client("10.52.237.108", 1099, 1098);
+		new Client("localhost", 1099, 1098);
 	}
 }

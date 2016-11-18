@@ -17,7 +17,7 @@ public class ServerNameAndIPManager extends UnicastRemoteObject implements
 	private Adapter_txtMethods adaptertxtMethods;
 
 	public ServerNameAndIPManager() throws RemoteException {
-		adaptertxt = new Adapter_txt();
+		adaptertxt = Adapter_txt.getInstance();
 		adaptertxtMethods = new Adapter_txtMethods(adaptertxt,
 				"resources/server_address.txt");
 	}
