@@ -27,7 +27,7 @@ public class Server {
 			System.out.println("Java RMI registry already exists.");
 		}
 
-		String hostname2 = "localhost";
+		String hostname2 ="10.52.236.171";
 		String bindLocation2 = "//" + hostname2 + ":" + port + "/MainServer";
 
 		bindLocationAndModel2(bindLocation2, show);
