@@ -12,21 +12,21 @@ public class Client {
 
 	private String remoteHostName;
 
-	private int remotePortServer, remotePortRegistry;
+	private int remotePortServer, remotePortDirectory;
 	private BufferedReader reader = new BufferedReader(new InputStreamReader(
 			System.in));
 
 	private Client(String remoteHostName, int remotePortServer,
-			int remotePortRegistry) {
+			int remotePortDirectory) {
 		this.remoteHostName = remoteHostName;
 		this.remotePortServer = remotePortServer;
-		this.remotePortRegistry = remotePortRegistry;
+		this.remotePortDirectory = remotePortDirectory;
 		connectToServer();
 	}
 
 	private void connectToServer() {
 		String connectLocation = "//" + remoteHostName + ":"
-				+ remotePortRegistry + "/DirectoryServer";
+				+ remotePortDirectory + "/DirectoryServer";
 		String in = null;
 		try {
 			System.out.println("Connecting to the directory server at: "
