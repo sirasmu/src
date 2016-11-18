@@ -18,7 +18,6 @@ public class ClientController extends UnicastRemoteObject implements
 	private InterfaceModel model;
 	private ClientView view;
 	private Pattern datePattern = Pattern.compile("\\d{1,2}/\\d{1,2}/\\d{4}");
-	private MainGUI guiObserver;
 
 	public ClientController(InterfaceModel model, ClientView view)
 			throws RemoteException {

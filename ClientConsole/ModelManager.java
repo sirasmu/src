@@ -26,7 +26,6 @@ import WIP.data.utility.Adapter_txt;
 public class ModelManager extends UnicastRemoteObject implements InterfaceModel {
 	private RentFileAdapter rfa;
 	private RentList rentList;
-	private Adapter_txt adaptertxt;
 
 	public ModelManager() throws RemoteException {
 		rfa = new RentFileAdapter("resources/rentals.bin");
