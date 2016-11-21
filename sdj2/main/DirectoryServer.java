@@ -23,7 +23,7 @@ public class DirectoryServer {
 			System.out.println("Java RMI registry already exists.");
 		}
 
-		String hostname = "localhost";
+		String hostname = "10.52.236.192";
 		String bindLocation = "//" + hostname + ":" + port + "/DirectoryServer";
 
 		bindLocationAndModel(bindLocation, nameAndIpMan);

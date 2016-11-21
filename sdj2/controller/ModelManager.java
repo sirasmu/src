@@ -7,13 +7,13 @@ import java.util.Iterator;
 import java.util.Observable;
 import java.util.Observer;
 
-import SEP1.TheTime;
 import sdj2.model.Rent;
 import sdj2.model.RentList;
 import sdj2.model.Vehicle;
 import sdj2.model.VehicleList;
 import sdj2.model.collection.LinkedSet;
 import sdj2.model.collection.SetADT;
+import sdj2.model.date.TheTime;
 import sdj2.model.utility.RentFileAdapter;
 
 /***

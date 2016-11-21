@@ -19,6 +19,7 @@ import javax.swing.border.LineBorder;
 import sdj2.model.Rent;
 import sdj2.model.RentList;
 import sdj2.model.Vehicle;
+import sdj2.model.date.TheTime;
 import sdj2.model.utility.RentFileAdapter;
 
 /**

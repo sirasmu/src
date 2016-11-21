@@ -3,11 +3,11 @@ package sdj2.model.utility;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import SEP1.TheTime;
 import sdj2.model.Rent;
 import sdj2.model.RentList;
 import sdj2.model.Vehicle;
 import sdj2.model.VehicleList;
+import sdj2.model.date.TheTime;
 
 /**
  * An adapter to the rentals file, making it easy to retrieve and store

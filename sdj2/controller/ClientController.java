@@ -6,10 +6,10 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import SEP1.TheTime;
 import sdj2.model.Rent;
 import sdj2.model.RentList;
 import sdj2.model.VehicleList;
+import sdj2.model.date.TheTime;
 import sdj2.view.ClientView;
 
 public class ClientController extends UnicastRemoteObject implements RemoteObserver {

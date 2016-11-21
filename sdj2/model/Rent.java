@@ -2,8 +2,8 @@ package sdj2.model;
 
 import java.io.Serializable;
 
-import SEP1.IllegalDateException;
-import SEP1.TheTime;
+import sdj2.model.date.IllegalDateException;
+import sdj2.model.date.TheTime;
 
 /**
  * A class representing a rental with booking information, drivers license, and

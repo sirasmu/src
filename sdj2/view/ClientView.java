@@ -4,12 +4,12 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import SEP1.IllegalDateException;
-import SEP1.TheTime;
 import sdj2.controller.ClientController;
 import sdj2.model.Rent;
 import sdj2.model.RentList;
 import sdj2.model.VehicleList;
+import sdj2.model.date.IllegalDateException;
+import sdj2.model.date.TheTime;
 
 public class ClientView {
 
