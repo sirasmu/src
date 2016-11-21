@@ -7,9 +7,11 @@ import java.rmi.RemoteException;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-import javax.swing.JTabbedPane;
 
-import ClientConsole.RemoteObserver;
+import sdj2.controller.RemoteObserver;
+import sdj2.model.utility.RentFileAdapter;
+
+import javax.swing.JTabbedPane;
 
 /**
  * A user interface that allows displaying and modifying information about vehicles

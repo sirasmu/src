@@ -1,39 +1,23 @@
-package ClientConsole;
+package sdj2.view;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 
 import SEP1.IllegalDateException;
-import SEP1.Rent;
-import SEP1.RentList;
 import SEP1.TheTime;
-import SEP1.VehicleList;
+import sdj2.controller.ClientController;
+import sdj2.model.Rent;
+import sdj2.model.RentList;
+import sdj2.model.VehicleList;
 
 public class ClientView {
 
 	private ClientController controller;
 	private BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-	// private String choosenServerAddress; //address client choose for
-	// establishing server connection //maybe not used here
 
 	public void addController(ClientController controller) {
 		this.controller = controller;
-	}
-
-	/**
-	 * Displays the menu for action selection
-	 */
-	public void ServerMenu(ArrayList<String[]> serverList) {
-
-		System.out.println(" Select server: ");
-		int serverNumber = 1;
-
-		for (int i = 0; i < serverList.size(); i++) {
-			System.out.println(serverNumber + ". " + serverList.get(serverNumber - 1)[0]);
-			serverNumber++;
-		}
 	}
 
 	/**
@@ -48,7 +32,7 @@ public class ClientView {
 			String in = reader.readLine();
 			switch (in) {
 			case "1":
-				displayBookingsInInterval();
+				displayCarsInInterval();
 				break;
 			case "2":
 				displaySpecificBooking();
@@ -75,23 +59,23 @@ public class ClientView {
 		System.out.println("\nAll bookings: \n" + result);
 	}
 
-	private void displayBookingsInInterval() {
+	private void displayCarsInInterval() {
 		try {
 			System.out.println("\nPlease insert a start date(dd/mm/yyyy): ");
 			String startDate = reader.readLine();
 			System.out.println("\nPlease insert an end date(dd/mm/yyyy): ");
 			String endDate = reader.readLine();
 			VehicleList result = controller.getAllInInterval(startDate, endDate);
-			System.out.println("\nThe booking(s) found in the requested interval: \n"+result);
+			System.out.println("\nThe booking(s) found in the requested interval: \n" + result);
 		} catch (IOException e) {
 			System.out.println("Unexpected problem with reading your input, please try again.");
-			displayBookingsInInterval();
+			displayCarsInInterval();
 		} catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());
-			displayBookingsInInterval();
+			displayCarsInInterval();
 		} catch (IllegalDateException e) {
 			System.out.println(e.getMessage());
-			displayBookingsInInterval();
+			displayCarsInInterval();
 		}
 		displayMenu();
 	}
@@ -215,5 +199,4 @@ public class ClientView {
 		System.out.println("\n-----------------------Update message from server---------------------");
 		System.out.println(updateMsg);
 	}
-
 }

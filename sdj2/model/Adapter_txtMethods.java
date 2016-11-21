@@ -1,4 +1,4 @@
-package WIP.data.utility;
+package sdj2.model;
 
 import java.io.IOException;
 
@@ -15,7 +15,7 @@ public class Adapter_txtMethods {
 
 	public Adapter_txt loadList() {
 		try {
-			ip_list = (Adapter_txt) Adapter_txt.readFromFile(address);
+			ip_list.readFromFile(address);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

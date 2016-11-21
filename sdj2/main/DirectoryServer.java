@@ -1,4 +1,4 @@
-package ClientConsole;
+package sdj2.main;
 
 import java.net.MalformedURLException;
 import java.rmi.AlreadyBoundException;
@@ -6,18 +6,14 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
 
-import WIP.data.utility.Adapter_txt;
-import WIP.data.utility.Adapter_txtMethods;
+import sdj2.controller.ServerNameAndIPManager;
 
-public class Server {
-	public static void main(String[] args) throws RemoteException,
-			AlreadyBoundException, NotBoundException {
+public class DirectoryServer {
 
-		ModelManager show = new ModelManager();
-
-		int port = 1099;
+	public static void main(String[] args) throws RemoteException, AlreadyBoundException, NotBoundException {
+		ServerNameAndIPManager nameAndIpMan = new ServerNameAndIPManager();
+		int port = 1098;
 
 		try { // special exception handler for registry creation
 			LocateRegistry.createRegistry(port);
@@ -27,16 +23,15 @@ public class Server {
 			System.out.println("Java RMI registry already exists.");
 		}
 
-		String hostname2 ="10.52.236.171";
-		String bindLocation2 = "//" + hostname2 + ":" + port + "/MainServer";
+		String hostname = "localhost";
+		String bindLocation = "//" + hostname + ":" + port + "/DirectoryServer";
 
-		bindLocationAndModel2(bindLocation2, show);
-
+		bindLocationAndModel(bindLocation, nameAndIpMan);
 	}
 
-	public static void bindLocationAndModel2(String location, ModelManager model) {
+	public static void bindLocationAndModel(String location, ServerNameAndIPManager nameAndIpMan) {
 		try {
-			Naming.bind(location, model);
+			Naming.bind(location, nameAndIpMan);
 			System.out.println("The servers are ready at: " + location);
 		} catch (RemoteException e) {
 			e.printStackTrace();
@@ -46,5 +41,4 @@ public class Server {
 			System.out.println("Server failed: " + e);
 		}
 	}
-
 }

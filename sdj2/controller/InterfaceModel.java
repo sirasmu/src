@@ -1,12 +1,12 @@
-package ClientConsole;
+package sdj2.controller;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
-import SEP1.Rent;
-import SEP1.RentList;
 import SEP1.TheTime;
-import SEP1.VehicleList;
+import sdj2.model.Rent;
+import sdj2.model.RentList;
+import sdj2.model.VehicleList;
 
 
 public interface InterfaceModel extends Remote {

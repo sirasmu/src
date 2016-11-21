@@ -1,25 +1,20 @@
-package ClientConsole;
+package sdj2.controller;
 
-import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.Arrays;
 
-import WIP.data.utility.Adapter_txt;
-import WIP.data.utility.Adapter_txtMethods;
+import sdj2.model.Adapter_txt;
+import sdj2.model.Adapter_txtMethods;
 
-public class ServerNameAndIPManager extends UnicastRemoteObject implements
-		InterfaceNameAndIP {
+public class ServerNameAndIPManager extends UnicastRemoteObject implements InterfaceNameAndIP {
 
-	private String name;
-	private String ip;
+	private static final long serialVersionUID = 2769231433214049564L;
 	private Adapter_txt adaptertxt;
 	private Adapter_txtMethods adaptertxtMethods;
 
 	public ServerNameAndIPManager() throws RemoteException {
 		adaptertxt = Adapter_txt.getInstance();
-		adaptertxtMethods = new Adapter_txtMethods(adaptertxt,
-				"resources/server_address.txt");
+		adaptertxtMethods = new Adapter_txtMethods(adaptertxt, "resources/server_address.txt");
 	}
 
 	@Override
@@ -29,8 +24,6 @@ public class ServerNameAndIPManager extends UnicastRemoteObject implements
 
 	@Override
 	public String getIP(String name) throws RemoteException {
-
 		return adaptertxtMethods.getIPbyName(name);
 	}
-
 }

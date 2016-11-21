@@ -23,6 +23,12 @@ import javax.swing.JTextArea;
 import javax.swing.ListSelectionModel;
 import javax.swing.ScrollPaneConstants;
 
+import sdj2.model.Rent;
+import sdj2.model.RentList;
+import sdj2.model.Vehicle;
+import sdj2.model.VehicleList;
+import sdj2.model.utility.RentFileAdapter;
+
 /**
  * A GUI panel containing all the information about the bookings, rentals,
  * service and car condition

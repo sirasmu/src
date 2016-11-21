@@ -27,6 +27,9 @@ import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.border.TitledBorder;
 
+import sdj2.model.RentList;
+import sdj2.model.utility.RentFileAdapter;
+
 /**
  * A GUI panel containing all the information from the booking list that can be
  * changed

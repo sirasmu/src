@@ -1,4 +1,4 @@
-package WIP.data.utility;
+package sdj2.model;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public class Adapter_txt extends ArrayList<String[]> {
 
+	private static final long serialVersionUID = 1507835882916430649L;
 	private static Adapter_txt address_list = null;
 
 	private Adapter_txt() {
@@ -19,8 +20,7 @@ public class Adapter_txt extends ArrayList<String[]> {
 		return address_list;
 	}
 
-	public static ArrayList<String[]> readFromFile(String path) throws IOException {
-
+	public void readFromFile(String path) throws IOException {
 		BufferedReader br = new BufferedReader(new FileReader(path));
 
 		String line = br.readLine();
@@ -32,10 +32,5 @@ public class Adapter_txt extends ArrayList<String[]> {
 			line = br.readLine();
 		}
 		br.close();
-		return address_list;
-	}
-
-	public ArrayList<String[]> getNameAndIpAddress() {
-		return address_list;
 	}
 }

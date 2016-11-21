@@ -12,6 +12,12 @@ import java.util.GregorianCalendar;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 
+import sdj2.model.Rent;
+import sdj2.model.RentList;
+import sdj2.model.Vehicle;
+import sdj2.model.VehicleList;
+import sdj2.model.utility.RentFileAdapter;
+
 /**
  * A class representing a tab for booking a vehicle. It is a GUI panel
  * containing components for displaying a list of vehicles available for

@@ -1,4 +1,4 @@
-package WIP.data.utility;
+package sdj2.model.collection;
 
 import java.io.Serializable;
 import java.util.Iterator;
@@ -6,6 +6,7 @@ import java.util.NoSuchElementException;
 
 public class LinkedSet<T> implements SetADT<T>, Serializable {
 
+	private static final long serialVersionUID = -8002905340527721416L;
 	private int size = 0;
 	private LinearNode<T> front;
 

@@ -1,4 +1,4 @@
-package ClientConsole;
+package sdj2.controller;
 
 import java.nio.channels.IllegalSelectorException;
 import java.rmi.RemoteException;
@@ -6,21 +6,20 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import SEP1.MainGUI;
-import SEP1.Rent;
-import SEP1.RentList;
 import SEP1.TheTime;
-import SEP1.VehicleList;
+import sdj2.model.Rent;
+import sdj2.model.RentList;
+import sdj2.model.VehicleList;
+import sdj2.view.ClientView;
 
-public class ClientController extends UnicastRemoteObject implements
-		RemoteObserver {
+public class ClientController extends UnicastRemoteObject implements RemoteObserver {
 
+	private static final long serialVersionUID = -8573107128817026368L;
 	private InterfaceModel model;
 	private ClientView view;
 	private Pattern datePattern = Pattern.compile("\\d{1,2}/\\d{1,2}/\\d{4}");
 
-	public ClientController(InterfaceModel model, ClientView view)
-			throws RemoteException {
+	public ClientController(InterfaceModel model, ClientView view) throws RemoteException {
 		this.model = model;
 		this.view = view;
 		view.addController(this);
@@ -78,8 +77,7 @@ public class ClientController extends UnicastRemoteObject implements
 	 *             if there is a problem with the connection to the server
 	 */
 
-	public VehicleList getAllInInterval(String startDate, String endDate)
-			throws RemoteException {
+	public VehicleList getAllInInterval(String startDate, String endDate) throws RemoteException {
 		if (!validateDate(startDate) && !validateDate(endDate)) {
 
 			throw new IllegalArgumentException("Date in invalid format!");
@@ -87,8 +85,7 @@ public class ClientController extends UnicastRemoteObject implements
 		TheTime sDate = TheTime.convert(startDate);
 		TheTime eDate = TheTime.convert(endDate);
 		if (eDate.isBefore(sDate)) {
-			throw new IllegalArgumentException(
-					"StartDate must be before endDate!");
+			throw new IllegalArgumentException("StartDate must be before endDate!");
 		}
 		return model.getAllInInterval(sDate, eDate);
 	}
@@ -99,8 +96,7 @@ public class ClientController extends UnicastRemoteObject implements
 	}
 
 	@Override
-	public void update(Object observable, Object updateMsg)
-			throws RemoteException {
+	public void update(Object observable, Object updateMsg) throws RemoteException {
 		view.update(updateMsg);
 	}
 
@@ -112,5 +108,4 @@ public class ClientController extends UnicastRemoteObject implements
 			System.out.println("Saving the reservation failed");
 		}
 	}
-
 }

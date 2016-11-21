@@ -4,6 +4,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import sdj2.model.RentList;
+import sdj2.model.Vehicle;
+import sdj2.model.VehicleList;
+import sdj2.model.utility.MyFileIO;
+
 /**
  * An adapter to the vehicles file, making it easy to retrieve and store
  * information.

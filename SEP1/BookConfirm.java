@@ -16,6 +16,11 @@ import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 
+import sdj2.model.Rent;
+import sdj2.model.RentList;
+import sdj2.model.Vehicle;
+import sdj2.model.utility.RentFileAdapter;
+
 /**
  * A class representing pop-up window for confirming booking.
  * 

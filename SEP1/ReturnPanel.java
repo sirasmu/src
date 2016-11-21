@@ -28,6 +28,11 @@ import javax.swing.JTextField;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.border.TitledBorder;
 
+import sdj2.model.Rent;
+import sdj2.model.RentList;
+import sdj2.model.VehicleList;
+import sdj2.model.utility.RentFileAdapter;
+
 /**
  * A GUI panel containing all the information from the booking and rent panels
  * with extra information about the car condition and return time and date

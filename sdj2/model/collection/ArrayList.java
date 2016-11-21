@@ -1,4 +1,4 @@
-package WIP.data.utility;
+package sdj2.model.collection;
 
 import java.io.Serializable;
 import java.util.Iterator;
@@ -6,10 +6,12 @@ import java.util.NoSuchElementException;
 
 public class ArrayList<T> implements ListADT<T>, Serializable {
 
+	private static final long serialVersionUID = -1957456393459597554L;
 	private final static int DEFAULT_CAPACITY = 100;
 	private int size = 0;
 	private T[] list;
 
+	@SuppressWarnings("unchecked")
 	public ArrayList() {
 		list = (T[]) (new Object[DEFAULT_CAPACITY]);
 	}
@@ -57,7 +59,6 @@ public class ArrayList<T> implements ListADT<T>, Serializable {
 		if (index > size) {
 			throw new IndexOutOfBoundsException();
 		}
-		T e = list[index];
 		return list[index];
 	}
 
@@ -127,6 +128,7 @@ public class ArrayList<T> implements ListADT<T>, Serializable {
 	}
 
 	private void expandCapacity() {
+		@SuppressWarnings("unchecked")
 		T[] temp = (T[]) (new Object[list.length * 2]);
 		for (int i = 0; i <= size; i++) {
 			temp[i] = list[i];

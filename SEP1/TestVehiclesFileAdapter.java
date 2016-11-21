@@ -1,4 +1,7 @@
 package SEP1;
+
+import sdj2.model.VehicleList;
+
 /**
  * @author Group 1 (Ana Iulia Chifor, Andreea Carst, Filip Hudec, Signe
  *         Rasmussen)

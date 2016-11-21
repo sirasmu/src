@@ -1,9 +1,10 @@
-package WIP.data.utility;
+package sdj2.model.collection;
 
 import java.io.Serializable;
 
 public class LinearNode<T> implements Serializable {
 
+	private static final long serialVersionUID = 7626666596945436117L;
 	private T element;
 	private LinearNode<T> next;
 

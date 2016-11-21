@@ -17,6 +17,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import sdj2.model.Vehicle;
+
 /**
  * A JFrama containing all the necessary fields for adding a new vehicle to the
  * list

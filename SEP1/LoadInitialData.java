@@ -2,6 +2,12 @@ package SEP1;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import sdj2.model.RentList;
+import sdj2.model.Vehicle;
+import sdj2.model.VehicleList;
+import sdj2.model.utility.MyFileIO;
+import sdj2.model.utility.RentFileAdapter;
+
 /**
  * A simple program used for importing data. It reads a text file with vehicle
  * information, creates a VehicleList object with all vehicles read from the

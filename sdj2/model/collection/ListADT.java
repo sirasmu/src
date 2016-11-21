@@ -1,4 +1,4 @@
-package WIP.data.utility;
+package sdj2.model.collection;
 
 import java.io.Serializable;
 

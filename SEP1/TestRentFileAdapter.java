@@ -1,6 +1,10 @@
 package SEP1;
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane.RestoreAction;
 
+import sdj2.model.RentList;
+import sdj2.model.VehicleList;
+import sdj2.model.utility.RentFileAdapter;
+
 /**
  * @author Group 1 (Ana Iulia Chifor, Andreea Carst, Filip Hudec, Signe
  *         Rasmussen)
