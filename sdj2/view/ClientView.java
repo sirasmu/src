@@ -25,8 +25,8 @@ public class ClientView {
 	 */
 	public void displayMenu() {
 		System.out.println("\n1 to see vehicles in a date interval");
-		System.out.println("2 to see a specific booking");
-		System.out.println("3 to see all bookings");
+		System.out.println("2 to see a specific reservation");
+		System.out.println("3 to see all reservations");
 		System.out.println("9 to exit\n");
 		try {
 			String in = reader.readLine();
@@ -66,7 +66,7 @@ public class ClientView {
 			System.out.println("\nPlease insert an end date(dd/mm/yyyy): ");
 			String endDate = reader.readLine();
 			VehicleList result = controller.getAllInInterval(startDate, endDate);
-			System.out.println("\nThe booking(s) found in the requested interval: \n" + result);
+			System.out.println("\nThe reservation(s) found in the requested interval: \n" + result);
 		} catch (IOException e) {
 			System.out.println("Unexpected problem with reading your input, please try again.");
 			displayCarsInInterval();
